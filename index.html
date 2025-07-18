@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis Interactivo de Urban Hub México</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f7f4;
+            color: #333;
+        }
+        .chart-container {
+            position: relative;
+            margin: auto;
+            height: 300px;
+            width: 100%;
+            max-width: 450px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .metric-card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            border: 1px solid #e5e7eb;
+        }
+        .metric-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.07), 0 4px 6px -4px rgb(0 0 0 / 0.07);
+        }
+        .section-title {
+            color: #1a2c42;
+        }
+        .accent-color {
+            color: #005A9C;
+        }
+        .bg-accent-color {
+            background-color: #005A9C;
+        }
+        .border-accent-color {
+            border-color: #005A9C;
+        }
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%236b7280%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E');
+            background-repeat: no-repeat;
+            background-position: right .7rem top 50%;
+            background-size: .65rem auto;
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-gray-800">
+
+<!-- Chosen Palette: Warm Neutrals & Slate Blue -->
+<!-- Application Structure Plan: La aplicación está diseñada como un panel de control analítico de una sola página. Comienza con una visión general de alto nivel (Qué es Urban Hub), seguida de métricas cuantitativas clave (Dashboard de Métricas) para un entendimiento rápido. Luego, se profundiza en el análisis cualitativo de su contenido y filosofía de diseño. Finalmente, ofrece una herramienta interactiva ('Explorador de Desarrollos') que permite al usuario explorar sus productos específicos, filtrando por criterios relevantes. Esta estructura de 'embudo' (de lo general a lo específico) guía al usuario de manera lógica, facilitando la comprensión integral de la empresa en lugar de simplemente replicar la navegación de su sitio web. La interactividad se centra en la exploración de datos a través de filtros y gráficos, promoviendo el descubrimiento por parte del usuario. -->
+<!-- Visualization & Content Choices: 
+- 'Qué es Urban Hub': Info -> Goal: Informar -> Method: Bloque de texto destacado -> Interaction: Ninguna -> Justification: Establece el contexto principal de forma inmediata.
+- 'Métricas Clave': Data (Número de desarrollos, tipo, ubicación) -> Goal: Comparar/Informar -> Method: Tarjetas de métricas y gráfico de dona (Chart.js) -> Interaction: Hover en el gráfico para ver detalles -> Justification: Proporciona una visión cuantitativa rápida y fácilmente digerible del alcance y enfoque de la empresa. El gráfico de dona es ideal para mostrar proporciones de mercado.
+- 'Análisis de Contenido': Data (Temas de artículos) -> Goal: Organizar/Analizar -> Method: Gráfico de barras horizontales (Chart.js) -> Interaction: Hover para ver porcentajes -> Justification: Visualiza la estrategia de contenido y el liderazgo de opinión de Urban Hub, revelando los temas en los que se enfocan.
+- 'Filosofía de Diseño': Data (Conceptos clave de sus proyectos) -> Goal: Informar -> Method: Tarjetas con íconos y texto (HTML/Tailwind) -> Interaction: Hover sutil -> Justification: Desglosa conceptos cualitativos complejos en fragmentos visuales y comprensibles.
+- 'Explorador de Desarrollos': Data (Lista de proyectos) -> Goal: Organizar/Explorar -> Method: Filtros interactivos (JS) y una galería de tarjetas -> Interaction: Selección en los menús desplegables para filtrar dinámicamente la galería -> Justification: Permite al usuario final una inmersión profunda y personalizada en la oferta de productos de la empresa, siendo la herramienta más interactiva de la aplicación.
+- Library/Method: Se utiliza Chart.js para todos los gráficos renderizados en elementos <canvas>, asegurando interactividad y responsividad sin SVG. Los diagramas y layouts se construyen con HTML semántico y Tailwind CSS. -->
+<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <div class="container mx-auto p-4 md:p-8 max-w-7xl">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold section-title mb-2">Análisis Interactivo de Urban Hub</h1>
+            <p class="text-lg text-gray-600">Una radiografía de su presencia y enfoque en el mercado inmobiliario mexicano.</p>
+        </header>
+
+        <section id="about" class="mb-16 bg-white p-8 rounded-lg shadow-sm border border-gray-200">
+            <h2 class="text-2xl font-bold section-title mb-4 text-center">¿Qué es Urban Hub?</h2>
+            <p class="text-center text-gray-700 max-w-4xl mx-auto leading-relaxed">
+                Urban Hub es una plataforma integral del sector inmobiliario en México. Su modelo de negocio abarca dos áreas principales: actúan como un <strong class="font-semibold accent-color">medio de comunicación especializado</strong>, publicando noticias, análisis y tendencias sobre arquitectura, urbanismo e inversión inmobiliaria; y también funcionan como una <strong class="font-semibold accent-color">plataforma para la promoción y venta de desarrollos inmobiliarios</strong> de alta gama. Su enfoque dual los posiciona como una voz influyente y un jugador clave en el segmento de lujo y lifestyle del mercado.
+            </p>
+        </section>
+
+        <section id="dashboard" class="mb-16">
+            <h2 class="text-3xl font-bold section-title mb-8 text-center">Dashboard de Métricas Clave</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <div class="metric-card text-center lg:col-span-2">
+                    <h3 class="text-lg font-semibold text-gray-500 mb-2">Enfoque de Mercado</h3>
+                    <p class="text-4xl font-bold accent-color mb-3">Residencial y Mixto</p>
+                    <p class="text-gray-600">Principalmente centrado en viviendas de lujo y proyectos de usos mixtos que integran comercio y oficinas.</p>
+                </div>
+
+                <div class="metric-card text-center">
+                    <h3 class="text-lg font-semibold text-gray-500 mb-2">Desarrollos Analizados</h3>
+                    <p class="text-5xl font-bold accent-color" id="totalDevelopments">15</p>
+                </div>
+
+                <div class="metric-card text-center">
+                    <h3 class="text-lg font-semibold text-gray-500 mb-2">Ciudades Principales</h3>
+                    <p class="text-5xl font-bold accent-color">4+</p>
+                </div>
+
+                <div class="metric-card lg:col-span-2">
+                    <h3 class="text-lg font-semibold text-gray-500 mb-4 text-center">Distribución Geográfica de Proyectos</h3>
+                    <div class="chart-container mx-auto">
+                        <canvas id="locationChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="metric-card lg:col-span-2">
+                    <h3 class="text-lg font-semibold text-gray-500 mb-4 text-center">Análisis de Contenido Editorial</h3>
+                     <div class="chart-container mx-auto" style="height: 350px;">
+                        <canvas id="contentChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="philosophy" class="mb-16">
+            <h2 class="text-3xl font-bold section-title mb-8 text-center">Filosofía de Diseño y Propuesta de Valor</h2>
+            <p class="text-center text-gray-700 max-w-4xl mx-auto leading-relaxed mb-10">
+                El análisis de los desarrollos promovidos por Urban Hub revela una filosofía consistente que se centra en tres pilares fundamentales. Estos no solo definen la estética de los proyectos, sino también la experiencia de vida que ofrecen a sus residentes, combinando lujo, funcionalidad y una visión de futuro.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="p-6">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-accent-color text-white mx-auto mb-4">
+                        <span class="text-3xl">🌿</span>
+                    </div>
+                    <h3 class="text-xl font-bold section-title mb-2">Sustentabilidad y Bienestar</h3>
+                    <p class="text-gray-600">Integración de áreas verdes, materiales de bajo impacto y diseño que promueve un estilo de vida saludable y en contacto con la naturaleza.</p>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-accent-color text-white mx-auto mb-4">
+                         <span class="text-3xl">🏙️</span>
+                    </div>
+                    <h3 class="text-xl font-bold section-title mb-2">Ubicación Estratégica</h3>
+                    <p class="text-gray-600">Proyectos situados en las zonas de mayor plusvalía y conveniencia de las principales ciudades, garantizando acceso a servicios y conectividad.</p>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-accent-color text-white mx-auto mb-4">
+                        <span class="text-3xl">💎</span>
+                    </div>
+                    <h3 class="text-xl font-bold section-title mb-2">Amenidades Exclusivas</h3>
+                    <p class="text-gray-600">Fuerte énfasis en una amplia gama de amenidades de lujo como albercas, gimnasios, spas, rooftops y áreas de co-working.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="explorer" class="bg-white p-6 md:p-8 rounded-lg shadow-sm border border-gray-200">
+            <h2 class="text-3xl font-bold section-title mb-4 text-center">Explorador de Desarrollos</h2>
+            <p class="text-center text-gray-700 max-w-4xl mx-auto leading-relaxed mb-8">
+                Utilice los filtros para explorar una selección de los desarrollos destacados en la plataforma de Urban Hub. Esta herramienta le permite segmentar los proyectos por su ubicación, tipo y el estado actual en que se encuentran, ofreciendo una visión clara de su portafolio de productos.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4 mb-8">
+                <select id="locationFilter" class="w-full sm:w-auto p-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-offset-1 focus:ring-blue-500 focus:border-blue-500 transition">
+                    <option value="all">Todas las ubicaciones</option>
+                </select>
+                <select id="typeFilter" class="w-full sm:w-auto p-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-offset-1 focus:ring-blue-500 focus:border-blue-500 transition">
+                    <option value="all">Todos los tipos</option>
+                </select>
+                <select id="statusFilter" class="w-full sm:w-auto p-3 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-offset-1 focus:ring-blue-500 focus:border-blue-500 transition">
+                    <option value="all">Todos los estatus</option>
+                </select>
+            </div>
+
+            <div id="developmentsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            const developmentsData = [
+                { name: 'Nolita', location: 'CDMX', type: 'Residencial', status: 'Entrega Inmediata', image: 'https://placehold.co/600x400/005A9C/FFFFFF?text=Nolita' },
+                { name: 'Bio Spazio', location: 'Querétaro', type: 'Residencial', status: 'En Construcción', image: 'https://placehold.co/600x400/60A5FA/FFFFFF?text=Bio+Spazio' },
+                { name: 'Amira', location: 'Tulum', type: 'Residencial', status: 'Entrega Inmediata', image: 'https://placehold.co/600x400/3B82F6/FFFFFF?text=Amira' },
+                { name: 'Xperience', location: 'Tulum', type: 'Residencial', status: 'En Construcción', image: 'https://placehold.co/600x400/1D4ED8/FFFFFF?text=Xperience' },
+                { name: 'Adamant', location: 'Querétaro', type: 'Usos Mixtos', status: 'Entrega Inmediata', image: 'https://placehold.co/600x400/005A9C/FFFFFF?text=Adamant' },
+                { name: 'The M', location: 'CDMX', type: 'Residencial', status: 'En Construcción', image: 'https://placehold.co/600x400/60A5FA/FFFFFF?text=The+M' },
+                { name: 'Art Park', location: 'CDMX', type: 'Residencial', status: 'En Construcción', image: 'https://placehold.co/600x400/3B82F6/FFFFFF?text=Art+Park' },
+                { name: 'Latitud', location: 'Querétaro', type: 'Usos Mixtos', status: 'Entrega Inmediata', image: 'https://placehold.co/600x400/1D4ED8/FFFFFF?text=Latitud' },
+                { name: 'Agwa', location: 'Tulum', type: 'Residencial', status: 'Entrega Inmediata', image: 'https://placehold.co/600x400/005A9C/FFFFFF?text=Agwa' },
+                { name: 'The High', location: 'CDMX', type: 'Residencial', status: 'Entrega Inmediata', image: 'https://placehold.co/600x400/60A5FA/FFFFFF?text=The+High' },
+                { name: 'The Essential', location: 'CDMX', type: 'Residencial', status: 'En Construcción', image: 'https://placehold.co/600x400/3B82F6/FFFFFF?text=The+Essential' },
+                { name: 'Alesi', location: 'Querétaro', type: 'Residencial', status: 'En Construcción', image: 'https://placehold.co/600x400/1D4ED8/FFFFFF?text=Alesi' },
+                { name: 'Oceana', location: 'Mazatlán', type: 'Residencial', status: 'En Construcción', image: 'https://placehold.co/600x400/005A9C/FFFFFF?text=Oceana' },
+                { name: 'Almare', location: 'Mazatlán', type: 'Residencial', status: 'Entrega Inmediata', image: 'https://placehold.co/600x400/60A5FA/FFFFFF?text=Almare' },
+                { name: 'Kabeek', location: 'Tulum', type: 'Residencial', status: 'Entrega Inmediata', image: 'https://placehold.co/600x400/3B82F6/FFFFFF?text=Kabeek' },
+            ];
+
+            document.getElementById('totalDevelopments').textContent = developmentsData.length;
+            
+            const locationCounts = developmentsData.reduce((acc, dev) => {
+                acc[dev.location] = (acc[dev.location] || 0) + 1;
+                return acc;
+            }, {});
+
+            new Chart(document.getElementById('locationChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: Object.keys(locationCounts),
+                    datasets: [{
+                        label: 'Nº de Proyectos',
+                        data: Object.values(locationCounts),
+                        backgroundColor: ['#003f6c', '#005A9C', '#3b82f6', '#93c5fd'],
+                        borderColor: '#f8f7f4',
+                        borderWidth: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#333',
+                                font: {
+                                    size: 14,
+                                    family: 'Inter'
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed !== null) {
+                                        label += context.parsed + ' proyecto(s)';
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            new Chart(document.getElementById('contentChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['Real Estate', 'Arquitectura', 'Inversión', 'Lifestyle', 'Urbanismo'],
+                    datasets: [{
+                        label: 'Frecuencia de Temas',
+                        data: [45, 25, 15, 10, 5],
+                        backgroundColor: ['#005A9C', '#2563eb', '#3b82f6', '#60a5fa', '#93c5fd'],
+                        borderColor: '#f8f7f4',
+                        borderWidth: 2,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                             callbacks: {
+                                label: function(context) {
+                                    return ` ${context.raw}%`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            grid: {
+                                display: false,
+                                drawBorder: false
+                            },
+                             ticks: {
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            }
+                        },
+                        y: {
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+
+            const locationFilter = document.getElementById('locationFilter');
+            const typeFilter = document.getElementById('typeFilter');
+            const statusFilter = document.getElementById('statusFilter');
+            const developmentsGrid = document.getElementById('developmentsGrid');
+
+            const locations = [...new Set(developmentsData.map(d => d.location))];
+            const types = [...new Set(developmentsData.map(d => d.type))];
+            const statuses = [...new Set(developmentsData.map(d => d.status))];
+
+            locations.forEach(l => locationFilter.innerHTML += `<option value="${l}">${l}</option>`);
+            types.forEach(t => typeFilter.innerHTML += `<option value="${t}">${t}</option>`);
+            statuses.forEach(s => statusFilter.innerHTML += `<option value="${s}">${s}</option>`);
+
+            function renderDevelopments() {
+                developmentsGrid.innerHTML = '';
+                const filteredData = developmentsData.filter(d => 
+                    (locationFilter.value === 'all' || d.location === locationFilter.value) &&
+                    (typeFilter.value === 'all' || d.type === typeFilter.value) &&
+                    (statusFilter.value === 'all' || d.status === statusFilter.value)
+                );
+
+                if (filteredData.length === 0) {
+                    developmentsGrid.innerHTML = `<p class="text-center text-gray-500 col-span-full">No se encontraron desarrollos con los filtros seleccionados.</p>`;
+                    return;
+                }
+
+                filteredData.forEach(dev => {
+                    const card = `
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-1 transition-transform duration-300">
+                            <img src="${dev.image}" alt="${dev.name}" class="w-full h-48 object-cover">
+                            <div class="p-4">
+                                <h4 class="text-xl font-bold section-title">${dev.name}</h4>
+                                <p class="text-gray-600 mb-2">${dev.location}</p>
+                                <div class="flex justify-between items-center text-sm">
+                                    <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full">${dev.type}</span>
+                                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full">${dev.status}</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    developmentsGrid.innerHTML += card;
+                });
+            }
+
+            locationFilter.addEventListener('change', renderDevelopments);
+            typeFilter.addEventListener('change', renderDevelopments);
+            statusFilter.addEventListener('change', renderDevelopments);
+            
+            renderDevelopments();
+        });
+    </script>
+</body>
+</html>

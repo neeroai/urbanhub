@@ -1,0 +1,311 @@
+name: "HubSpot Integration Template"
+description: "Template for designing HubSpot CRM integrations for AI agent systems"
+version: "1.0.0"
+
+hubspot_integration_template:
+  
+  metadata:
+    integration_name: "[Integration Name]"
+    purpose: "[Integration objective and scope]"
+    hubspot_portal: "[HubSpot portal ID or name]"
+    external_system: "[External system being integrated]"
+    sync_type: "bidirectional" # or "inbound" or "outbound"
+    
+  authentication_setup:
+    method: "OAuth 2.0"
+    scopes_required:
+      - "contacts" # Create and update contact records
+      - "deals" # Manage opportunity pipeline
+      - "tickets" # Support and escalation tickets
+      - "timeline" # Activity and interaction logging
+      - "automation" # Workflow triggers and actions
+      - "calendar" # Meeting and event management
+    
+    configuration:
+      client_id: "[HUBSPOT_CLIENT_ID from environment]"
+      client_secret: "[HUBSPOT_CLIENT_SECRET from environment]"
+      redirect_uri: "[OAuth callback URL]"
+      refresh_token_handling: "automatic_renewal"
+
+  data_mapping:
+    
+    contact_synchronization:
+      primary_identifier: "phone" # or "email"
+      
+      inbound_mapping: # External system → HubSpot
+        external_field: "hubspot_property"
+        phone_number: "phone"
+        first_name: "firstname"
+        last_name: "lastname"
+        email_address: "email"
+        lead_source: "hs_lead_status"
+        conversation_status: "ai_conversation_status"
+        property_interest: "property_interest"
+        budget_range: "budget_range"
+        move_in_timeline: "move_in_timeline"
+        last_interaction: "last_ai_interaction"
+        
+      outbound_mapping: # HubSpot → External system
+        hubspot_property: "external_field"
+        phone: "phone_number"
+        firstname: "first_name"
+        lastname: "last_name"
+        email: "email_address"
+        hs_lead_status: "lead_status"
+        lifecyclestage: "lifecycle_stage"
+        
+      custom_properties:
+        - name: "ai_conversation_status"
+          type: "enumeration"
+          options:
+            - "initial_contact"
+            - "qualifying"
+            - "qualified" 
+            - "tour_scheduled"
+            - "warming_sequence"
+            - "escalated"
+            
+        - name: "property_interest"
+          type: "enumeration"
+          options:
+            - "josefa"
+            - "matilde"
+            - "both"
+            - "undecided"
+            
+        - name: "budget_range"
+          type: "enumeration"
+          options:
+            - "under_20k"
+            - "20k_30k"
+            - "30k_40k"
+            - "over_40k"
+
+    deal_synchronization:
+      creation_triggers:
+        - "tour_scheduled"
+        - "qualified_lead_with_timeline"
+        
+      deal_properties:
+        dealname: "[Customer Name] - [Property] Tour"
+        dealstage: "[Mapped from conversation status]"
+        amount: "[Estimated based on property and timeline]"
+        property_id: "[Building identifier]"
+        lead_source: "ai_conversation"
+        expected_close_date: "[Based on move-in timeline]"
+        
+      stage_mapping:
+        tour_scheduled: "tour_scheduled"
+        tour_completed: "tour_completed"
+        application_started: "application_started"
+        application_review: "application_review"
+        lease_signed: "closed_won"
+        lost_unresponsive: "closed_lost"
+        lost_budget: "closed_lost"
+        lost_timeline: "closed_lost"
+
+    activity_logging:
+      activity_types:
+        - "ai_conversation"
+        - "whatsapp_interaction"
+        - "tour_booking"
+        - "escalation_event"
+        
+      activity_template:
+        hs_activity_type: "[Activity type identifier]"
+        hs_activity_subject: "[Conversation summary or milestone]"
+        hs_activity_body: "[Detailed conversation transcript]"
+        hs_activity_date: "[Timestamp in ISO format]"
+        hs_activity_outcome: "[Qualified, scheduled, escalated, etc.]"
+        
+      logging_triggers:
+        - "conversation_started"
+        - "qualification_completed"
+        - "tour_scheduled"
+        - "escalation_triggered"
+        - "conversation_ended"
+
+  webhook_configuration:
+    
+    inbound_webhooks: # HubSpot → External system
+      contact_updated:
+        url: "[External system webhook URL]/hubspot/contact"
+        events:
+          - "contact.propertyChange"
+        properties_monitored:
+          - "hs_lead_status"
+          - "lifecyclestage"
+          - "phone"
+          - "email"
+        
+      deal_updated:
+        url: "[External system webhook URL]/hubspot/deal"
+        events:
+          - "deal.propertyChange"
+        properties_monitored:
+          - "dealstage"
+          - "amount"
+          - "closedate"
+    
+    outbound_webhooks: # External system → HubSpot
+      conversation_events:
+        endpoint: "https://api.hubapi.com/webhooks/v1/[portal-id]/[webhook-id]"
+        authentication: "Bearer token in Authorization header"
+        payload_template:
+          objectId: "[Contact or Deal ID]"
+          propertyName: "[Property being updated]"
+          propertyValue: "[New value]"
+          changeSource: "AI_CONVERSATION"
+          timestamp: "[ISO timestamp]"
+
+  sync_patterns:
+    
+    real_time_sync:
+      triggers:
+        - "new_conversation_started"
+        - "lead_qualified"
+        - "tour_scheduled"
+        - "escalation_triggered"
+      
+      max_delay: "30 seconds"
+      retry_policy:
+        max_attempts: 3
+        backoff_strategy: "exponential"
+        base_delay: "1 second"
+        max_delay: "30 seconds"
+    
+    batch_sync:
+      schedule: "Every 15 minutes"
+      operations:
+        - "conversation_summaries"
+        - "activity_updates"
+        - "data_consistency_checks"
+      
+      batch_size: 100
+      error_handling: "log_and_continue"
+    
+    conflict_resolution:
+      strategy: "timestamp_wins" # Most recent update takes precedence
+      hubspot_authoritative:
+        - "contact_basic_info"
+        - "deal_amount"
+        - "lifecycle_stage"
+      
+      external_authoritative:
+        - "conversation_status"
+        - "ai_interaction_data"
+        - "conversation_transcripts"
+
+  error_handling:
+    
+    api_errors:
+      rate_limiting:
+        strategy: "exponential_backoff"
+        max_retry_delay: "300 seconds"
+        respect_retry_after: true
+        
+      authentication_errors:
+        strategy: "refresh_token_automatic"
+        fallback: "alert_operations_team"
+        
+      validation_errors:
+        strategy: "log_and_queue_for_review"
+        notification: "immediate_alert"
+    
+    data_consistency:
+      validation_rules:
+        - "phone_number_format_validation"
+        - "required_fields_presence"
+        - "enum_value_validation"
+        
+      consistency_checks:
+        frequency: "daily"
+        scope: "last_24_hours_changes"
+        discrepancy_handling: "manual_review_queue"
+    
+    monitoring_and_alerting:
+      metrics_tracked:
+        - "sync_success_rate"
+        - "api_response_times"
+        - "error_rates_by_type"
+        - "data_consistency_scores"
+        
+      alert_thresholds:
+        sync_failure_rate: "> 5% in 15 minutes"
+        api_response_time: "> 5 seconds average"
+        authentication_failures: "> 3 in 5 minutes"
+
+  implementation_checklist:
+    
+    pre_implementation:
+      - [ ] "HubSpot portal access and permissions verified"
+      - [ ] "OAuth application registered and configured"
+      - [ ] "Custom properties created in HubSpot"
+      - [ ] "Webhook endpoints configured and tested"
+      - [ ] "External system API capabilities validated"
+    
+    implementation_phase:
+      - [ ] "Authentication flow implemented and tested"
+      - [ ] "Data mapping functions created and validated"
+      - [ ] "Webhook handlers implemented"
+      - [ ] "Error handling and retry logic deployed"
+      - [ ] "Monitoring and logging configured"
+    
+    testing_and_validation:
+      - [ ] "Unit tests for all integration functions"
+      - [ ] "End-to-end integration tests"
+      - [ ] "Load testing for high-volume scenarios"
+      - [ ] "Data consistency validation"
+      - [ ] "Security testing for authentication and data protection"
+    
+    go_live_preparation:
+      - [ ] "Production environment configuration"
+      - [ ] "Monitoring dashboards and alerts active"
+      - [ ] "Rollback plan documented and tested"
+      - [ ] "Team training on monitoring and troubleshooting"
+      - [ ] "Success metrics baseline established"
+
+  maintenance_procedures:
+    
+    regular_maintenance:
+      daily:
+        - "Monitor sync success rates"
+        - "Review error logs and resolve issues"
+        - "Validate data consistency metrics"
+        
+      weekly:
+        - "Review integration performance trends"
+        - "Update custom property options if needed"
+        - "Validate webhook configurations"
+        
+      monthly:
+        - "Comprehensive data consistency audit"
+        - "Performance optimization review"
+        - "Security and access review"
+    
+    troubleshooting_guide:
+      sync_failures:
+        symptoms: "[Description of failure symptoms]"
+        diagnosis: "[Steps to identify root cause]"
+        resolution: "[Steps to resolve issue]"
+        prevention: "[Measures to prevent recurrence]"
+        
+      performance_degradation:
+        symptoms: "[Description of performance issues]"
+        diagnosis: "[Performance analysis steps]"
+        resolution: "[Optimization actions]"
+        monitoring: "[Ongoing performance monitoring]"
+
+  success_metrics:
+    
+    technical_metrics:
+      - sync_success_rate: "> 99%"
+      - api_response_time: "< 2 seconds average"
+      - data_consistency: "> 99.5%"
+      - system_uptime: "> 99.9%"
+    
+    business_metrics:
+      - lead_data_completeness: "> 95%"
+      - real_time_sync_delay: "< 30 seconds"
+      - manual_data_entry_reduction: "> 80%"
+      - process_automation_coverage: "> 90%"

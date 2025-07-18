@@ -1,0 +1,245 @@
+name: "AI Conversation Flow Template"
+description: "Template for designing conversation flows for UrbanHub AI agents"
+version: "1.0.0"
+
+conversation_flow_template:
+  
+  metadata:
+    agent_name: "[Agent Name] (e.g., Lead Qualifier Agent)"
+    purpose: "[Primary purpose and objective]"
+    target_audience: "[Target customer segment]"
+    language: "Mexican Spanish (es-MX)"
+    platform: "Bird.com with WhatsApp Business API"
+    
+  conversation_structure:
+    
+    opening_message:
+      template: |
+        ¡Hola [Customer Name]! 👋
+        
+        Soy [Agent Name], asistente digital de Urbanista. 
+        [Context about why contacting - saw interest in property, etc.]
+        
+        [Value proposition or reason for conversation]
+        
+        ¿[Opening question to engage]?
+      
+      personalization_fields:
+        - customer_name
+        - property_interest
+        - lead_source
+        - contact_context
+      
+      cultural_considerations:
+        - "Use formal 'usted' initially, mirror customer's tone"
+        - "Include Mexican Spanish expressions naturally"
+        - "WhatsApp emoji usage appropriate for business context"
+    
+    qualification_sequence:
+      questions:
+        - priority: "high"
+          question: "[Primary qualification question]"
+          response_handling:
+            - option: "A) [Response option]"
+              next_action: "[Next step or agent routing]"
+            - option: "B) [Response option]"
+              next_action: "[Next step or agent routing]"
+          
+        - priority: "medium"
+          question: "[Secondary qualification question]"
+          conditional_logic: "[When to ask this question]"
+          
+        - priority: "low"
+          question: "[Nice-to-have information]"
+          optional: true
+      
+      qualification_criteria:
+        qualified_lead:
+          - "[Criteria 1]"
+          - "[Criteria 2]"
+          - "[Criteria 3]"
+        
+        needs_nurturing:
+          - "[Criteria for follow-up]"
+          - "[Timeline considerations]"
+        
+        unqualified:
+          - "[Disqualification criteria]"
+          - "[Budget/timeline mismatches]"
+    
+    conversation_paths:
+      
+      positive_engagement:
+        trigger: "[Customer shows interest/engagement]"
+        response: |
+          [Positive acknowledgment]
+          
+          [Next value-added question or offer]
+          
+          [Call to action appropriate for agent type]
+        next_action: "[Tour scheduling, information gathering, etc.]"
+        
+      hesitation_or_objection:
+        trigger: "[Customer expresses concern or hesitation]"
+        response: |
+          [Acknowledge concern with empathy]
+          
+          [Address objection or provide clarification]
+          
+          [Reframe value proposition]
+          
+          [Alternative approach or question]
+        objection_types:
+          - budget_concern: "[Response template]"
+          - timing_concern: "[Response template]"
+          - information_request: "[Response template]"
+          - comparison_shopping: "[Response template]"
+        
+      unresponsive:
+        trigger: "[No response after X minutes/messages]"
+        follow_up_sequence:
+          - delay: "2 hours"
+            message: "[Gentle follow-up message]"
+          - delay: "24 hours"
+            message: "[Value-added follow-up]"
+          - delay: "48 hours"
+            message: "[Final attempt with opt-out option]"
+        
+      escalation_needed:
+        triggers:
+          - "[Complex question beyond AI capability]"
+          - "[Customer explicitly requests human agent]"
+          - "[Pricing negotiation or custom terms]"
+          - "[Complaint or negative experience]"
+        escalation_message: |
+          [Acknowledge need for human assistance]
+          
+          [Explain handoff process]
+          
+          [Set expectations for response time]
+          
+          [Confirm contact information]
+        handoff_data:
+          - conversation_summary
+          - customer_requirements
+          - urgency_level
+          - preferred_contact_method
+
+  integration_points:
+    
+    hubspot_updates:
+      contact_creation:
+        trigger: "[New conversation with unknown contact]"
+        data_fields:
+          - phone_number
+          - name
+          - lead_source
+          - property_interest
+          - conversation_status
+      
+      status_updates:
+        qualified: "[HubSpot status: Qualified]"
+        tour_scheduled: "[HubSpot status: Tour Scheduled]"
+        unresponsive: "[HubSpot status: Unresponsive]"
+        escalated: "[HubSpot status: Escalated]"
+      
+      activity_logging:
+        frequency: "After each significant conversation milestone"
+        content: "Conversation summary and outcome"
+    
+    calendar_integration:
+      tour_scheduling:
+        trigger: "[Customer agrees to property tour]"
+        process:
+          - check_availability
+          - present_options
+          - confirm_booking
+          - create_calendar_event
+          - send_confirmation
+      
+      reminder_system:
+        - timing: "24 hours before"
+          message: "[Confirmation reminder]"
+        - timing: "2 hours before"
+          message: "[Final reminder with details]"
+
+  quality_standards:
+    
+    conversation_quality:
+      - "Natural language flow without robotic responses"
+      - "Cultural sensitivity and appropriate Mexican Spanish"
+      - "Professional yet friendly and approachable tone"
+      - "Clear value proposition in every interaction"
+      - "Respectful handling of objections and concerns"
+    
+    response_requirements:
+      - "< 30 seconds response time during business hours"
+      - "Context awareness from previous interactions"
+      - "Accurate intent recognition and appropriate responses"
+      - "Clear next steps or call-to-action in every message"
+    
+    escalation_criteria:
+      - "Complex legal or contractual questions"
+      - "Pricing negotiations or custom terms"
+      - "Customer dissatisfaction or complaints"
+      - "Multiple failed attempts to understand intent"
+      - "Explicit request for human assistance"
+
+  success_metrics:
+    
+    engagement_metrics:
+      - conversation_completion_rate
+      - response_rate_per_message
+      - time_to_qualification
+      - escalation_rate
+    
+    conversion_metrics:
+      - qualified_lead_percentage
+      - tour_booking_conversion
+      - lead_to_tour_timeline
+      - customer_satisfaction_score
+    
+    quality_metrics:
+      - intent_recognition_accuracy
+      - cultural_appropriateness_score
+      - conversation_flow_smoothness
+      - error_recovery_effectiveness
+
+  testing_framework:
+    
+    conversation_scenarios:
+      - interested_customer: "[Test scenario description]"
+      - price_sensitive: "[Test scenario description]"
+      - timeline_mismatch: "[Test scenario description]"
+      - comparison_shopper: "[Test scenario description]"
+      - unresponsive_lead: "[Test scenario description]"
+    
+    edge_cases:
+      - language_switching: "[Spanish to English mid-conversation]"
+      - emoji_only_responses: "[Customer uses only emojis]"
+      - multiple_properties: "[Interest in multiple buildings]"
+      - urgent_timeline: "[Needs immediate response]"
+    
+    validation_criteria:
+      - "All conversation paths tested and functional"
+      - "Cultural sensitivity validated by native speakers"
+      - "Integration points working correctly"
+      - "Performance metrics within acceptable ranges"
+
+  implementation_notes:
+    
+    deployment_checklist:
+      - [ ] "Conversation flows tested in staging environment"
+      - [ ] "HubSpot integration validated"
+      - [ ] "WhatsApp Business API compliance verified"
+      - [ ] "Cultural adaptation reviewed and approved"
+      - [ ] "Performance benchmarks established"
+      - [ ] "Escalation procedures tested"
+      - [ ] "Monitoring and analytics configured"
+    
+    maintenance_requirements:
+      - "Regular conversation performance review"
+      - "A/B testing for optimization opportunities"
+      - "Seasonal adaptation for market changes"
+      - "Continuous improvement based on customer feedback"
+      - "Knowledge base updates for new properties/policies"

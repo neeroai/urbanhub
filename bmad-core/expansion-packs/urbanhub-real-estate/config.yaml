@@ -1,0 +1,51 @@
+name: "UrbanHub AI Agents"
+description: "Specialized BMAD expansion pack for conversational AI agents in real estate customer acquisition"
+version: "1.0.0"
+domain: "conversational-ai-real-estate"
+
+target_use_cases:
+  - "AI-powered lead qualification and warming"
+  - "Automated tour scheduling with calendar integration"
+  - "WhatsApp/SMS customer engagement"
+  - "HubSpot CRM integration and synchronization"
+  - "Conversational customer acquisition workflows"
+
+specialized_agents:
+  - ai-conversation-designer
+  - integration-specialist
+  - customer-experience-optimizer
+
+expansion_focus:
+  - "Mexican WhatsApp Business communication"
+  - "Real estate conversation flows"
+  - "Lead lifecycle automation"
+  - "HubSpot bidirectional integration"
+  - "Bird.com platform optimization"
+
+templates_provided:
+  - "AI agent conversation flow templates"
+  - "HubSpot integration architecture"
+  - "Customer acquisition workflow patterns"
+  - "Mexican market conversation guidelines"
+
+workflows_provided:
+  - ai-agent-development
+  - conversation-optimization
+
+bmad_core_version: "4.30.2"
+dependencies:
+  - bmad-core
+
+integration_patterns:
+  - name: "Bird.com Platform Integration"
+    description: "Webhook-based real-time conversation management"
+  - name: "HubSpot Bidirectional Sync"
+    description: "Real-time CRM data synchronization"
+  - name: "Calendar System Integration"
+    description: "Multi-platform tour scheduling automation"
+
+success_criteria:
+  - "< 5 minute lead response time"
+  - "80% automation coverage"
+  - "99% HubSpot sync accuracy"
+  - "4.5+ customer experience rating"

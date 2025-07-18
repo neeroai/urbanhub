@@ -1,0 +1,137 @@
+name: "UrbanHub AI Agents Development Team"
+description: "Specialized team for developing AI-powered customer acquisition system for UrbanHub Mexico"
+version: "1.0.0"
+
+team_composition:
+  core_agents:
+    - role: "bmad-orchestrator"
+      description: "Orchestrates the entire AI agent development workflow"
+      
+    - role: "ai-conversation-designer"
+      expansion_pack: "urbanhub-real-estate"
+      description: "Designs conversation flows and AI agent interactions"
+      focus_areas:
+        - "Mexican Spanish conversation design"
+        - "Real estate qualification workflows"
+        - "Cultural adaptation and communication norms"
+        - "Conversion optimization strategies"
+      
+    - role: "integration-specialist"
+      expansion_pack: "urbanhub-real-estate"
+      description: "Handles technical integrations between platforms"
+      focus_areas:
+        - "HubSpot CRM bidirectional synchronization"
+        - "Bird.com platform configuration"
+        - "Calendar system integrations"
+        - "Webhook and API management"
+      
+    - role: "customer-experience-optimizer"
+      expansion_pack: "urbanhub-real-estate"
+      description: "Optimizes customer journey and experience quality"
+      focus_areas:
+        - "Customer satisfaction metrics"
+        - "Conversion rate optimization"
+        - "Quality assurance standards"
+        - "Premium experience delivery"
+
+  supporting_agents:
+    - role: "architect"
+      description: "Defines system architecture and integration patterns"
+      specialization: "AI platform integration architecture"
+      
+    - role: "qa"
+      description: "Quality assurance for AI conversations and integrations"
+      specialization: "Conversational AI testing and validation"
+
+team_workflow:
+  planning_phase:
+    lead: "ai-conversation-designer"
+    participants: ["customer-experience-optimizer", "integration-specialist"]
+    deliverables:
+      - "Conversation flow specifications"
+      - "Customer journey mapping"
+      - "Integration requirements documentation"
+  
+  design_phase:
+    lead: "architect"
+    participants: ["integration-specialist", "ai-conversation-designer"]
+    deliverables:
+      - "System architecture design"
+      - "API integration specifications"
+      - "Data flow diagrams"
+  
+  implementation_phase:
+    lead: "integration-specialist"
+    participants: ["ai-conversation-designer", "qa"]
+    deliverables:
+      - "Bird.com agent configuration"
+      - "HubSpot integration implementation"
+      - "Conversation flow deployment"
+  
+  optimization_phase:
+    lead: "customer-experience-optimizer"
+    participants: ["ai-conversation-designer", "qa"]
+    deliverables:
+      - "Performance analytics setup"
+      - "A/B testing frameworks"
+      - "Quality monitoring systems"
+
+collaboration_patterns:
+  daily_standups:
+    frequency: "Daily"
+    participants: ["ai-conversation-designer", "integration-specialist", "customer-experience-optimizer"]
+    focus: "Progress updates, blockers, integration points"
+    
+  weekly_reviews:
+    frequency: "Weekly"
+    participants: ["All team members"]
+    focus: "Deliverable reviews, quality assessment, stakeholder feedback"
+    
+  milestone_reviews:
+    frequency: "Per milestone"
+    participants: ["All team members", "UrbanHub stakeholders"]
+    focus: "Demo presentations, requirement validation, course correction"
+
+communication_protocols:
+  primary_channel: "Slack #urbanhub-ai-agents"
+  documentation: "Shared Google Drive + GitHub"
+  stakeholder_updates: "Weekly status reports to UrbanHub leadership"
+  escalation_path: "Team Lead → Project Manager → UrbanHub Executives"
+
+success_criteria:
+  technical_milestones:
+    - "Demo environment ready by Tuesday"
+    - "HubSpot integration functional by Week 2"
+    - "Complete system operational by August 1st"
+    
+  quality_standards:
+    - "99% integration uptime and data accuracy"
+    - "4.5+ customer experience rating"
+    - "< 5 minute lead response time"
+    
+  business_objectives:
+    - "80% automation coverage for lead interactions"
+    - "25% improvement in tour booking conversion"
+    - "Seamless integration with existing workflows"
+
+project_constraints:
+  timeline: "Hard deadline August 1, 2025"
+  budget: "Within approved UrbanHub technology investment"
+  technology: "Must use Bird.com platform and maintain HubSpot integration"
+  stakeholders: "Marketing director approval required for all changes"
+
+risk_management:
+  high_risks:
+    - "Timeline pressure with August 8th team departure"
+    - "Stakeholder resistance to new AI platform"
+    - "Integration complexity with existing HubSpot workflows"
+    
+  mitigation_strategies:
+    - "Early stakeholder engagement and demo validation"
+    - "Incremental delivery with fallback options"
+    - "Comprehensive documentation and knowledge transfer"
+    
+  escalation_triggers:
+    - "Technical blockers affecting timeline"
+    - "Stakeholder approval delays"
+    - "Integration failures or data quality issues"

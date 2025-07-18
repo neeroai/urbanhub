@@ -1,0 +1,86 @@
+project:
+  name: "UrbanHub AI Agents for Customer Acquisition"
+  description: "Comprehensive AI agent ecosystem built on Bird.com platform to automate UrbanHub's customer acquisition workflow"
+  domain: "conversational-ai-real-estate"
+  version: "1.0.0"
+  
+bmad_core:
+  version: "4.30.2"
+  expansion_packs:
+    - urbanhub-real-estate
+  
+team_configuration:
+  active_team: "urbanhub-development-team"
+  team_file: "bmad-core/expansion-packs/urbanhub-real-estate/agent-teams/urbanhub-team.yaml"
+  
+workflow_configuration:
+  default_workflow: "ai-agent-development"
+  workflow_file: "bmad-core/expansion-packs/urbanhub-real-estate/workflows/ai-agent-development.yaml"
+  
+project_context:
+  business_model: "AI-powered customer acquisition for premium rental properties"
+  target_market: "Mexico City premium rental market via WhatsApp/SMS automation"
+  current_scale: "1,300+ apartments across 9 properties (Josefa, Matilde)"
+  expansion_goal: "Scale to 15,000+ properties with AI-driven lead conversion"
+  investment: "$300M committed, August 1st delivery deadline"
+  delivery_timeline: "Demo by Tuesday, Production by August 1, 2025"
+  
+technical_preferences:
+  ai_platform: "Bird.com with OpenAI GPT-4 integration"
+  crm_integration: "HubSpot API (bidirectional sync)"
+  communication: "WhatsApp Business API, SMS Gateway"
+  calendar_systems: "Calendly, Google Calendar, Outlook"
+  deployment: "Bird.com hosted platform with webhook integrations"
+  
+compliance_requirements:
+  - "WhatsApp Business API compliance (Mexican regulations)"
+  - "Mexican data protection and privacy laws"
+  - "Conversational AI ethical guidelines"
+  - "HubSpot data security standards"
+  
+integration_requirements:
+  core_platforms:
+    - "Bird.com conversational AI platform"
+    - "HubSpot CRM (bidirectional sync)"
+    - "WhatsApp Business API"
+    - "OpenAI GPT-4 API"
+  calendar_systems:
+    - "Calendly integration"
+    - "Google Calendar API"
+    - "Outlook Calendar API"
+  communication_channels:
+    - "WhatsApp messaging (primary)"
+    - "SMS gateway (backup)"
+    - "Email notifications"
+    
+success_metrics:
+  response_efficiency:
+    - "< 5 minute lead response time"
+    - "80% of interactions handled by AI agents"
+    - "25% improvement in tour booking conversion"
+  integration_performance:
+    - "99% HubSpot sync accuracy"
+    - "Real-time bidirectional data updates"
+    - "< 15% escalation rate to human agents"
+  customer_experience:
+    - "4.5+ star AI interaction rating"
+    - "90% customer satisfaction with response time"
+    - "85% tour booking completion rate"
+  business_impact:
+    - "Scale to support 15,000+ properties"
+    - "Reduce manual lead management by 80%"
+    - "Maintain existing HubSpot workflows"
+
+documentation:
+  project_brief: "docs/brief.md"
+  stakeholder_requirements: "docs/stakeholder-requirements.md"
+  conversation_flows: "docs/conversation-flows.md"
+  hubspot_integration: "docs/hubspot-integration.md"
+  technical_integration: "docs/technical-integration-guide.md"
+  workflow_diagram: "workflow-diagram.mmd"
+  
+current_status:
+  phase: "Documentation and Planning Complete"
+  next_milestone: "Demo Environment Setup (Tuesday)"
+  delivery_date: "August 1, 2025"
+  team_departure: "August 8, 2025"
