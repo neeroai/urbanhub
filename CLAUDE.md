@@ -4,9 +4,82 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**Project Name**: UrbanHub AI Agents for Bird.com
-**Purpose**: Comprehensive AI agent ecosystem built on Bird.com platform to automate UrbanHub's customer acquisition workflow. The project develops specialized conversational AI agents that handle lead qualification, warming, tour scheduling, and follow-up automation for UrbanHub's real estate operations across Mexico.
-**Target Audience**: UrbanHub leasing agents, property managers, potential tenants, and operations teams seeking automated lead-to-lease conversion through intelligent WhatsApp/SMS conversations.
+**Primary Objective**: Create, configure, and deploy a fully functional AI conversation agent on Bird.com platform for UrbanHub Mexico's premium real estate operations using mockup data and Bird.com's native capabilities.
+
+**Demo Focus**: Live demonstration of WhatsApp-based lead qualification, tour scheduling, and customer engagement workflows without external integrations.
+
+### Demo Objective
+Create a working AI agent that demonstrates:
+1. **Lead Qualification**: Intelligent conversation flows for prospect evaluation
+2. **Tour Scheduling**: Automated calendar management and booking
+3. **Follow-up Automation**: Persistent customer engagement workflows
+4. **Mexican Market Adaptation**: Spanish-language, cultural context awareness
+
+## Technical Specifications
+
+### Platform: Bird.com
+- **Primary Channel**: WhatsApp Business API
+- **AI Engine**: Bird.com ya tiene una integracion con OpenAI activa
+- **Knowledge Base**: Property-specific information for each UrbanHub building
+
+### Agent Capabilities Required
+1. **Conversation Intelligence**
+   - Natural Language Processing in Mexican Spanish
+   - Context retention across multiple interactions
+   - Sentiment analysis and urgency detection
+   - Cultural context and local market understanding
+
+2. **Lead Management**
+   - Automatic lead classification (hot, warm, cold)
+   - Budget qualification (rental range detection)
+   - Timeline assessment (move-in urgency)
+   - Property preference matching
+
+3. **Tour Coordination**
+   - Availability checking and booking
+   - Calendar integration simulation
+   - Confirmation and reminder workflows
+   - Rescheduling and cancellation handling
+
+4. **Escalation Management**
+   - Complex inquiry detection
+   - Human handoff triggers
+   - Context preservation during transfers
+   - Priority routing based on lead quality
+
+## Conversation Flows
+
+### Primary Flow: Lead Qualification
+1. **Welcome Message**: Greeting and service overview
+2. **Need Assessment**: Budget, timeline, preferences discovery
+3. **Property Matching**: Recommendation based on criteria
+4. **Tour Scheduling**: Calendar availability and booking
+5. **Confirmation**: Details confirmation and next steps
+
+### Secondary Flow: Information Requests
+1. **Property Inquiries**: Amenities, pricing, availability
+2. **Neighborhood Information**: Area details, transportation
+3. **Leasing Process**: Application requirements, timelines
+4. **Virtual Tours**: Digital property showcase options
+
+### Escalation Flow: Complex Situations
+1. **Trigger Detection**: Complex legal, financial, or technical questions
+2. **Context Capture**: Conversation summary and customer details
+3. **Agent Routing**: Appropriate human specialist assignment
+4. **Handoff Protocol**: Seamless transition with context preservation
+
+## Implementation Notes
+
+### Bird.com Configuration Priority
+1. **Agent Setup**: Create specialized conversation agent
+2. **Knowledge Base**: Upload property and company information
+3. **Conversation Flows**: Design decision trees for common scenarios
+4. **Response Templates**: Prepare Mexican Spanish message templates
+5. **Escalation Rules**: Define handoff triggers and procedures
+
+**Project Name**: UrbanHub AI Agents Demo for Bird.com
+**Purpose**: Demonstrate Bird.com platform capabilities for sophisticated real estate conversations using realistic mockup data from UrbanHub's operations across Mexico City properties.
+**Target Audience**: UrbanHub stakeholders evaluating Bird.com platform capabilities for automating customer acquisition workflows.
 
 ---
 
@@ -70,13 +143,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Technology Stack
 
-**Platform**: Bird.com omnichannel messaging platform with AI agents
-**Backend**: Node.js with TypeScript for webhook handlers and business logic
-**Database**: PostgreSQL for conversation tracking, lead management, and analytics
-**AI Engine**: OpenAI GPT models for natural language processing and conversation
-**Messaging Channels**: WhatsApp Business API, SMS, and email integration
-**Integrations**: HubSpot CRM, Leasing Agent calendars, OXXO payments
-**Monitoring**: Bird.com dashboards, custom analytics, and conversation tracking
+**Platform**: Bird.com omnichannel messaging platform with native AI agent capabilities
+**AI Engine**: Bird.com's integrated OpenAI GPT models for natural language processing
+**Primary Channel**: WhatsApp Business API with Mexican market compliance
+**Knowledge Base**: Bird.com native storage for property information and conversation context
+**Demo Data**: Realistic mockup scenarios for UrbanHub properties (Josefa, Matilde buildings)
+**Analytics**: Bird.com platform dashboards for conversation tracking and performance metrics
+**Language Support**: Mexican Spanish with cultural context and real estate terminology
 
 ---
 
@@ -88,17 +161,22 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 │   └── expansion-packs/
 │       └── urbanhub-real-estate/ # Real estate domain agents and workflows
 ├── docs/
-│   ├── brief.md                  # Updated project requirements for AI agents
-│   ├── bird-*.md                 # Bird.com API integration documentation
+│   ├── brief.md                  # Demo project requirements for Bird.com platform
+│   ├── bird-platform-setup.md   # Bird.com platform configuration guide
+│   ├── demo-scenarios.md         # Demo conversation flows and test scenarios
+│   ├── mockup-data.md            # Property and lead data for demonstration
 │   └── workflow-diagram.mmd      # Customer acquisition flow diagram
-├── src/
-│   ├── agents/                   # Specialized AI agent implementations
-│   ├── services/                 # Bird.com API integration services
-│   ├── webhooks/                 # Webhook handlers for real-time events
-│   ├── models/                   # Database models for conversations and leads
-│   └── utils/                    # Shared utilities and helpers
-├── config/                       # Bird.com and integration configurations
-└── package.json                  # Node.js dependencies and scripts
+├── demo-data/
+│   ├── properties/               # Josefa and Matilde building information
+│   ├── leads/                    # Sample prospect profiles and scenarios
+│   ├── conversations/            # Example conversation flows
+│   └── schedules/                # Mockup availability and calendar data
+├── bird-config/
+│   ├── agent-templates/          # Conversation agent configurations
+│   ├── knowledge-base/           # Property information for AI agents
+│   ├── conversation-flows/       # Dialog trees and response templates
+│   └── escalation-rules/         # Human handoff triggers and procedures
+└── README.md                     # Demo setup and execution instructions
 ```
 
 ---
@@ -106,28 +184,31 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Development Commands
 
 ```bash
-# Bird.com Integration Commands
-npm run bird:setup              # Setup Bird.com API configuration and webhooks
-npm run bird:test-webhook       # Test webhook connectivity and signature validation
-npm run bird:deploy-agents      # Deploy AI agents to Bird.com platform
-npm run bird:sync-templates     # Sync WhatsApp message templates
+# Bird.com Platform Setup Commands
+npm run bird:setup              # Setup Bird.com platform configuration and agent creation
+npm run bird:upload-knowledge   # Upload property knowledge base to Bird.com platform
+npm run bird:configure-flows    # Configure conversation flows and decision trees
+npm run bird:test-agent         # Test AI agent responses with mockup scenarios
 
-# Agent Development Commands
-npm run agent:test              # Test individual agent responses and logic
-npm run agent:validate          # Validate agent configurations and knowledge base
-npm run agent:simulate          # Simulate conversation flows for testing
+# Demo Preparation Commands
+npm run demo:prepare            # Prepare mockup data and conversation scenarios
+npm run demo:validate           # Validate demo scenarios and conversation quality
+npm run demo:reset              # Reset demo environment to initial state
+npm run demo:simulate           # Simulate complete customer journey scenarios
+
+# Agent Testing Commands
+npm run agent:test-spanish      # Test Mexican Spanish conversation quality
+npm run agent:test-escalation   # Test human handoff triggers and context preservation
+npm run agent:test-scheduling   # Test tour booking and calendar integration simulation
 
 # BMAD-METHOD Framework Commands
 npm run bmad:init               # Initialize BMAD session for agent development
 npm run bmad:story              # Create user stories for agent behaviors
 npm run bmad:architect          # Run architecture planning for agent system
 
-# Development and Quality
-npm install                     # Install dependencies
-npm run dev                     # Start development server with hot reload
-npm test                        # Run test suite for agent logic and integrations
-npx prettier --write .          # Format code with Prettier
-npm run typecheck               # TypeScript compilation check
+# Quality Assurance
+npm run validate:conversations  # Validate conversation flows and cultural appropriateness
+npm run test:demo-scenarios     # Test all demo scenarios for realistic interactions
 ```
 
 ---
@@ -396,26 +477,29 @@ UrbanHub Mexico operates across two markets:
 
 ## Success Metrics
 
-### Automation Efficiency
+### Demo Success Criteria
 
-- **Lead Response Time**: < 5 minutes for initial AI contact
-- **Tour Conversion Rate**: 25%+ of qualified leads schedule tours
-- **Automation Coverage**: 80%+ of interactions handled by AI agents
-- **Escalation Rate**: < 15% of conversations require human intervention
+- **Platform Capability**: Bird.com agent handles complex real estate conversations naturally
+- **Spanish Language Quality**: Culturally appropriate Mexican Spanish with real estate terminology
+- **Conversation Intelligence**: Agent correctly identifies lead qualification scenarios and responds appropriately
+- **Tour Scheduling**: Seamless booking workflow using mockup availability data
+- **Context Retention**: Agent maintains conversation context throughout multi-turn interactions
+- **Escalation Handling**: Intelligent detection of complex scenarios requiring human handoff
 
-### Conversation Quality
+### Conversation Quality Demonstration
 
-- **User Satisfaction**: 4.5+ stars average for AI interaction experience
-- **Conversation Completion**: 90%+ of initiated conversations reach logical conclusion
-- **Understanding Rate**: 95%+ of user intents correctly identified
-- **Response Accuracy**: 98%+ of agent responses factually correct
+- **Natural Flow**: Conversations feel authentic and human-like during demo scenarios
+- **Cultural Appropriateness**: Mexican cultural context and business practices reflected accurately
+- **Business Logic**: Agent successfully guides prospects through qualification and scheduling workflows
+- **Error Recovery**: Graceful handling of misunderstandings and invalid input during demo
+- **Response Relevance**: All agent responses directly address prospect inquiries and needs
 
-### Business Impact
+### Technical Platform Validation
 
-- **Lead Velocity**: 50% reduction in time from lead to tour scheduled
-- **Operational Efficiency**: 60% reduction in manual lead management tasks
-- **Leasing Agent Productivity**: 40% increase in tours per agent per day
-- **Cost per Lead**: 30% reduction in customer acquisition costs
+- **Real-time Processing**: Immediate agent responses through WhatsApp Business API
+- **Knowledge Base Access**: Agent accurately retrieves and presents property information
+- **Conversation Analytics**: Platform dashboards show interaction patterns and performance metrics
+- **Mockup Data Integration**: Realistic scenarios demonstrate production-ready capability
 
 ---
 

@@ -1,0 +1,504 @@
+# WhatsApp Business API Templates - UrbanHub México
+# Templates aprobados para WhatsApp Business API en español mexicano
+
+# Template Configuration
+template_configuration:
+  business_name: "UrbanHub México"
+  business_phone: "+52 55 XXXX XXXX"
+  business_category: "REAL_ESTATE"
+  language: "es_MX"
+  timezone: "America/Mexico_City"
+  
+  # Template approval process
+  approval_process:
+    submission_required: true
+    review_time: "24-48 hours"
+    facebook_review: true
+    compliance_required: true
+
+# 1. MARKETING TEMPLATES (for outbound marketing messages)
+marketing_templates:
+  
+  # Welcome/Introduction Template
+  welcome_urbanhub:
+    name: "welcome_urbanhub"
+    category: "MARKETING"
+    language: "es_MX"
+    status: "pending_approval"
+    
+    header:
+      type: "TEXT"
+      text: "¡Bienvenido a UrbanHub México! 🏢"
+      
+    body:
+      text: |
+        Hola {{1}}, gracias por tu interés en UrbanHub México.
+        
+        Somos la red de espacios de coworking premium en CDMX y Mérida. Tenemos ubicaciones en Roma Norte, Condesa y Centro Histórico de Mérida.
+        
+        ¿Te gustaría conocer nuestros espacios y encontrar el perfecto para ti?
+        
+    footer:
+      text: "Responde STOP para no recibir más mensajes"
+      
+    buttons:
+      - type: "QUICK_REPLY"
+        text: "¡Sí, me interesa!"
+      - type: "QUICK_REPLY" 
+        text: "Información de precios"
+        
+    variables:
+      - "{{1}}" # Nombre del cliente
+      
+    use_cases:
+      - "Initial outreach to new leads"
+      - "Marketing campaign responses"
+      - "Website form follow-ups"
+
+  # Property Introduction Template
+  property_showcase:
+    name: "property_showcase"
+    category: "MARKETING"
+    language: "es_MX"
+    status: "pending_approval"
+    
+    header:
+      type: "IMAGE"
+      media_url: "https://urbanhub.mx/media/property-showcase.jpg"
+      
+    body:
+      text: |
+        {{1}}, te presento {{2}}, nuestro espacio en {{3}}:
+        
+        ✨ {{4}}
+        🏢 Capacidad: {{5}} espacios
+        📍 Ubicación: {{6}}
+        💰 Desde ${{7}} MXN/mes
+        
+        ¿Te interesa conocerlo en persona o prefieres un tour virtual?
+        
+    buttons:
+      - type: "QUICK_REPLY"
+        text: "Tour presencial"
+      - type: "QUICK_REPLY"
+        text: "Tour virtual"
+      - type: "QUICK_REPLY"
+        text: "Más información"
+        
+    variables:
+      - "{{1}}" # Nombre del cliente
+      - "{{2}}" # Nombre de la propiedad
+      - "{{3}}" # Barrio/zona
+      - "{{4}}" # Característica principal
+      - "{{5}}" # Capacidad
+      - "{{6}}" # Dirección completa
+      - "{{7}}" # Precio desde
+      
+  # Special Offer Template
+  special_offer:
+    name: "special_offer"
+    category: "MARKETING"  
+    language: "es_MX"
+    status: "pending_approval"
+    
+    header:
+      type: "TEXT"
+      text: "🎉 Oferta Especial - Solo por tiempo limitado"
+      
+    body:
+      text: |
+        ¡{{1}}! Tenemos una propuesta especial para ti:
+        
+        🔥 **{{2}}** en cualquiera de nuestros espacios
+        📅 Válida hasta: {{3}}
+        💡 Incluye: {{4}}
+        
+        Esta promoción es exclusiva para nuevos miembros y lugares limitados.
+        
+        ¿Te animas a aprovechar esta oportunidad?
+        
+    footer:
+      text: "Oferta válida solo para nuevos miembros"
+      
+    buttons:
+      - type: "QUICK_REPLY"
+        text: "¡Me interesa!"
+      - type: "QUICK_REPLY"
+        text: "Ver términos"
+        
+    variables:
+      - "{{1}}" # Nombre del cliente
+      - "{{2}}" # Descripción de la oferta
+      - "{{3}}" # Fecha límite
+      - "{{4}}" # Beneficios incluidos
+
+  # Lead Warming Template
+  lead_warming:
+    name: "lead_warming"
+    category: "MARKETING"
+    language: "es_MX"
+    status: "pending_approval"
+    
+    body:
+      text: |
+        Hola {{1}}, espero que te encuentres muy bien.
+        
+        Hace unos días mostraste interés en nuestros espacios de coworking y quería compartirte algo que creo te puede interesar:
+        
+        {{2}}
+        
+        ¿Te gustaría que platiquemos sobre cómo UrbanHub puede ayudarte con {{3}}?
+        
+    buttons:
+      - type: "QUICK_REPLY"
+        text: "Sí, platiquemos"
+      - type: "QUICK_REPLY"
+        text: "Envíame más info"
+      - type: "QUICK_REPLY"
+        text: "No, gracias"
+        
+    variables:
+      - "{{1}}" # Nombre del cliente
+      - "{{2}}" # Contenido personalizado (success story, tip, offer)
+      - "{{3}}" # Pain point identificado
+
+# 2. UTILITY TEMPLATES (for transactional/service messages)
+utility_templates:
+
+  # Tour Confirmation Template
+  tour_confirmation:
+    name: "tour_confirmation" 
+    category: "UTILITY"
+    language: "es_MX"
+    status: "pending_approval"
+    
+    header:
+      type: "TEXT"
+      text: "✅ Tour Confirmado - UrbanHub"
+      
+    body:
+      text: |
+        ¡Perfecto {{1}}! Tu tour está confirmado:
+        
+        📍 **Ubicación**: {{2}}
+        📅 **Fecha**: {{3}}
+        ⏰ **Hora**: {{4}}
+        👤 **Te recibirá**: {{5}}
+        🕐 **Duración**: {{6}} minutos
+        
+        **Dirección exacta**: {{7}}
+        **Estacionamiento**: {{8}}
+        
+        Si tienes algún imprevisto, por favor avísanos con al menos 2 horas de anticipación.
+        
+    footer:
+      text: "Nos vemos pronto en UrbanHub"
+      
+    buttons:
+      - type: "PHONE_NUMBER"
+        text: "Llamar si hay cambios"
+        phone_number: "+52 55 XXXX XXXX"
+        
+    variables:
+      - "{{1}}" # Nombre del cliente
+      - "{{2}}" # Nombre de la ubicación
+      - "{{3}}" # Fecha del tour
+      - "{{4}}" # Hora del tour  
+      - "{{5}}" # Nombre del agente
+      - "{{6}}" # Duración
+      - "{{7}}" # Dirección completa
+      - "{{8}}" # Información de estacionamiento
+      
+  # Tour Reminder Template
+  tour_reminder:
+    name: "tour_reminder"
+    category: "UTILITY"
+    language: "es_MX"
+    status: "pending_approval"
+    
+    header:
+      type: "TEXT"
+      text: "🔔 Recordatorio de Tour - Mañana"
+      
+    body:
+      text: |
+        ¡Hola {{1}}!
+        
+        Te recordamos que mañana tienes tu tour en {{2}}:
+        
+        ⏰ **Hora**: {{3}}
+        📍 **Dirección**: {{4}}
+        👤 **Agente**: {{5}} ({{6}})
+        
+        **Tips para tu visita**:
+        • Llega 5 minutos antes
+        • Trae tu identificación oficial
+        • {{7}}
+        
+        ¡Estamos emocionados de conocerte!
+        
+    buttons:
+      - type: "QUICK_REPLY"
+        text: "Confirmo asistencia"
+      - type: "QUICK_REPLY"
+        text: "Necesito reagendar"
+        
+    variables:
+      - "{{1}}" # Nombre del cliente
+      - "{{2}}" # Ubicación
+      - "{{3}}" # Hora
+      - "{{4}}" # Dirección
+      - "{{5}}" # Nombre del agente
+      - "{{6}}" # Teléfono del agente
+      - "{{7}}" # Tip específico de la ubicación
+
+  # Post-Tour Follow-up Template  
+  post_tour_followup:
+    name: "post_tour_followup"
+    category: "UTILITY"
+    language: "es_MX" 
+    status: "pending_approval"
+    
+    body:
+      text: |
+        ¡Hola {{1}}!
+        
+        Esperamos que hayas disfrutado tu tour en {{2}} con {{3}}.
+        
+        Nos encantaría saber qué opinas de lo que viste. ¿Hay algo específico en lo que podemos ayudarte o alguna duda que haya surgido?
+        
+        También te compartimos un resumen de todo lo que viste: {{4}}
+        
+    buttons:
+      - type: "QUICK_REPLY"
+        text: "Me gustó mucho"
+      - type: "QUICK_REPLY"
+        text: "Tengo dudas"
+      - type: "QUICK_REPLY"
+        text: "Quiero propuesta"
+        
+    variables:
+      - "{{1}}" # Nombre del cliente
+      - "{{2}}" # Ubicación del tour
+      - "{{3}}" # Nombre del agente
+      - "{{4}}" # Link al resumen del tour
+
+  # Appointment Reschedule Template
+  reschedule_appointment:
+    name: "reschedule_appointment"
+    category: "UTILITY"
+    language: "es_MX"
+    status: "pending_approval"
+    
+    body:
+      text: |
+        Hola {{1}},
+        
+        Entendemos que a veces surgen imprevistos. Tu tour del {{2}} a las {{3}} ha sido reagendado para:
+        
+        📅 **Nueva fecha**: {{4}}
+        ⏰ **Nueva hora**: {{5}}
+        📍 **Ubicación**: {{6}}
+        
+        Si esta nueva fecha no te funciona, por favor háznos saber y encontraremos otra opción.
+        
+    buttons:
+      - type: "QUICK_REPLY"
+        text: "Confirmo nueva fecha"  
+      - type: "QUICK_REPLY"
+        text: "Necesito otro horario"
+        
+    variables:
+      - "{{1}}" # Nombre del cliente
+      - "{{2}}" # Fecha original
+      - "{{3}}" # Hora original
+      - "{{4}}" # Nueva fecha
+      - "{{5}}" # Nueva hora
+      - "{{6}}" # Ubicación
+
+  # Payment Reminder Template
+  payment_reminder:
+    name: "payment_reminder"
+    category: "UTILITY"
+    language: "es_MX"
+    status: "pending_approval"
+    
+    header:
+      type: "TEXT"
+      text: "💳 Recordatorio de Pago - UrbanHub"
+      
+    body:
+      text: |
+        Hola {{1}},
+        
+        Te recordamos que tienes un pago pendiente por tu membresía de {{2}}:
+        
+        💰 **Monto**: ${{3}} MXN
+        📅 **Fecha límite**: {{4}}
+        📋 **Concepto**: {{5}}
+        
+        Puedes realizar tu pago mediante:
+        • SPEI/Transferencia bancaria
+        • OXXO
+        • Tarjeta de crédito/débito
+        
+    footer:
+      text: "¿Necesitas ayuda con tu pago?"
+      
+    buttons:
+      - type: "URL"
+        text: "Pagar ahora"
+        url: "https://urbanhub.mx/payments/{{6}}"
+      - type: "PHONE_NUMBER"
+        text: "Ayuda con pago"
+        phone_number: "+52 55 XXXX XXXX"
+        
+    variables:
+      - "{{1}}" # Nombre del cliente
+      - "{{2}}" # Tipo de membresía
+      - "{{3}}" # Monto del pago
+      - "{{4}}" # Fecha límite
+      - "{{5}}" # Concepto/descripción
+      - "{{6}}" # ID único de pago
+
+# 3. AUTHENTICATION TEMPLATES (for OTP/verification)
+authentication_templates:
+
+  # OTP Verification Template
+  otp_verification:
+    name: "otp_verification"
+    category: "AUTHENTICATION"
+    language: "es_MX"
+    status: "pending_approval"
+    
+    body:
+      text: |
+        Tu código de verificación para UrbanHub es: {{1}}
+        
+        Este código expira en 10 minutos.
+        
+        Si no solicitaste este código, puedes ignorar este mensaje.
+        
+    variables:
+      - "{{1}}" # Código OTP
+      
+    security_requirements:
+      - "OTP must be 6 digits"
+      - "Expiration time must be included"
+      - "Security disclaimer required"
+
+# Template Usage Guidelines
+usage_guidelines:
+  
+  # Marketing Template Rules
+  marketing_rules:
+    - "Only send to customers who have opted in"
+    - "Include clear opt-out instructions"
+    - "Respect Mexican time zones (no messages after 9 PM)"
+    - "Limit frequency to avoid spam classification"
+    - "Personalize with customer name and relevant information"
+    
+  # Utility Template Rules  
+  utility_rules:
+    - "Only for transactional/service messages"
+    - "Send within 24 hours of triggering event"
+    - "Include all relevant transaction details"
+    - "Provide clear next steps or contact information"
+    
+  # Mexican Cultural Considerations
+  cultural_guidelines:
+    - "Use formal 'usted' initially, switch to 'tú' if customer does"
+    - "Include Mexican expressions naturally: '¡Qué padre!', 'Te late'"
+    - "Acknowledge Mexican business culture (relationships first)"
+    - "Respect family considerations in business decisions"
+    - "Use Mexican Spanish spelling and expressions"
+    - "Consider Mexican holidays and traditions in timing"
+
+# Compliance & Legal
+compliance:
+  
+  # Mexican Regulations
+  mexico_compliance:
+    - "Comply with LFPDPPP (Mexican Data Protection Law)"
+    - "Include clear consent for marketing messages"
+    - "Provide easy opt-out mechanism"
+    - "Maintain customer communication preferences"
+    - "Respect national Do Not Call Registry"
+    
+  # WhatsApp Business Policy
+  whatsapp_policy:
+    - "No promotional content in utility templates"
+    - "Template content must match registered business category"
+    - "Include business name in all templates"
+    - "Maintain 24-hour response window for customer inquiries"
+    - "Use approved media formats only"
+    
+  # Data Protection
+  data_protection:
+    - "Minimize personal data in templates"
+    - "Encrypt customer information in transit"
+    - "Log all template usage for audit purposes"
+    - "Regular review of template performance and compliance"
+
+# Performance Monitoring
+monitoring:
+  
+  # Key Metrics
+  template_metrics:
+    - "Delivery rate (target: >95%)"
+    - "Read rate (target: >80%)" 
+    - "Response rate (target: >25%)"
+    - "Conversion rate (target: >15%)"
+    - "Opt-out rate (target: <2%)"
+    
+  # A/B Testing Framework
+  ab_testing:
+    - "Test message length (short vs detailed)"
+    - "Test CTA placement (buttons vs text)"
+    - "Test personalization level"
+    - "Test sending times for Mexican audience"
+    - "Test emoji usage effectiveness"
+    
+# Template Localization Notes
+localization:
+  
+  # Mexican Spanish Specifics
+  language_notes:
+    - "Use 'platicar' instead of 'hablar'"
+    - "Use 'qué padre' for positive responses"
+    - "Use 'te late' for 'do you like/want'"
+    - "Address time with 'mexicantime' understanding"
+    - "Use 'pesos' not 'MXN' in casual conversation"
+    
+  # Regional Variations
+  regional_considerations:
+    - "CDMX: More formal, business-focused tone"
+    - "Mérida: Warmer, more personal approach"
+    - "Consider traffic references for CDMX audience"
+    - "Acknowledge local business culture differences"
+    
+# Integration with Bird.com Platform
+bird_integration:
+  
+  # Template Management
+  template_deployment:
+    api_endpoint: "/v2/templates"
+    approval_webhook: "/webhooks/template-approval"
+    usage_tracking: true
+    automatic_fallback: true
+    
+  # Dynamic Content
+  dynamic_variables:
+    customer_name: "{{contact.firstName}}"
+    property_preference: "{{deal.propertyInterest}}"
+    budget_range: "{{contact.budgetRange}}"
+    timeline: "{{deal.timeline}}"
+    agent_name: "{{user.name}}"
+    
+  # Automation Triggers
+  automated_sending:
+    welcome_sequence: "on_lead_creation"
+    tour_confirmations: "on_tour_scheduled" 
+    reminders: "24h_before_appointment"
+    follow_ups: "2h_after_tour"
+    payment_reminders: "3_days_before_due"

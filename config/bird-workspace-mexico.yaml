@@ -1,0 +1,435 @@
+# Bird.com Workspace Configuration - UrbanHub México
+# Configuración optimizada para operaciones en México
+
+workspace:
+  name: "UrbanHub México"
+  description: "AI Agents para automatización de adquisición de clientes UrbanHub"
+  region: "americas"
+  timezone: "America/Mexico_City"
+  
+  # Configuración regional México
+  localization:
+    primary_language: "es-MX"
+    secondary_languages: ["en-US"]
+    currency: "MXN"
+    date_format: "DD/MM/YYYY"
+    phone_format: "+52 XX XXXX XXXX"
+    
+  # Business Information
+  business:
+    name: "UrbanHub México"
+    industry: "Real Estate / Coworking"
+    website: "https://urbanhub.mx"
+    address: "Ciudad de México, México"
+    legal_entity: "UrbanHub México S.A. de C.V."
+    
+  # Compliance Settings
+  compliance:
+    gdpr_enabled: false
+    mexico_data_protection: true
+    whatsapp_business_compliant: true
+    retention_period_days: 365
+    
+# WhatsApp Business API Configuration
+whatsapp:
+  business_profile:
+    display_name: "UrbanHub México"
+    about: "Espacios de coworking premium en CDMX y Mérida. Tours virtuales y presenciales disponibles."
+    description: "Tu hogar lejos de casa en los mejores espacios de México"
+    email: "contacto@urbanhub.mx"
+    website: "https://urbanhub.mx"
+    address: "Ciudad de México, México"
+    
+  phone_numbers:
+    primary: "+52 55 XXXX XXXX"  # Número principal CDMX
+    backup: "+52 99 XXXX XXXX"   # Número backup Mérida
+    
+  business_hours:
+    timezone: "America/Mexico_City"
+    monday: { start: "08:00", end: "20:00" }
+    tuesday: { start: "08:00", end: "20:00" }
+    wednesday: { start: "08:00", end: "20:00" }
+    thursday: { start: "08:00", end: "20:00" }
+    friday: { start: "08:00", end: "20:00" }
+    saturday: { start: "09:00", end: "18:00" }
+    sunday: { start: "10:00", end: "16:00" }
+    
+  # Templates aprobados por WhatsApp
+  message_templates:
+    - name: "welcome_urbanhub"
+      language: "es_MX"
+      category: "MARKETING"
+      template: "¡Hola {{1}}! Gracias por tu interés en UrbanHub. ¿Te gustaría conocer nuestros espacios premium?"
+      
+    - name: "tour_confirmation"
+      language: "es_MX" 
+      category: "UTILITY"
+      template: "✅ Tu tour está confirmado para {{1}} a las {{2}} en {{3}}. Te esperamos en {{4}}."
+      
+    - name: "lead_warming"
+      language: "es_MX"
+      category: "MARKETING"
+      template: "Hola {{1}}, vimos que te interesas en espacios de coworking. ¿Te gustaría ver nuestras ofertas especiales?"
+      
+    - name: "follow_up_post_tour"
+      language: "es_MX"
+      category: "UTILITY" 
+      template: "¡Gracias por visitarnos {{1}}! ¿Qué te pareció {{2}}? ¿Hay algo más que te gustaría saber?"
+
+# Channel Configuration
+channels:
+  whatsapp:
+    enabled: true
+    name: "UrbanHub WhatsApp México"
+    webhook_url: "${WEBHOOK_BASE_URL}/webhooks/whatsapp"
+    verify_token: "${WHATSAPP_VERIFY_TOKEN}"
+    
+  sms:
+    enabled: true
+    name: "UrbanHub SMS México"
+    provider: "twilio"
+    webhook_url: "${WEBHOOK_BASE_URL}/webhooks/sms"
+    
+  email:
+    enabled: true
+    name: "UrbanHub Email"
+    from_address: "contacto@urbanhub.mx"
+    webhook_url: "${WEBHOOK_BASE_URL}/webhooks/email"
+
+# AI Agents Configuration
+agents:
+  # 1. Lead Qualifier Agent
+  lead_qualifier:
+    name: "UrbanHub Lead Qualifier"
+    description: "Califica leads por timeline, presupuesto e interés en propiedades"
+    model: "gpt-4-turbo"
+    language: "es-MX"
+    
+    personality:
+      tone: "profesional, amigable, eficiente"
+      style: "conversacional, directo, servicial"
+      mexican_expressions: true
+      
+    knowledge_base:
+      - "urbanhub_properties_cdmx"
+      - "urbanhub_properties_merida" 
+      - "pricing_packages_2024"
+      - "amenities_and_services"
+      
+    qualification_criteria:
+      budget_ranges:
+        - "15000-25000"  # Básico
+        - "25000-35000"  # Estándar  
+        - "35000-50000"  # Premium
+        - "50000+"       # Enterprise
+        
+      timeline_priorities:
+        - "inmediato"    # < 1 semana
+        - "corto_plazo"  # 1-4 semanas
+        - "mediano_plazo" # 1-3 meses
+        - "largo_plazo"  # 3+ meses
+        
+    escalation_triggers:
+      - "lead_qualified_immediate"
+      - "budget_enterprise_level"
+      - "complex_contract_question"
+      - "legal_inquiry"
+      - "pricing_negotiation"
+      
+  # 2. Lead Warming Agent  
+  lead_warmer:
+    name: "UrbanHub Lead Warmer"
+    description: "Reactiva leads fríos con contenido personalizado y ofertas relevantes"
+    model: "gpt-4-turbo"
+    language: "es-MX"
+    
+    personality:
+      tone: "cálido, persistente, no invasivo"
+      style: "empático, persuasivo, consultivo"
+      mexican_expressions: true
+      
+    warming_sequences:
+      sequence_1: # 24 horas sin respuesta
+        delay_hours: 24
+        content_type: "value_proposition"
+        message: "testimonial_customer_success"
+        
+      sequence_2: # 48 horas sin respuesta
+        delay_hours: 48
+        content_type: "social_proof"
+        message: "community_highlights"
+        
+      sequence_3: # 1 semana sin respuesta
+        delay_hours: 168
+        content_type: "limited_offer"
+        message: "special_promotion"
+        
+    content_library:
+      - "customer_testimonials_mx"
+      - "virtual_tour_links" 
+      - "community_events_calendar"
+      - "special_offers_monthly"
+      
+  # 3. Tour Scheduling Agent
+  tour_scheduler:
+    name: "UrbanHub Tour Scheduler"
+    description: "Agenda y confirma tours de propiedades con agentes de leasing"
+    model: "gpt-4-turbo"
+    language: "es-MX"
+    
+    personality:
+      tone: "organizado, detallista, confirmativo"
+      style: "estructurado, claro, eficiente"
+      mexican_expressions: true
+      
+    calendar_integrations:
+      - provider: "calendly"
+        workspace_id: "urbanhub-mexico"
+        
+      - provider: "google_calendar"
+        calendar_ids:
+          - "josefa-leasing@urbanhub.mx"
+          - "matilde-leasing@urbanhub.mx"
+          
+      - provider: "outlook"
+        tenant_id: "${OUTLOOK_TENANT_ID}"
+        
+    scheduling_rules:
+      advance_booking_hours: 2  # Mínimo 2 horas de anticipación
+      max_advance_days: 30      # Máximo 30 días adelante
+      slot_duration_minutes: 60 # Tours de 1 hora
+      buffer_time_minutes: 15   # 15 min entre tours
+      
+    tour_types:
+      virtual:
+        duration_minutes: 30
+        platforms: ["zoom", "google_meet"]
+        
+      presencial:
+        duration_minutes: 60
+        locations: ["Josefa", "Matilde"]
+        
+      hybrid:
+        duration_minutes: 45
+        combination: "virtual + presencial"
+        
+  # 4. Pre-screening Agent
+  pre_screener:
+    name: "UrbanHub Pre-screener"
+    description: "Recolecta información progresiva por prioridad de importancia"
+    model: "gpt-4-turbo"
+    language: "es-MX"
+    
+    personality:
+      tone: "consultivo, intuitivo, no intrusivo"
+      style: "conversacional, adaptativo, inteligente"
+      mexican_expressions: true
+      
+    information_priorities:
+      critical: # Información crítica para calificación
+        - "budget_range"
+        - "timeline"
+        - "company_size"
+        - "location_preference"
+        
+      important: # Información importante para personalización
+        - "current_workspace_situation"
+        - "team_growth_plans"  
+        - "specific_amenities_needed"
+        - "meeting_room_requirements"
+        
+      nice_to_have: # Información adicional para optimización
+        - "industry_sector"
+        - "remote_work_policy"
+        - "event_hosting_needs"
+        - "parking_requirements"
+        
+    progressive_profiling:
+      max_questions_per_session: 3
+      adaptive_flow: true
+      context_memory_enabled: true
+      
+  # 5. Follow-up Agent
+  follow_up:
+    name: "UrbanHub Follow-up"
+    description: "Optimiza experiencia post-tour y conversión a membresía"
+    model: "gpt-4-turbo"
+    language: "es-MX"
+    
+    personality:
+      tone: "atento, proactivo, orientado a resultados"
+      style: "personalizado, oportuno, valioso"
+      mexican_expressions: true
+      
+    follow_up_sequences:
+      immediate: # Inmediatamente post-tour
+        delay_hours: 2
+        focus: "experience_feedback"
+        actions: ["send_tour_summary", "collect_feedback"]
+        
+      day_1: # 24 horas post-tour
+        delay_hours: 24
+        focus: "address_concerns"
+        actions: ["answer_questions", "provide_additional_info"]
+        
+      day_3: # 3 días post-tour  
+        delay_hours: 72
+        focus: "decision_support"
+        actions: ["offer_trial_day", "connect_with_community"]
+        
+      day_7: # 1 semana post-tour
+        delay_hours: 168
+        focus: "conversion_push"
+        actions: ["special_offer", "urgency_messaging"]
+        
+    conversion_tools:
+      - "trial_day_offers"
+      - "referral_incentives"
+      - "flexible_payment_plans"
+      - "community_introduction"
+
+# Webhook Configuration
+webhooks:
+  base_url: "${WEBHOOK_BASE_URL}"
+  verify_signature: true
+  secret: "${WEBHOOK_SECRET}"
+  
+  endpoints:
+    message_received: "/webhooks/message"
+    conversation_updated: "/webhooks/conversation" 
+    agent_escalated: "/webhooks/escalation"
+    tour_scheduled: "/webhooks/tour-scheduled"
+    lead_qualified: "/webhooks/lead-qualified"
+    
+  events:
+    - "message.created"
+    - "message.updated"
+    - "conversation.created"
+    - "conversation.updated"
+    - "agent.escalated"
+    - "lead.qualified"
+    - "tour.scheduled"
+    - "tour.completed"
+
+# Integration Configurations
+integrations:
+  hubspot:
+    api_key: "${HUBSPOT_API_KEY}"
+    base_url: "https://api.hubapi.com"
+    
+    deal_pipeline: "urbanhub-mexico-pipeline"
+    deal_stages:
+      - "new_lead"
+      - "qualified"
+      - "tour_scheduled"
+      - "tour_completed"
+      - "proposal_sent"
+      - "negotiation"
+      - "closed_won"
+      - "closed_lost"
+      
+    contact_properties:
+      - "budget_range"
+      - "timeline"
+      - "property_preference"
+      - "tour_status"
+      - "lead_source"
+      
+    sync_frequency: "5min"
+    bidirectional_sync: true
+    
+  calendar_systems:
+    calendly:
+      api_key: "${CALENDLY_API_KEY}"
+      organization: "urbanhub-mexico"
+      
+    google_calendar:
+      credentials_file: "/config/google-calendar-creds.json"
+      calendar_ids:
+        josefa: "josefa-leasing@urbanhub.mx"
+        matilde: "matilde-leasing@urbanhub.mx"
+        
+    outlook:
+      tenant_id: "${OUTLOOK_TENANT_ID}"
+      client_id: "${OUTLOOK_CLIENT_ID}"
+      client_secret: "${OUTLOOK_CLIENT_SECRET}"
+
+# Analytics and Monitoring
+analytics:
+  enable_conversation_tracking: true
+  enable_performance_metrics: true
+  enable_business_intelligence: true
+  
+  key_metrics:
+    - "lead_response_time"
+    - "qualification_rate" 
+    - "tour_conversion_rate"
+    - "automation_coverage"
+    - "escalation_rate"
+    - "customer_satisfaction"
+    
+  dashboards:
+    real_time: "real_time_operations"
+    daily: "daily_performance" 
+    weekly: "weekly_insights"
+    monthly: "monthly_business_review"
+    
+  alerts:
+    high_escalation_rate: ">20%"
+    low_qualification_rate: "<70%"
+    api_error_rate: ">5%"
+    response_time_slow: ">5min"
+
+# Security Configuration
+security:
+  webhook_signature_validation: true
+  api_rate_limiting: true
+  message_encryption: true
+  pii_detection: true
+  
+  rate_limits:
+    messages_per_minute: 100
+    api_calls_per_hour: 1000
+    concurrent_conversations: 50
+    
+  data_protection:
+    encrypt_messages: true
+    anonymize_pii: true
+    retention_policy: "365_days"
+    deletion_on_request: true
+
+# Environment Variables Required
+environment_variables:
+  required:
+    - BIRD_API_KEY
+    - WEBHOOK_BASE_URL 
+    - WEBHOOK_SECRET
+    - WHATSAPP_VERIFY_TOKEN
+    - HUBSPOT_API_KEY
+    - POSTGRES_CONNECTION_STRING
+    
+  optional:
+    - CALENDLY_API_KEY
+    - GOOGLE_CALENDAR_CREDS
+    - OUTLOOK_TENANT_ID
+    - SLACK_WEBHOOK_URL
+    - SENTRY_DSN
+
+# Deployment Settings
+deployment:
+  environment: "production"
+  region: "us-west-2"
+  auto_scaling: true
+  load_balancing: true
+  
+  infrastructure:
+    web_servers: 2
+    worker_processes: 4
+    database_connections: 20
+    redis_cache: true
+    
+  monitoring:
+    uptime_checks: true
+    error_tracking: true
+    performance_monitoring: true
+    log_aggregation: true

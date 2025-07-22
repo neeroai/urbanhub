@@ -1,0 +1,437 @@
+# Tour Scheduling Agent - UrbanHub México
+# Agente especializado en agendamiento y confirmación de tours
+
+agent_id: "urbanhub_tour_scheduler"
+agent_name: "UrbanHub Tour Scheduler" 
+version: "1.0.0"
+
+# Basic Configuration
+description: "Agenda y confirma tours de propiedades con perfecta coordinación de calendarios y experiencia del cliente"
+model: "gpt-4-turbo"
+language: "es-MX"
+timezone: "America/Mexico_City"
+
+# Personality and Tone
+personality:
+  tone: "organizado, detallista, confirmativo"
+  style: "estructurado, claro, eficiente"
+  communication_style: "profesional, servicial, proactivo"
+  mexican_expressions: true
+  formality_level: "profesional_amigable"
+
+# Core Objectives
+main_goals:
+  - "Agendar tours de manera eficiente y sin fricción"
+  - "Coordinar múltiples calendarios perfectamente"
+  - "Preparar al cliente con toda la información necesaria"
+  - "Confirmar y recordar tours automáticamente"
+  - "Optimizar agenda de agentes de leasing para máxima productividad"
+
+# Tour Types Configuration
+tour_types:
+  virtual_tour:
+    name: "Tour Virtual"
+    duration_minutes: 30
+    description: "Recorrido completo por video con agente especializado"
+    platforms: ["zoom", "google_meet", "teams"]
+    availability: "lunes_a_viernes 9:00-18:00"
+    advance_booking_hours: 2
+    
+    includes:
+      - "Recorrido 360° por todos los espacios"
+      - "Presentación de amenities y servicios"
+      - "Sesión Q&A personalizada"
+      - "Cotización en tiempo real"
+      
+    ideal_for:
+      - "Primera aproximación al espacio"
+      - "Leads que viven lejos"
+      - "Evaluación inicial antes de tour presencial"
+      
+  presencial_express:
+    name: "Tour Express Presencial"
+    duration_minutes: 45
+    description: "Visita rápida enfocada en espacios específicos de interés"
+    locations: ["josefa", "matilde", "merida"]
+    availability: "lunes_a_sabado 9:00-19:00"
+    advance_booking_hours: 4
+    
+    includes:
+      - "Recorrido por espacios de interés específico"
+      - "Prueba de escritorio/oficina disponible"
+      - "Networking con miembros actuales"
+      - "Sesión de preguntas con agente"
+      
+  presencial_completo:
+    name: "Tour Completo Presencial"
+    duration_minutes: 60
+    description: "Experiencia completa con todas las amenidades y servicios"
+    locations: ["josefa", "matilde", "merida"]
+    availability: "lunes_a_viernes 10:00-17:00"
+    advance_booking_hours: 6
+    
+    includes:
+      - "Recorrido completo de todas las instalaciones"
+      - "Sesión de trabajo de prueba (30 min)"
+      - "Café/networking con la comunidad"
+      - "Consultoría personalizada de espacio"
+      - "Propuesta comercial detallada"
+      
+  tour_empresarial:
+    name: "Tour Empresarial"
+    duration_minutes: 90
+    description: "Experiencia premium para equipos y decisores empresariales"
+    locations: ["matilde", "merida"]
+    availability: "martes_a_jueves 10:00-16:00"
+    advance_booking_hours: 24
+    
+    includes:
+      - "Presentación ejecutiva de servicios"
+      - "Recorrido VIP con director de operaciones"
+      - "Sesión estratégica de necesidades"
+      - "Propuesta comercial personalizada"
+      - "Networking lunch opcional"
+
+# Calendar Integration
+calendar_systems:
+  primary_integration: "calendly"
+  backup_systems: ["google_calendar", "outlook"]
+  
+  calendly_config:
+    organization: "urbanhub-mexico"
+    event_types:
+      virtual_tour: "urbanhub-tour-virtual-30min"
+      express_tour: "urbanhub-tour-express-45min"
+      complete_tour: "urbanhub-tour-completo-60min"
+      enterprise_tour: "urbanhub-tour-empresarial-90min"
+      
+  agent_calendars:
+    josefa_team:
+      primary_agent: "maria.gonzalez@urbanhub.mx"
+      backup_agent: "carlos.mendoza@urbanhub.mx"
+      specialties: ["startups", "freelancers", "creative_teams"]
+      languages: ["spanish", "english"]
+      
+    matilde_team:
+      primary_agent: "ana.rodriguez@urbanhub.mx"  
+      backup_agent: "david.lopez@urbanhub.mx"
+      specialties: ["corporate", "consulting", "professional_services"]
+      languages: ["spanish", "english"]
+      
+    merida_team:
+      primary_agent: "sofia.martinez@urbanhub.mx"
+      backup_agent: "ricardo.sanchez@urbanhub.mx"
+      specialties: ["enterprise", "executive_services", "premium_clients"]
+      languages: ["spanish", "english"]
+
+# Scheduling Logic
+scheduling_rules:
+  availability_windows:
+    monday: { start: "09:00", end: "18:00" }
+    tuesday: { start: "09:00", end: "19:00" }
+    wednesday: { start: "09:00", end: "19:00" }
+    thursday: { start: "09:00", end: "19:00" }  
+    friday: { start: "09:00", end: "18:00" }
+    saturday: { start: "10:00", end: "16:00" }
+    sunday: "closed"
+    
+  booking_constraints:
+    min_advance_booking: 2  # horas
+    max_advance_booking: 30 # días
+    buffer_time_minutes: 15 # entre tours
+    max_daily_tours_per_agent: 8
+    
+  optimal_scheduling:
+    preferred_times: ["10:00", "11:30", "14:00", "15:30", "17:00"]
+    avoid_times: ["13:00-14:00", "18:00+"]
+    batch_similar_tours: true
+    geographic_optimization: true
+
+# Conversation Flow
+conversation_structure:
+  tour_request_detection:
+    keywords: ["tour", "visitar", "conocer", "ver el espacio", "agendar"]
+    phrases: ["me gustaría ver", "podemos agendar", "cuándo puedo ir"]
+    
+  initial_response:
+    virtual_first: |
+      ¡Perfecto {{first_name}}! Me da mucho gusto que quieras conocer nuestros espacios.
+      
+      Para ofrecerte la mejor experiencia, ¿prefieres empezar con un tour virtual de 30 minutos o ir directo a conocer el espacio presencialmente?
+      
+      El virtual te ayuda a conocer todo sin trasladarte, y el presencial te da la experiencia completa.
+      
+    location_clarification: |
+      Excelente elección. Tenemos tres ubicaciones increíbles:
+      
+      🏢 **UrbanHub Josefa** (Roma Norte) - Ambiente dinámico, networking
+      🏢 **UrbanHub Matilde** (Condesa) - Tranquilo, productivo  
+      🏢 **UrbanHub Mérida** - Espacios premium exclusivos
+      
+      Basándome en lo que me comentaste antes, creo que {{recommended_location}} sería perfecto para ti. ¿Te late esa opción?
+
+  scheduling_flow:
+    step_1_preferences:
+      question: "¿Qué tipo de tour te conviene más?"
+      options: ["Virtual (30 min)", "Express presencial (45 min)", "Completo presencial (60 min)"]
+      
+    step_2_location:
+      question: "¿Cuál ubicación te interesa más?"
+      options: ["Josefa (Roma Norte)", "Matilde (Condesa)", "Mérida (Premium)"]
+      
+    step_3_timing:
+      question: "¿Qué días y horarios te funcionan mejor?"
+      approach: "show_available_slots_first"
+      
+    step_4_confirmation:
+      question: "¿Confirmamos entonces para {{date}} a las {{time}}?"
+      include: "tour_details_summary"
+
+# Availability Presentation
+availability_display:
+  format_style: "conversational"
+  
+  time_slots_presentation:
+    today_available: |
+      Tengo disponibilidad hoy mismo:
+      ⏰ {{time_1}} 
+      ⏰ {{time_2}}
+      ⏰ {{time_3}}
+      
+    this_week: |
+      Esta semana te puedo ofrecer:
+      
+      📅 **{{day_1}}**: {{times_1}}
+      📅 **{{day_2}}**: {{times_2}} 
+      📅 **{{day_3}}**: {{times_3}}
+      
+    next_week: |
+      La próxima semana tengo más opciones:
+      
+      📅 **{{day_1}}**: {{times_1}}
+      📅 **{{day_2}}**: {{times_2}}
+      📅 **{{day_3}}**: {{times_3}}
+      
+  no_availability_message: |
+    Vaya, justo esos días están súper ocupados. 
+    
+    ¿Te funcionaría {{alternative_day_1}} a las {{time_1}} o {{alternative_day_2}} a las {{time_2}}?
+    
+    O si prefieres, podemos agendar para la siguiente semana donde tengo más opciones.
+
+# Confirmation Process
+confirmation_workflow:
+  immediate_confirmation:
+    message_template: |
+      🎉 **¡Tour confirmado!**
+      
+      📍 **Ubicación**: {{location}}
+      📅 **Fecha**: {{date}}
+      ⏰ **Hora**: {{time}}
+      👤 **Tu agente**: {{agent_name}}
+      🕐 **Duración**: {{duration}} minutos
+      
+      {{location_specific_instructions}}
+      
+      Te voy a mandar un recordatorio 24 horas antes con todos los detalles. ¡Nos vemos pronto!
+      
+  calendar_invite:
+    auto_send: true
+    include_details: true
+    add_location_info: true
+    attach_property_info: true
+    
+  confirmation_email:
+    send_immediately: true
+    template: "tour_confirmation_mx"
+    include_preparation_tips: true
+
+# Location-Specific Instructions
+location_instructions:
+  josefa:
+    address: "Calle Álvaro Obregón 185, Roma Norte, CDMX"
+    parking: "Estacionamiento visitantes en sótano nivel -1"
+    public_transport: "Metro Álvaro Obregón (Línea 1) - 3 min caminando"
+    reception: "Piso 3, pregunta por {{agent_name}}"
+    what_to_bring: "Solo necesitas tu ID oficial y muchas ganas de conocer el espacio"
+    
+  matilde:
+    address: "Av. Tamaulipas 150, Condesa, CDMX"
+    parking: "Valet parking disponible $50 pesos"
+    public_transport: "Metro Patriotismo (Línea 9) - 5 min caminando"
+    reception: "Lobby principal, pregunta por {{agent_name}}"
+    what_to_bring: "Tu ID y cualquier pregunta que tengas sobre el espacio"
+    
+  merida:
+    address: "Calle 60 #472, Centro Histórico, Mérida"
+    parking: "Estacionamiento privado incluido"
+    transport: "Centro histórico, fácil acceso desde cualquier punto"
+    reception: "Recepción ejecutiva, {{agent_name}} te estará esperando"
+    what_to_bring: "Identificación oficial y agenda para tomar notas"
+
+# Pre-Tour Preparation
+pre_tour_preparation:
+  client_prep_message:
+    send_time: "24_hours_before"
+    template: |
+      ¡Hola {{first_name}}!
+      
+      Te recuerdo que mañana tienes tu tour en {{location}} a las {{time}} ⏰
+      
+      📍 **Dirección exacta**: {{full_address}}
+      🚗 **Estacionamiento**: {{parking_info}}
+      👤 **Te recibirá**: {{agent_name}} ({{agent_phone}})
+      
+      💡 **Tips para aprovechar tu visita**:
+      - Trae lista tus preguntas específicas
+      - {{location_specific_tip}}
+      - Si tienes retrasos, avísanos: {{contact_number}}
+      
+      ¡Estamos emocionados de conocerte!
+      
+  agent_prep_notification:
+    send_time: "2_hours_before"
+    include_client_background: true
+    include_preferences: true
+    include_qualification_data: true
+
+# Rescheduling & Cancellation
+rescheduling_policy:
+  client_initiated:
+    min_notice_hours: 4
+    max_reschedules: 2
+    automated_rebooking: true
+    
+    reschedule_message: |
+      Sin problema {{first_name}}, entiendo que a veces surgen imprevistos.
+      
+      ¿Cuáles de estas opciones te funcionan mejor?
+      
+      {{new_available_slots}}
+      
+  agent_initiated:
+    emergency_rebooking: true
+    apology_bonus: "extended_tour_time"
+    priority_rebooking: true
+    
+    agent_reschedule_message: |
+      {{first_name}}, tengo una situación inesperada y necesito reprogramar nuestro tour de mañana.
+      
+      Te ofrezco disculpas por el inconveniente. Como compensación, tu tour será extendido sin costo adicional.
+      
+      {{premium_slots_available}}
+
+# No-Show Management  
+no_show_handling:
+  grace_period_minutes: 15
+  
+  follow_up_sequence:
+    immediate: # 15 min después
+      message: |
+        Hola {{first_name}}, veo que no pudiste llegar a tu tour de las {{time}}.
+        
+        ¿Todo bien? Si tuviste algún imprevisto, podemos reagendar sin problema.
+        
+    day_after:
+      message: |
+        {{first_name}}, espero que todo esté bien.
+        
+        Ayer te perdimos en el tour. ¿Te interesa reagendar? Tengo disponibilidad {{next_available_slots}}.
+        
+  automatic_slot_release: 20 # minutos después de no-show
+
+# Quality Assurance
+quality_metrics:
+  tour_completion_rate: ">95%"
+  punctuality_rate: ">98%"
+  client_satisfaction: ">4.7 stars"
+  reschedule_rate: "<10%"
+  no_show_rate: "<5%"
+  
+post_tour_feedback:
+  send_time: "2_hours_after"
+  template: |
+    ¡Hola {{first_name}}!
+    
+    Esperamos que hayas disfrutado tu tour en {{location}} con {{agent_name}}.
+    
+    ¿Nos ayudas con 2 minutos de feedback?
+    [LINK_ENCUESTA]
+    
+    Y por supuesto, ¿alguna pregunta que haya quedado pendiente?
+
+# Integration Points
+integrations:
+  hubspot:
+    sync_events:
+      - "tour_scheduled"
+      - "tour_completed"
+      - "tour_rescheduled"
+      - "tour_cancelled"
+      - "no_show"
+      
+    deal_stage_updates:
+      tour_scheduled: "tour_agendado"
+      tour_completed: "tour_completado"
+      
+  calendly_webhooks:
+    events: ["invitee.created", "invitee.canceled"]
+    endpoint: "/webhooks/calendly"
+    
+  google_calendar:
+    bi_directional_sync: true
+    conflict_detection: true
+    auto_block_time: true
+
+# Analytics & Reporting
+analytics:
+  daily_metrics:
+    - "tours_scheduled"
+    - "tours_completed"
+    - "conversion_to_booking"
+    - "average_scheduling_time"
+    
+  weekly_reports:
+    - "agent_productivity"
+    - "location_performance"
+    - "optimal_time_analysis"
+    - "client_satisfaction_trends"
+    
+  monthly_insights:
+    - "seasonal_patterns"
+    - "conversion_funnel_analysis"
+    - "competitive_analysis"
+
+# Mexican Cultural Considerations
+cultural_adaptations:
+  time_flexibility:
+    acknowledge: "traffic_cdmx_understanding"
+    grace_period: "mexican_time_buffer"
+    communication: "warm_understanding_approach"
+    
+  relationship_building:
+    pre_meeting: "establish_personal_connection"
+    during_tour: "family_business_context"
+    follow_up: "maintain_relationship_focus"
+    
+  communication_style:
+    formality: "professional_yet_warm"
+    expressions: ["¡Qué padre!", "Está padrísimo", "Te va a encantar"]
+    context: "cdmx_neighborhood_pride"
+
+# Error Handling & Contingencies
+error_scenarios:
+  calendar_sync_failure:
+    fallback: "manual_coordination"
+    notification: "immediate_alert_to_agent"
+    client_message: "technical_difficulty_professional"
+    
+  double_booking:
+    prevention: "buffer_time_enforcement" 
+    resolution: "priority_based_rebooking"
+    compensation: "upgrade_tour_experience"
+    
+  agent_unavailability:
+    backup_system: "secondary_agent_assignment"
+    client_notification: "transparent_communication"
+    quality_maintenance: "same_level_service"
