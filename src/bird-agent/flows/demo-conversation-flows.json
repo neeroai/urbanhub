@@ -1,0 +1,266 @@
+{
+  "demo_conversation_flows": {
+    "scenario_a_first_time_prospect": {
+      "title": "Primera consulta - Profesional joven",
+      "persona": {
+        "name": "Carlos Rodríguez",
+        "age": 28,
+        "profession": "Ingeniero de Software",
+        "budget": "$30,000 MXN",
+        "timeline": "1-2 meses",
+        "preferences": "1 recámara, gym, coworking"
+      },
+      "conversation_flow": [
+        {
+          "step": 1,
+          "user_message": "Hola, vi que tienen departamentos en renta y me interesa saber más",
+          "maya_response": "¡Hola! 👋 Soy Maya, tu asistente digital de UrbanHub. ¡Qué gusto que te interesen nuestros departamentos! \n\nTenemos dos propiedades increíbles: Josefa en Reforma y Matilde en Juárez. ¿Alguna te llama más la atención o te gustaría que te cuente de ambas? 😊",
+          "intent": "initial_greeting",
+          "template_used": "urbanhub_welcome"
+        },
+        {
+          "step": 2,
+          "user_message": "Me interesa saber de ambas opciones",
+          "maya_response": "¡Perfecto! Te cuento de nuestras dos joyas:\n\n🏢 **Josefa (Reforma 390)**\n• Junto al Ángel de la Independencia\n• Torre de lujo con amenidades premium\n• Gym, terrazas rooftop, cine, coworking\n• Desde $25,700/mes\n\n🏛️ **Matilde (Juárez)**\n• Edificio Art Deco restaurado\n• Corazón cultural de CDMX\n• Terraza-jardín, gym boutique, coworking\n• Desde $22,000/mes\n\n¿Para cuándo te gustaría mudarte?",
+          "intent": "property_comparison",
+          "lead_score_update": "+10"
+        },
+        {
+          "step": 3,
+          "user_message": "En como 2 meses",
+          "maya_response": "¡Excelente timing! En 2 meses tendremos muy buena disponibilidad en ambas propiedades.\n\n¿Cuál sería tu presupuesto mensual aproximado? Así te puedo mostrar las opciones que mejor te acomoden 💰",
+          "intent": "timeline_qualification",
+          "lead_score_update": "+25"
+        },
+        {
+          "step": 4,
+          "user_message": "Ando viendo entre 28 y 32 mil",
+          "maya_response": "¡Perfecto! Con ese presupuesto tienes excelentes opciones en ambas propiedades:\n\n✅ **Josefa**: Studios y 1BR disponibles\n✅ **Matilde**: 1BR y 2BR opciones\n\n¿Buscas algún número específico de recámaras? ¿Y hay alguna amenidad súper importante para ti?",
+          "intent": "budget_qualification",
+          "lead_score_update": "+25"
+        },
+        {
+          "step": 5,
+          "user_message": "1 recámara estaría perfecto. Me importa mucho tener gym y espacios para trabajar",
+          "maya_response": "¡Eres ideal para nuestras propiedades! Ambas tienen gimnasio y espacios de coworking increíbles 💪📱\n\n**Mi recomendación**: Te armemos visitas a ambas para que veas cuál te enamora más. \n\n¿Te gustaría agendar tours esta semana? Tengo disponibilidad todos los días 📅",
+          "intent": "preferences_qualification",
+          "lead_score_update": "+20",
+          "total_score": 80,
+          "classification": "hot_lead"
+        },
+        {
+          "step": 6,
+          "user_message": "Sí, me encantaría. ¿Qué días tienes?",
+          "maya_response": "¡Qué emocionante! 🎉 Estos son los horarios disponibles:\n\n**Mañana Jueves:**\n• 10:00 AM\n• 12:00 PM \n• 4:00 PM\n\n**Viernes:**\n• 10:00 AM\n• 2:00 PM\n• 6:00 PM\n\n¿Cuál te viene mejor? Y ¿prefieres empezar por Josefa o Matilde?",
+          "intent": "tour_scheduling",
+          "template_used": "urbanhub_availability_options"
+        },
+        {
+          "step": 7,
+          "user_message": "Viernes 2pm está perfecto. Empecemos por Josefa",
+          "maya_response": "¡Listo Carlos! 🎉 Tu visita está confirmada:\n\n📅 Viernes 24 de Enero\n🕐 2:00 PM\n🏢 Josefa (Reforma 390)\n📍 Paseo de la Reforma 390, CDMX\n\nTe enviaré recordatorio mañana. ¡Nos vemos el viernes! 🏠\n\n¿Te gustaría también agendar Matilde para el mismo día?",
+          "intent": "tour_confirmation",
+          "template_used": "urbanhub_tour_confirmation",
+          "next_action": "schedule_matilde_tour"
+        }
+      ],
+      "expected_outcome": "hot_lead_tour_scheduled",
+      "demo_notes": "Demuestra flujo completo de calificación exitosa con conversión a tour"
+    },
+    "scenario_b_budget_conscious": {
+      "title": "Prospecto con presupuesto limitado",
+      "persona": {
+        "name": "Ana Martínez",
+        "age": 24,
+        "profession": "Diseñadora",
+        "budget": "$20,000 MXN",
+        "timeline": "3 meses",
+        "preferences": "Studio o 1BR, área creativa"
+      },
+      "conversation_flow": [
+        {
+          "step": 1,
+          "user_message": "Hola! Estoy buscando depa pero tengo presupuesto limitado. ¿Tienen algo por 20 mil?",
+          "maya_response": "¡Hola Ana! 👋 Soy Maya de UrbanHub. ¡Claro que tenemos opciones para ti!\n\nTengo muy buenas noticias: en **Matilde (Juárez)** tenemos lofts desde $22,000 que son increíbles. Es un edificio Art Deco restaurado en el corazón creativo de la ciudad 🎨\n\n¿Para cuándo necesitas mudarte?",
+          "intent": "budget_sensitive_greeting",
+          "lead_score_update": "+10"
+        },
+        {
+          "step": 2,
+          "user_message": "No tengo prisa, como en 3 meses. ¿Qué tal está esa zona?",
+          "maya_response": "¡La zona es perfecta para ti! Colonia Juárez es el corazón cultural de CDMX 🎭\n\n✅ Galerías y museos caminando\n✅ Cafés y restaurantes de autor\n✅ Muy buena conexión al centro\n✅ Ambiente súper creativo\n\nLos lofts son de 40-50m² con elementos Art Deco originales. ¿Te gustaría ver fotos o prefieres una visita virtual?",
+          "intent": "area_information",
+          "lead_score_update": "+15"
+        },
+        {
+          "step": 3,
+          "user_message": "Me llama la atención! ¿Podrías mandarme fotos?",
+          "maya_response": "¡Por supuesto! Te mando el tour virtual completo:\n🔗 [Link al tour virtual]\n\nTambién tienes:\n🏋️ Gym boutique\n☕ Terraza-jardín perfecta para crear\n💻 Espacios de coworking\n🎨 Comunidad de artistas y creativos\n\n¿Te animas a visitarlo en persona cuando estés lista? ¡No hay presión! 😊",
+          "intent": "virtual_tour_sharing",
+          "lead_score_update": "+10",
+          "total_score": 35,
+          "classification": "warm_lead"
+        },
+        {
+          "step": 4,
+          "user_message": "Se ve muy bien! Creo que en un mes podría ir a verlo",
+          "maya_response": "¡Perfecto! Me encanta tu interés 💕\n\nTe voy a agregar a nuestra lista VIP para mantenerte al tanto de:\n• Nuevas disponibilidades en Matilde\n• Promociones especiales\n• Eventos de la comunidad creativa\n\n¿Te parece si te escribo en 2-3 semanas para agendar tu visita? ¡Sin compromiso!",
+          "intent": "nurture_enrollment",
+          "next_action": "add_to_nurture_sequence"
+        }
+      ],
+      "expected_outcome": "warm_lead_nurture_sequence",
+      "demo_notes": "Muestra manejo de presupuesto limitado con nurturing apropiado"
+    },
+    "scenario_c_urgent_executive": {
+      "title": "Ejecutivo con necesidad urgente",
+      "persona": {
+        "name": "Ricardo Hernández",
+        "age": 35,
+        "profession": "Director Financiero",
+        "budget": "$50,000+ MXN",
+        "timeline": "Inmediato",
+        "preferences": "2BR, amenidades premium, ubicación céntrica"
+      },
+      "conversation_flow": [
+        {
+          "step": 1,
+          "user_message": "Necesito un departamento YA. Me acaban de transferir a CDMX y empiezo el lunes. ¿Tienen algo disponible inmediato?",
+          "maya_response": "¡Hola Ricardo! 👋 Soy Maya de UrbanHub. Entiendo la urgencia y te tengo excelentes noticias.\n\n🚀 **DISPONIBILIDAD INMEDIATA** en Josefa (Reforma):\n• 2BR premium con vista panorámica\n• Amenidades de lujo (gym, spa, rooftop)\n• Junto al Ángel de la Independencia\n• Listo para mudanza este fin de semana\n\n¿Podrías visitarlo HOY? Te acomodo cita prioritaria.",
+          "intent": "urgent_situation_response",
+          "lead_score_update": "+30",
+          "priority": "urgent"
+        },
+        {
+          "step": 2,
+          "user_message": "¡Perfecto! ¿A qué hora puedo ir? Y ¿cuánto cuesta?",
+          "maya_response": "🔥 **CITA URGENTE APARTADA**\n\n💰 2BR Premium: $45,000-52,000/mes\n⏰ ¿Te viene bien hoy 4:00 PM?\n📍 Te mando ubicación exacta\n\n¡Incluye TODO!:\n✅ Gym con entrenador\n✅ Spa y alberca\n✅ Concierge 24/7\n✅ Estacionamiento\n\n¿Confirmo tu cita para las 4PM?",
+          "intent": "urgent_tour_scheduling",
+          "lead_score_update": "+30",
+          "total_score": 90,
+          "classification": "hot_urgent_lead"
+        },
+        {
+          "step": 3,
+          "user_message": "Confirmado! ¿Qué necesito llevar?",
+          "maya_response": "¡LISTO! 🎉 Cita confirmada:\n\n📅 HOY 4:00 PM\n🏢 Josefa - Reforma 390\n📱 Te mando ubicación por maps\n\n**TRAE PARA APLICAR HOY MISMO**:\n📄 INE/Pasaporte\n💰 Comprobante ingresos\n💳 Tarjeta para depósito\n\n⚡ ¡Proceso exprés: 2 horas y listo!\n\nTe escribo en 30 min con todos los detalles. ¡Nos vemos a las 4! 🏠",
+          "intent": "urgent_confirmation_prep",
+          "template_used": "urbanhub_tour_confirmation",
+          "next_action": "priority_agent_assignment"
+        }
+      ],
+      "expected_outcome": "urgent_hot_lead_same_day_tour",
+      "demo_notes": "Demuestra manejo de situaciones urgentes con respuesta inmediata"
+    },
+    "scenario_d_family_comparison": {
+      "title": "Familia comparando propiedades",
+      "persona": {
+        "name": "María y José González",
+        "age": "32, 35",
+        "situation": "Pareja con bebé",
+        "budget": "$35,000-40,000 MXN", 
+        "timeline": "2 meses",
+        "preferences": "2BR, seguridad, áreas familiares"
+      },
+      "conversation_flow": [
+        {
+          "step": 1,
+          "user_message": "Hola! Somos una pareja con un bebé y buscamos depa de 2 recámaras. ¿Qué opciones manejan?",
+          "maya_response": "¡Hola María! 👋 Soy Maya de UrbanHub. ¡Qué emocionante! Tengo opciones perfectas para familias:\n\n👶 **IDEALES PARA FAMILIAS:**\n\n🏢 **Josefa (Reforma)**\n• 2BR: 90-110m² \n• Seguridad 24/7\n• Áreas familiares\n• Parques cercanos\n\n🏛️ **Matilde (Juárez)**\n• 2BR: 80-95m²\n• Zona familiar\n• Terraza-jardín\n• Ambiente tranquilo\n\n¿Les gustaría conocer ambas opciones?",
+          "intent": "family_focused_greeting",
+          "lead_score_update": "+15"
+        },
+        {
+          "step": 2,
+          "user_message": "Nos interesan ambas. ¿Cuáles son los precios y cómo es el proceso?",
+          "maya_response": "¡Perfecto! Les comparto toda la info:\n\n💰 **PRECIOS 2BR:**\n• Josefa: $36,000-45,000/mes\n• Matilde: $32,000-38,000/mes\n\n👶 **SÚPER FAMILY-FRIENDLY:**\n✅ Sin aval (solo comprobante ingresos)\n✅ Pet-friendly\n✅ Proceso digital rápido\n✅ Seguridad máxima\n✅ Áreas de juego\n\n¿Para cuándo buscan mudarse? ¿Y cuál es su rango de presupuesto ideal?",
+          "intent": "family_budget_discussion",
+          "lead_score_update": "+20"
+        },
+        {
+          "step": 3,
+          "user_message": "Entre 35-40 mil estaría perfecto. Para dentro de 2 meses",
+          "maya_response": "¡Excelente! Con ese presupuesto y timing tienen muy buenas opciones en ambas propiedades 👨‍👩‍👶\n\n**MI RECOMENDACIÓN**: Tour familiar este fin de semana\n• Sábado 10 AM: Josefa\n• Sábado 2 PM: Matilde\n• Pueden traer al bebé\n• Les muestro amenidades familiares\n\n¿Les funciona el sábado? ¡Así comparan tranquilos!",
+          "intent": "family_tour_proposal",
+          "lead_score_update": "+25",
+          "total_score": 60,
+          "classification": "warm_lead"
+        },
+        {
+          "step": 4,
+          "user_message": "¡Perfecto! El sábado nos viene genial",
+          "maya_response": "¡LISTO! 🎉 Tours familiares confirmados:\n\n👨‍👩‍👶 **SÁBADO 25 ENERO:**\n🕐 10:00 AM - Josefa (Reforma 390)\n🕐 2:00 PM - Matilde (Donato Guerra 1)\n\n**INCLUYE:**\n✅ Tour completo amenidades\n✅ Info colegios cercanos\n✅ Parques y áreas familiares\n✅ Simulación proceso de renta\n\n¡Nos vemos el sábado familia González! 💕",
+          "intent": "family_double_tour_confirmation",
+          "template_used": "urbanhub_tour_confirmation",
+          "next_action": "family_specialist_assignment"
+        }
+      ],
+      "expected_outcome": "warm_lead_double_tour_scheduled",
+      "demo_notes": "Muestra manejo de familias con necesidades específicas"
+    },
+    "scenario_e_escalation": {
+      "title": "Escalación a agente humano",
+      "persona": {
+        "name": "Patricia López",
+        "situation": "Preguntas complejas sobre contrato",
+        "query_type": "Legal/contractual"
+      },
+      "conversation_flow": [
+        {
+          "step": 1,
+          "user_message": "Hola, tengo preguntas específicas sobre cláusulas del contrato de arrendamiento y términos de garantía",
+          "maya_response": "¡Hola Patricia! 👋 Soy Maya de UrbanHub.\n\nEntiendo que tienes preguntas específicas sobre aspectos contractuales. Para darte la información más precisa y detallada, te voy a conectar con Laura, nuestra especialista legal.\n\nElla podrá resolver todas tus dudas sobre:\n• Cláusulas específicas del contrato\n• Términos de garantía\n• Aspectos legales detallados\n\n¿Te parece bien que Laura te contacte en los próximos minutos?",
+          "intent": "legal_question_escalation",
+          "escalation_trigger": "complex_legal_questions",
+          "template_used": "urbanhub_handoff"
+        },
+        {
+          "step": 2,
+          "user_message": "Sí perfecto, necesito asesoría especializada",
+          "maya_response": "¡Perfecto Patricia! 👩‍💼\n\n**ESCALACIÓN ACTIVADA:**\n• Especialista: Laura Martínez (Legal)\n• Contacto: Próximos 5 minutos\n• Tema: Asesoría contractual y garantías\n\nMientras llega Laura, ¿hay algo básico sobre nuestras propiedades que te interese saber?\n\n*Laura se está conectando...*",
+          "intent": "handoff_confirmation",
+          "next_action": "human_agent_notification",
+          "context_preservation": "full_conversation_history"
+        },
+        {
+          "step": 3,
+          "system_message": "[Laura (Agente Humano) se ha unido a la conversación]",
+          "laura_response": "Hola Patricia, soy Laura Martínez, especialista legal de UrbanHub. Maya me puso al tanto que necesitas información sobre cláusulas contractuales y garantías.\n\n¿Podrías contarme específicamente qué aspectos te preocupan o necesitas aclarar? Estoy aquí para ayudarte con todos los detalles legales.",
+          "intent": "human_agent_takeover",
+          "context_transferred": true
+        }
+      ],
+      "expected_outcome": "successful_escalation_with_context",
+      "demo_notes": "Demuestra detección inteligente de necesidad de escalación y handoff perfecto"
+    }
+  },
+  "flow_analytics": {
+    "success_metrics": {
+      "scenario_a": {
+        "conversion_to_tour": "95%",
+        "lead_score_achieved": "80+",
+        "conversation_completion": "100%"
+      },
+      "scenario_b": {
+        "nurture_enrollment": "85%",
+        "engagement_maintained": "90%",
+        "future_conversion_potential": "high"
+      },
+      "scenario_c": {
+        "same_day_tour_booking": "90%",
+        "urgent_response_time": "<30 seconds",
+        "premium_conversion": "high"
+      },
+      "scenario_d": {
+        "family_satisfaction": "95%",
+        "double_tour_booking": "80%",
+        "decision_support_quality": "excellent"
+      },
+      "scenario_e": {
+        "escalation_accuracy": "100%",
+        "context_preservation": "100%",
+        "specialist_satisfaction": "excellent"
+      }
+    }
+  }
+}

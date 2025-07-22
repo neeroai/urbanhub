@@ -1,0 +1,287 @@
+{
+  "templates": [
+    {
+      "name": "urbanhub_welcome",
+      "language": "es_MX",
+      "category": "MARKETING",
+      "components": [
+        {
+          "type": "HEADER",
+          "format": "TEXT",
+          "text": "Bienvenido a UrbanHub 🏠"
+        },
+        {
+          "type": "BODY",
+          "text": "¡Hola {{1}}! 👋 Soy Maya, tu asistente digital de UrbanHub.\n\nVi que te interesa uno de nuestros departamentos premium en {{2}}. Me encantaría ayudarte a encontrar el hogar ideal para ti.\n\n¿Te gustaría que te haga unas preguntas rápidas para conocerte mejor?"
+        },
+        {
+          "type": "FOOTER",
+          "text": "UrbanHub - Vivir mejor es posible"
+        }
+      ]
+    },
+    {
+      "name": "urbanhub_tour_confirmation",
+      "language": "es_MX",
+      "category": "UTILITY",
+      "components": [
+        {
+          "type": "HEADER",
+          "format": "TEXT",
+          "text": "✅ Tour Confirmado"
+        },
+        {
+          "type": "BODY",
+          "text": "¡Listo {{1}}! 🎉 Tu visita está confirmada:\n\n📅 {{2}}\n🕐 {{3}}\n🏢 {{4}}\n📍 {{5}}\n\nTe enviaré un recordatorio 1 día antes. ¡Nos vemos pronto! 🏠"
+        },
+        {
+          "type": "FOOTER",
+          "text": "¿Necesitas cambiar algo? Solo escríbeme"
+        }
+      ]
+    },
+    {
+      "name": "urbanhub_tour_reminder",
+      "language": "es_MX",
+      "category": "UTILITY",
+      "components": [
+        {
+          "type": "HEADER",
+          "format": "TEXT",
+          "text": "🔔 Recordatorio de tu visita"
+        },
+        {
+          "type": "BODY",
+          "text": "¡Hola {{1}}! Te recuerdo tu visita mañana:\n\n📅 {{2}}\n🕐 {{3}}\n🏢 {{4}}\n📍 {{5}}\n\n¿Podrás asistir? Por favor confírmame para tener todo listo para ti."
+        },
+        {
+          "type": "FOOTER",
+          "text": "Responde SÍ para confirmar o CAMBIAR para reprogramar"
+        }
+      ]
+    },
+    {
+      "name": "urbanhub_followup_warm",
+      "language": "es_MX",
+      "category": "MARKETING",
+      "components": [
+        {
+          "type": "HEADER",
+          "format": "TEXT",
+          "text": "¿Sigues buscando depa? 🤔"
+        },
+        {
+          "type": "BODY",
+          "text": "¡Hola {{1}}! 😊 ¿Cómo vas con tus planes de mudanza?\n\nRecuerda que en {{2}} tenemos:\n✅ {{3}}\n✅ {{4}}\n✅ {{5}}\n\n¿Te gustaría agendar una visita esta semana?"
+        },
+        {
+          "type": "FOOTER",
+          "text": "Tenemos promociones especiales este mes 🎁"
+        }
+      ]
+    },
+    {
+      "name": "urbanhub_qualification_questions",
+      "language": "es_MX",
+      "category": "MARKETING",
+      "components": [
+        {
+          "type": "HEADER",
+          "format": "TEXT",
+          "text": "Encontremos tu depa ideal 🎯"
+        },
+        {
+          "type": "BODY",
+          "text": "{{1}}, me encantaría conocerte mejor para recomendarte las mejores opciones:\n\n1️⃣ ¿Para cuándo necesitas mudarte?\n2️⃣ ¿Qué presupuesto mensual manejas?\n3️⃣ ¿Prefieres Josefa (Reforma) o Matilde (Juárez)?\n\nPuedes responder con números o texto, ¡como prefieras! 😊"
+        }
+      ]
+    },
+    {
+      "name": "urbanhub_handoff",
+      "language": "es_MX",
+      "category": "UTILITY",
+      "components": [
+        {
+          "type": "HEADER",
+          "format": "TEXT",
+          "text": "Te conecto con un especialista 👥"
+        },
+        {
+          "type": "BODY",
+          "text": "{{1}}, entiendo que necesitas atención más especializada.\n\nTe voy a conectar con {{2}} de nuestro equipo, quien podrá ayudarte mejor con {{3}}.\n\nEn unos momentos se pondrá en contacto contigo. ¡Gracias por tu paciencia! 🙏"
+        }
+      ]
+    },
+    {
+      "name": "urbanhub_property_info",
+      "language": "es_MX",
+      "category": "MARKETING",
+      "components": [
+        {
+          "type": "HEADER",
+          "format": "IMAGE",
+          "example": {
+            "header_handle": ["PROPERTY_IMAGE"]
+          }
+        },
+        {
+          "type": "BODY",
+          "text": "Te comparto info de {{1}} 🏢\n\n📍 {{2}}\n💰 Desde {{3}}/mes\n🏠 Disponibles: {{4}}\n\nAmenidades destacadas:\n{{5}}\n\n¿Te gustaría agendar una visita o necesitas más información?"
+        },
+        {
+          "type": "FOOTER",
+          "text": "Tours disponibles todos los días"
+        },
+        {
+          "type": "BUTTONS",
+          "buttons": [
+            {
+              "type": "QUICK_REPLY",
+              "text": "Agendar visita"
+            },
+            {
+              "type": "QUICK_REPLY",
+              "text": "Ver amenidades"
+            },
+            {
+              "type": "QUICK_REPLY",
+              "text": "Otra propiedad"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "urbanhub_availability_options",
+      "language": "es_MX",
+      "category": "MARKETING",
+      "components": [
+        {
+          "type": "HEADER",
+          "format": "TEXT",
+          "text": "Horarios disponibles 📅"
+        },
+        {
+          "type": "BODY",
+          "text": "{{1}}, estos son los horarios disponibles para visitar {{2}} en los próximos días:\n\n{{3}}\n\n¿Cuál te viene mejor? Solo dime el día y hora que prefieras 😊"
+        },
+        {
+          "type": "FOOTER",
+          "text": "También tenemos tours virtuales disponibles"
+        }
+      ]
+    },
+    {
+      "name": "urbanhub_virtual_tour",
+      "language": "es_MX",
+      "category": "MARKETING",
+      "components": [
+        {
+          "type": "HEADER",
+          "format": "TEXT",
+          "text": "Tour Virtual 360° 🎥"
+        },
+        {
+          "type": "BODY",
+          "text": "{{1}}, ¡qué bien que te interesa el tour virtual!\n\nPuedes explorar {{2}} desde donde estés:\n🔗 {{3}}\n\nEl tour incluye:\n• Vistas 360° de todos los espacios\n• Medidas y especificaciones\n• Recorrido por amenidades\n\n¿Te gustaría agendar también una visita presencial?"
+        }
+      ]
+    },
+    {
+      "name": "urbanhub_application_next_steps",
+      "language": "es_MX",
+      "category": "UTILITY",
+      "components": [
+        {
+          "type": "HEADER",
+          "format": "TEXT",
+          "text": "¡Siguiente paso! 🚀"
+        },
+        {
+          "type": "BODY",
+          "text": "¡Excelente {{1}}! Me da mucho gusto que te haya encantado {{2}}.\n\nPara apartar tu depa necesitas:\n📄 INE o pasaporte\n💰 Comprobante de ingresos\n💳 Depósito (1 mes)\n\nEl proceso es 100% digital y toma solo 24-48 hrs.\n\n¿Listo para aplicar? 🏡"
+        },
+        {
+          "type": "FOOTER",
+          "text": "Sin aval, sin complicaciones"
+        }
+      ]
+    }
+  ],
+  "quick_replies": {
+    "timeline_options": [
+      "En 2 semanas",
+      "En 1 mes",
+      "En 2-3 meses",
+      "Solo viendo opciones"
+    ],
+    "budget_ranges": [
+      "20-25 mil",
+      "25-30 mil",
+      "30-40 mil",
+      "Más de 40 mil"
+    ],
+    "property_preference": [
+      "Josefa (Reforma)",
+      "Matilde (Juárez)",
+      "Ambas opciones",
+      "No estoy seguro"
+    ],
+    "unit_types": [
+      "Studio",
+      "1 recámara",
+      "2 recámaras",
+      "Penthouse"
+    ],
+    "tour_preference": [
+      "Tour presencial",
+      "Tour virtual",
+      "Primero info",
+      "Llamada telefónica"
+    ],
+    "confirmation_options": [
+      "✅ Confirmar",
+      "📅 Cambiar fecha",
+      "❌ Cancelar",
+      "❓ Tengo dudas"
+    ]
+  },
+  "interactive_messages": {
+    "property_selection": {
+      "header": "¿Qué propiedad te interesa? 🏢",
+      "body": "Tenemos dos increíbles opciones para ti:",
+      "buttons": [
+        {
+          "id": "select_josefa",
+          "title": "Josefa - Reforma"
+        },
+        {
+          "id": "select_matilde",
+          "title": "Matilde - Juárez"
+        },
+        {
+          "id": "select_both",
+          "title": "Ver ambas"
+        }
+      ]
+    },
+    "main_menu": {
+      "header": "¿En qué te puedo ayudar? 🤝",
+      "body": "Selecciona una opción:",
+      "buttons": [
+        {
+          "id": "menu_properties",
+          "title": "Ver propiedades"
+        },
+        {
+          "id": "menu_schedule_tour",
+          "title": "Agendar visita"
+        },
+        {
+          "id": "menu_speak_human",
+          "title": "Hablar con alguien"
+        }
+      ]
+    }
+  }
+}

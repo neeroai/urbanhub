@@ -1,0 +1,333 @@
+{
+  "company": {
+    "name": "UrbanHub Mexico",
+    "brand": "Urbanista",
+    "description": "Operador premium de departamentos multifamiliares con 1,300+ unidades en 9 propiedades en Ciudad de México",
+    "contact": {
+      "whatsapp": "+52 55 1234 5678",
+      "email": "hola@urbanhub.mx",
+      "website": "https://urbanhub.mx"
+    }
+  },
+  "properties": {
+    "josefa": {
+      "id": "josefa-reforma",
+      "name": "Josefa",
+      "fullName": "Josefa (Reforma 390)",
+      "address": {
+        "street": "Paseo de la Reforma 390",
+        "neighborhood": "Cuauhtémoc",
+        "city": "Ciudad de México",
+        "landmark": "Junto al Ángel de la Independencia"
+      },
+      "description": "Torre de departamentos de lujo con 17 niveles residenciales, completamente renovada con una inversión de 600 millones de pesos",
+      "amenities": [
+        "Gimnasio equipado con área de yoga y spinning",
+        "Terrazas en rooftop con vistas panorámicas a Reforma",
+        "Sala de cine privada",
+        "Espacios de coworking con WiFi de alta velocidad",
+        "Simulador de golf",
+        "Alberca climatizada y spa",
+        "Salón de eventos y área de BBQ",
+        "Seguridad 24/7 y acceso controlado"
+      ],
+      "units": {
+        "studio": {
+          "type": "Studio",
+          "size": "45-55 m²",
+          "priceRange": {
+            "min": 25700,
+            "max": 28000,
+            "currency": "MXN",
+            "period": "mes"
+          },
+          "features": [
+            "Acabados premium",
+            "Aire acondicionado",
+            "Ventanas de doble cristal",
+            "Cocina integral equipada",
+            "Algunos con balcón privado"
+          ],
+          "availability": 8
+        },
+        "oneBedroom": {
+          "type": "1 Recámara",
+          "size": "60-75 m²",
+          "priceRange": {
+            "min": 29000,
+            "max": 34000,
+            "currency": "MXN",
+            "period": "mes"
+          },
+          "features": [
+            "Acabados premium",
+            "Aire acondicionado",
+            "Ventanas de doble cristal",
+            "Cocina integral con electrodomésticos de alta gama",
+            "Balcón privado"
+          ],
+          "availability": 12
+        },
+        "twoBedroom": {
+          "type": "2 Recámaras",
+          "size": "90-110 m²",
+          "priceRange": {
+            "min": 36000,
+            "max": 45000,
+            "currency": "MXN",
+            "period": "mes"
+          },
+          "features": [
+            "Acabados premium",
+            "Aire acondicionado central",
+            "Ventanas de doble cristal",
+            "Cocina integral con electrodomésticos de alta gama",
+            "Balcón privado amplio",
+            "Walk-in closet"
+          ],
+          "availability": 6
+        },
+        "penthouse": {
+          "type": "Penthouse",
+          "size": "150-200 m²",
+          "priceRange": {
+            "min": 55000,
+            "max": 80000,
+            "currency": "MXN",
+            "period": "mes"
+          },
+          "features": [
+            "Acabados ultra premium",
+            "Aire acondicionado central",
+            "Ventanas panorámicas",
+            "Cocina gourmet completa",
+            "Terraza privada",
+            "Jacuzzi privado",
+            "Vista 360° de la ciudad"
+          ],
+          "availability": 2
+        }
+      },
+      "neighborhood": {
+        "highlights": [
+          "Ubicación privilegiada sobre Paseo de la Reforma",
+          "Acceso inmediato a transporte público (Metrobús, Metro Insurgentes)",
+          "Cercanía a centros comerciales y restaurantes",
+          "Zona de oficinas corporativas",
+          "Parques y áreas verdes cercanas"
+        ],
+        "transport": {
+          "metro": ["Insurgentes", "Sevilla"],
+          "metrobus": ["Ángel de la Independencia", "Reforma"],
+          "ecobici": true
+        }
+      },
+      "policies": {
+        "lease": {
+          "minimumTerm": "12 meses",
+          "deposit": "1 mes de renta",
+          "requirements": [
+            "Identificación oficial",
+            "Comprobante de ingresos",
+            "No se requiere aval"
+          ]
+        },
+        "petFriendly": true,
+        "petRestrictions": "Máximo 2 mascotas, peso máximo 25kg",
+        "included": [
+          "Mantenimiento",
+          "Acceso a todas las amenidades",
+          "Seguridad 24/7"
+        ],
+        "notIncluded": [
+          "Servicios (agua, luz, gas)",
+          "Internet",
+          "Estacionamiento adicional"
+        ]
+      },
+      "targetProfile": "Profesionales urbanos, expatriados, ejecutivos, nómadas digitales"
+    },
+    "matilde": {
+      "id": "matilde-juarez",
+      "name": "Matilde",
+      "fullName": "Matilde (Donato Guerra 1)",
+      "address": {
+        "street": "Donato Guerra 1",
+        "neighborhood": "Colonia Juárez",
+        "city": "Ciudad de México",
+        "landmark": "Corazón de la Juárez"
+      },
+      "description": "Edificio Art Deco restaurado con 5 niveles residenciales, preservando elementos históricos con una inversión de 62 millones de pesos",
+      "amenities": [
+        "Lobby histórico con detalles originales",
+        "Terraza-jardín con área de lectura y café",
+        "Gimnasio boutique",
+        "Salón de usos múltiples",
+        "Espacios de coworking y salas de juntas",
+        "Seguridad 24/7 y acceso digital"
+      ],
+      "units": {
+        "loft": {
+          "type": "Loft",
+          "size": "40-50 m²",
+          "priceRange": {
+            "min": 22000,
+            "max": 24000,
+            "currency": "MXN",
+            "period": "mes"
+          },
+          "features": [
+            "Elementos Art Deco originales",
+            "Acabados modernos",
+            "Iluminación LED",
+            "Aislamiento acústico",
+            "Cocina equipada"
+          ],
+          "availability": 5
+        },
+        "oneBedroom": {
+          "type": "1 Recámara",
+          "size": "55-70 m²",
+          "priceRange": {
+            "min": 25500,
+            "max": 28000,
+            "currency": "MXN",
+            "period": "mes"
+          },
+          "features": [
+            "Elementos Art Deco originales",
+            "Acabados modernos",
+            "Iluminación LED",
+            "Aislamiento acústico",
+            "Cocina equipada",
+            "Closets amplios"
+          ],
+          "availability": 7
+        },
+        "twoBedroom": {
+          "type": "2 Recámaras",
+          "size": "80-95 m²",
+          "priceRange": {
+            "min": 32000,
+            "max": 38000,
+            "currency": "MXN",
+            "period": "mes"
+          },
+          "features": [
+            "Elementos Art Deco originales preservados",
+            "Acabados premium modernos",
+            "Iluminación LED inteligente",
+            "Aislamiento acústico completo",
+            "Cocina equipada con isla",
+            "Closets vestidor"
+          ],
+          "availability": 4
+        }
+      },
+      "neighborhood": {
+        "highlights": [
+          "Corazón cultural y gastronómico de CDMX",
+          "A pasos de Paseo de la Reforma",
+          "Zona de galerías y museos",
+          "Vida nocturna vibrante",
+          "Cafeterías y restaurantes de autor"
+        ],
+        "transport": {
+          "metro": ["Juárez", "Cuauhtémoc"],
+          "metrobus": ["Hamburgo", "Reforma"],
+          "ecobici": true
+        }
+      },
+      "policies": {
+        "lease": {
+          "minimumTerm": "12 meses",
+          "deposit": "1 mes de renta",
+          "requirements": [
+            "Identificación oficial",
+            "Comprobante de ingresos",
+            "No se requiere aval"
+          ]
+        },
+        "petFriendly": true,
+        "petRestrictions": "Máximo 2 mascotas, peso máximo 20kg",
+        "included": [
+          "Mantenimiento",
+          "Acceso a todas las amenidades",
+          "Seguridad 24/7"
+        ],
+        "notIncluded": [
+          "Servicios (agua, luz, gas)",
+          "Internet",
+          "Estacionamiento adicional"
+        ]
+      },
+      "targetProfile": "Profesionales creativos, amantes de la arquitectura, comunidad internacional, parejas jóvenes"
+    }
+  },
+  "competitiveAdvantages": {
+    "pricing": "Aunque nuestros precios son premium, ofrecemos valor excepcional con amenidades de primer nivel, ubicaciones privilegiadas y cero burocracia",
+    "vsCompetitors": {
+      "nomadBucareli": {
+        "theirPrice": "desde $19,200 MXN",
+        "ourAdvantage": "Amenidades superiores, mejor ubicación, servicio personalizado"
+      }
+    },
+    "uniqueFeatures": [
+      "Sin aval requerido",
+      "Proceso 100% digital",
+      "Respuesta en menos de 5 minutos",
+      "Atención personalizada 24/7",
+      "Comunidad exclusiva de residentes",
+      "Eventos y networking incluidos"
+    ]
+  },
+  "faqs": [
+    {
+      "question": "¿Cuáles son los requisitos para rentar?",
+      "answer": "Solo necesitas identificación oficial y comprobante de ingresos. ¡No pedimos aval! El depósito es de 1 mes y el contrato mínimo de 12 meses."
+    },
+    {
+      "question": "¿Qué incluye la renta?",
+      "answer": "La renta incluye mantenimiento y acceso completo a todas las amenidades. Los servicios (agua, luz, internet) se pagan por separado."
+    },
+    {
+      "question": "¿Aceptan mascotas?",
+      "answer": "¡Sí! Somos pet-friendly. Aceptamos hasta 2 mascotas con algunas restricciones de peso según la propiedad."
+    },
+    {
+      "question": "¿Puedo agendar una visita?",
+      "answer": "¡Por supuesto! Tenemos tours disponibles todos los días. También ofrecemos tours virtuales si lo prefieres."
+    },
+    {
+      "question": "¿Cuánto tiempo toma el proceso de aplicación?",
+      "answer": "Nuestro proceso es súper rápido. Con los documentos completos, puedes tener aprobación en 24-48 horas."
+    },
+    {
+      "question": "¿Tienen departamentos amueblados?",
+      "answer": "Actualmente todos nuestros departamentos se rentan sin amueblar, pero podemos recomendarte servicios de renta de muebles."
+    },
+    {
+      "question": "¿Qué pasa si necesito cancelar mi contrato antes?",
+      "answer": "Entendemos que las circunstancias cambian. Tenemos opciones flexibles de salida anticipada con 60 días de aviso."
+    },
+    {
+      "question": "¿Incluyen estacionamiento?",
+      "answer": "Algunos departamentos incluyen 1 cajón. Estacionamiento adicional está disponible por una cuota mensual."
+    }
+  ],
+  "tourAvailability": {
+    "schedule": {
+      "monday": ["10:00", "12:00", "14:00", "16:00", "18:00"],
+      "tuesday": ["10:00", "12:00", "14:00", "16:00", "18:00"],
+      "wednesday": ["10:00", "12:00", "14:00", "16:00", "18:00"],
+      "thursday": ["10:00", "12:00", "14:00", "16:00", "18:00"],
+      "friday": ["10:00", "12:00", "14:00", "16:00", "18:00"],
+      "saturday": ["10:00", "12:00", "14:00", "16:00"],
+      "sunday": ["12:00", "14:00", "16:00"]
+    },
+    "duration": "45 minutos",
+    "virtualTours": true,
+    "sameDay": false,
+    "bookingWindow": "Con 24 horas de anticipación"
+  }
+}

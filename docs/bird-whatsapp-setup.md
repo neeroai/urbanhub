@@ -18,8 +18,8 @@ Ensure your `.env` file contains:
 
 ```bash
 # Bird.com Configuration
-BIRD_API_KEY=your_bird_api_key_here
-BIRD_WORKSPACE_ID=your_workspace_id_here
+BIRD_API_KEY=81oJ01ksBMEOopJMXmqsffTSM35UDusmUVuY
+BIRD_WORKSPACE_ID=cfdaa80e-8f05-4dae-a4bb-707784a99b4a
 BIRD_WEBHOOK_SECRET=your_webhook_secret_here
 
 # Application URLs
@@ -94,7 +94,7 @@ After creating the channel, note the **Channel ID** (format: `ch_xxxxxxxxx`)
 
 Update your environment:
 ```bash
-BIRD_WHATSAPP_CHANNEL_ID=ch_your_channel_id_here
+BIRD_WHATSAPP_CHANNEL_ID=e29b197b-fe69-5d1c-a561-30bf607c300b
 ```
 
 ## Step 3: Configure Webhooks
