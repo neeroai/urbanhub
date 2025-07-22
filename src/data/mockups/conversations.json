@@ -1,0 +1,157 @@
+{
+  "conversation_templates": [
+    {
+      "scenario": "first_contact_qualification",
+      "lead_profile": "young_professional",
+      "language": "es-MX",
+      "messages": [
+        {
+          "role": "user", 
+          "content": "Hola, vi su anuncio en Facebook sobre departamentos en Roma Norte. ¿Me pueden dar más información?",
+          "timestamp": "2024-01-15T10:30:00Z"
+        },
+        {
+          "role": "assistant",
+          "agent": "lead_qualifier",
+          "content": "¡Hola! 👋 Me da mucho gusto que te haya interesado Edificio Josefa en Roma Norte. Soy el asistente de UrbanHub y estoy aquí para ayudarte. \n\n¿Podrías contarme un poco sobre lo que estás buscando? Por ejemplo:\n- ¿Qué tipo de espacio necesitas? (studio, 1 o 2 recámaras)\n- ¿Cuándo planeas mudarte?\n- ¿Tienes algún presupuesto en mente?\n\nEsto me ayudará a darte la información más relevante para ti 🏠",
+          "timestamp": "2024-01-15T10:30:15Z"
+        },
+        {
+          "role": "user",
+          "content": "Busco un departamento de 1 recámara, tengo presupuesto de alrededor de 20 mil pesos. Me gustaría mudarme en marzo.",
+          "timestamp": "2024-01-15T10:32:00Z"
+        },
+        {
+          "role": "assistant", 
+          "agent": "lead_qualifier",
+          "content": "¡Perfecto! Tengo excelentes noticias 🎉\n\nNuestros departamentos de 1 recámara en Josefa están justo en tu presupuesto - $20,000 pesos mensuales. Son espacios de 55 m² con:\n✅ Recámara principal\n✅ Sala-comedor\n✅ Cocina integral\n✅ Baño completo\n✅ Balcón\n\nPlus todas las amenidades del edificio: gym 24/7, rooftop, co-working space y más.\n\n¿Te gustaría agendar una visita? Tengo disponibilidad esta semana y la próxima. También, ¿trabajas por la zona o qué te atrae de Roma Norte?",
+          "timestamp": "2024-01-15T10:32:30Z"
+        }
+      ]
+    },
+    {
+      "scenario": "tour_scheduling_conflict", 
+      "lead_profile": "executive",
+      "language": "es-MX",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Buenos días, me interesa agendar una visita para Torre Matilde. ¿Tienen disponibilidad el jueves por la tarde?",
+          "timestamp": "2024-01-16T09:00:00Z"
+        },
+        {
+          "role": "assistant",
+          "agent": "tour_scheduler", 
+          "content": "¡Buenos días! Claro que sí, me da mucho gusto ayudarle con la visita a Torre Matilde.\n\nPara el jueves 18 de enero tengo los siguientes horarios disponibles:\n🕘 9:00 AM (90 min)\n🕐 11:00 AM (90 min) \n🕓 4:00 PM (90 min)\n🕕 6:00 PM (90 min)\n\n¿Cuál le acomoda mejor? También, ¿hay algún tipo de unidad específica que le interese ver? Tenemos estudios ejecutivos, penthouses de 2 recámaras y unidades de lujo de 3 recámaras.",
+          "timestamp": "2024-01-16T09:00:30Z"
+        },
+        {
+          "role": "user",
+          "content": "Me interesa el de 4:00 PM, y me gustaría ver el penthouse de 2 recámaras. ¿Podrían confirmar?",
+          "timestamp": "2024-01-16T09:02:00Z"
+        },
+        {
+          "role": "assistant",
+          "agent": "tour_scheduler",
+          "content": "¡Perfecto! Le confirmo su cita:\n\n📅 **Fecha**: Jueves 18 de enero\n⏰ **Hora**: 4:00 PM\n🏢 **Propiedad**: Torre Matilde - Penthouse 2 recámaras\n🏠 **Ubicación**: Av. Presidente Masaryk 456, Polanco\n👤 **Agente**: Ricardo Mendoza (+52 155-533-3444)\n⏳ **Duración**: 90 minutos\n\n¿Podrían proporcionarme su nombre completo y número de teléfono para confirmar la cita? También le enviaré los detalles por WhatsApp el día anterior como recordatorio.\n\nRicardo les mostrará todas las amenidades: spa, piscina infinity, business center y más ✨",
+          "timestamp": "2024-01-16T09:02:45Z"
+        }
+      ]
+    },
+    {
+      "scenario": "follow_up_nurturing",
+      "lead_profile": "startup_founder", 
+      "language": "es-MX",
+      "messages": [
+        {
+          "role": "assistant",
+          "agent": "follow_up_agent",
+          "content": "¡Hola Diego! 👋 Soy el asistente de UrbanHub. Vi que mostraste interés en Edificio Josefa hace unos días.\n\n¿Cómo van tus planes de mudanza? Sé que mencionaste que tu timeline era flexible, pero quería compartirte que justo esta semana tenemos una promoción especial:\n\n🎁 **Primer mes SIN DEPÓSITO** para studios y 1 recámara\n💰 Presupuesto desde $15,000 pesos\n📍 Roma Norte, cerca de todo lo que necesitas como emprendedor\n\n¿Te gustaría que te cuente más detalles o prefieres agendar una visita rápida? ¡Solo me tomaría confirmar un horario contigo! 🚀",
+          "timestamp": "2024-01-15T11:20:00Z"
+        },
+        {
+          "role": "user",
+          "content": "¡Hola! Qué buena onda la promoción. Sí me interesa, pero ando ajustado de tiempo estas semanas. ¿La promoción hasta cuándo aplica?",
+          "timestamp": "2024-01-15T14:30:00Z"
+        },
+        {
+          "role": "assistant",
+          "agent": "follow_up_agent", 
+          "content": "¡Perfecto! Te entiendo completamente, sé lo ocupado que pueden estar los fundadores 💪\n\nLa promoción aplica hasta finales de enero, así que tienes tiempo. Pero te propongo algo:\n\n⚡ **Visita Express de 30 minutos** - Solo para que veas el espacio y amenidades\n🗓️ **Horarios flexibles** - Incluso fines de semana si te acomoda mejor\n📱 **Tour virtual** - Si prefieres, puedo enviarte un recorrido virtual primero\n\n¿Qué te parece más conveniente? La idea es que no sientas presión, sino que conozcas la opción cuando tu agenda lo permita. \n\nPor cierto, el co-working space del edificio está padrísimo para cuando necesites cambiar de ambiente 🏢✨",
+          "timestamp": "2024-01-15T14:31:00Z"
+        }
+      ]
+    },
+    {
+      "scenario": "escalation_to_human",
+      "lead_profile": "international_executive", 
+      "language": "es-MX",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Necesito hablar con alguien sobre un contrato corporativo para varios ejecutivos. Tenemos requerimientos específicos de facturación internacional.",
+          "timestamp": "2024-01-16T13:30:00Z"
+        },
+        {
+          "role": "assistant",
+          "agent": "escalation_agent",
+          "content": "Perfecto, entiendo que necesita atención especializada para contratos corporativos con facturación internacional. Este tipo de solicitudes requieren atención personalizada de nuestro equipo ejecutivo.\n\nLe voy a conectar inmediatamente con **Laura González**, nuestra Directora de Cuentas Corporativas, quien maneja este tipo de requerimientos especializados.\n\n📞 **Contacto directo**: +52 155-599-7788\n📧 **Email**: laura.gonzalez@urbanhub.mx\n⏰ **Disponibilidad**: Lunes a Viernes 8:00-19:00\n\nTambién le estaré enviando un resumen de nuestra conversación para que Laura tenga todo el contexto. ¿Prefiere que le llamemos en los próximos 30 minutos o hay algún horario específico que le acomode mejor?\n\nMientras tanto, ¿me puede compartir cuántas unidades aproximadamente necesitarían y para qué timeline?",
+          "timestamp": "2024-01-16T13:30:45Z"
+        },
+        {
+          "role": "user",
+          "content": "Necesitamos entre 5-8 unidades para ejecutivos que llegan en marzo. Prefiero que me llamen mañana entre 2-4 PM.",
+          "timestamp": "2024-01-16T13:32:00Z"
+        },
+        {
+          "role": "assistant",
+          "agent": "escalation_agent",
+          "content": "¡Excelente! Ya tengo todos los detalles anotados:\n\n📋 **Resumen del requerimiento**:\n• 5-8 unidades para ejecutivos internacionales\n• Timeline: Marzo 2024\n• Necesidades especiales: Facturación internacional\n• Contacto preferido: Mañana 2:00-4:00 PM\n\n✅ **Próximos pasos**:\n1. Laura González la contactará mañana en el horario solicitado\n2. Le enviaremos por email un paquete informativo corporativo\n3. Prepararemos opciones específicas para su revisión\n\n**Confirmación**: ¿El número +521555567890 es el mejor para contactarla?\n\nLaura tiene amplia experiencia con contratos internacionales y podrá ofrecerle las mejores condiciones para su equipo. ¡Gracias por considerar UrbanHub para sus ejecutivos! 🏢",
+          "timestamp": "2024-01-16T13:32:30Z"
+        }
+      ]
+    },
+    {
+      "scenario": "property_comparison",
+      "lead_profile": "business_consultant",
+      "language": "es-MX", 
+      "messages": [
+        {
+          "role": "user",
+          "content": "Estoy comparando entre Josefa y Matilde. Trabajo desde casa frecuentemente y necesito un espacio que me funcione para eso. ¿Cuál me recomiendan?",
+          "timestamp": "2024-01-17T09:15:00Z"
+        },
+        {
+          "role": "assistant",
+          "agent": "property_advisor",
+          "content": "¡Excelente pregunta! Ambas propiedades son increíbles, pero para trabajo desde casa tienen enfoques diferentes:\n\n🏢 **JOSEFA (Roma Norte)**\n💰 Presupuesto: $15-28k\n🎯 **Para ti**: Co-working space interno, ambiente creativo de Roma\n📍 Zona cultural, cafeterías, networking natural\n🏠 1-2 recámaras, balcones para trabajar al aire libre\n\n🏢 **MATILDE (Polanco)** \n💰 Presupuesto: $30-55k\n🎯 **Para ti**: Business center ejecutivo, oficina en casa incluida\n📍 Distrito financiero, clientes corporativos cerca\n🏠 Espacios más amplios, estudios privados\n\n**Mi recomendación**: Si tu trabajo es más creativo/consultivo → Josefa. Si necesitas espacios formales para clientes → Matilde.\n\n¿Qué tipo de consultoría haces? Eso me ayuda a ser más específico 🤔",
+          "timestamp": "2024-01-17T09:15:45Z"
+        }
+      ]
+    }
+  ],
+  "conversation_analytics": {
+    "response_times": {
+      "lead_qualifier": "avg_15_seconds",
+      "tour_scheduler": "avg_20_seconds", 
+      "follow_up_agent": "avg_10_seconds",
+      "escalation_agent": "avg_25_seconds"
+    },
+    "conversion_rates": {
+      "inquiry_to_qualified": 0.75,
+      "qualified_to_tour_scheduled": 0.65,
+      "tour_to_application": 0.40,
+      "application_to_lease": 0.85
+    },
+    "common_intents": [
+      "price_inquiry",
+      "tour_scheduling", 
+      "amenities_question",
+      "location_details",
+      "availability_check",
+      "lease_terms",
+      "pet_policy",
+      "parking_availability"
+    ]
+  }
+}

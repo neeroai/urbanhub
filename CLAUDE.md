@@ -5,9 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Project Overview
 
 **Project Name**: UrbanHub AI Agents for Bird.com
-
 **Purpose**: Comprehensive AI agent ecosystem built on Bird.com platform to automate UrbanHub's customer acquisition workflow. The project develops specialized conversational AI agents that handle lead qualification, warming, tour scheduling, and follow-up automation for UrbanHub's real estate operations across Mexico.
-
 **Target Audience**: UrbanHub leasing agents, property managers, potential tenants, and operations teams seeking automated lead-to-lease conversion through intelligent WhatsApp/SMS conversations.
 
 ---
@@ -73,17 +71,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Technology Stack
 
 **Platform**: Bird.com omnichannel messaging platform with AI agents
-
 **Backend**: Node.js with TypeScript for webhook handlers and business logic
-
 **Database**: PostgreSQL for conversation tracking, lead management, and analytics
-
 **AI Engine**: OpenAI GPT models for natural language processing and conversation
-
 **Messaging Channels**: WhatsApp Business API, SMS, and email integration
-
 **Integrations**: HubSpot CRM, Leasing Agent calendars, OXXO payments
-
 **Monitoring**: Bird.com dashboards, custom analytics, and conversation tracking
 
 ---

@@ -1,0 +1,262 @@
+# Bird.com AI Agent Configuration Template
+# Template for UrbanHub AI agents on Bird.com platform
+
+agent:
+  # Basic Agent Configuration
+  name: "{{agent_name}}"
+  description: "{{agent_description}}"
+  type: "{{agent_type}}" # qualifier, warmer, scheduler, followup, escalation
+  version: "1.0.0"
+  
+  # AI Model Configuration
+  model:
+    provider: "openai"
+    model: "gpt-4"
+    max_tokens: 500
+    temperature: 0.7
+    top_p: 0.9
+    frequency_penalty: 0.1
+    presence_penalty: 0.1
+  
+  # Language and Localization
+  language:
+    primary: "es-MX"
+    secondary: ["en-US"]
+    fallback: "es-MX"
+    timezone: "America/Mexico_City"
+    currency: "MXN"
+  
+  # Personality and Tone
+  personality:
+    name: "Maya"
+    tone: "{{agent_tone}}" # professional, friendly, helpful, enthusiastic
+    communication_style: "conversational"
+    cultural_context: "mexican_professional"
+    formality_level: "polite_informal" # tu vs usted based on context
+  
+  # Knowledge Base Configuration
+  knowledge_base:
+    primary_source: "urbanhub_properties"
+    includes:
+      - "property_details"
+      - "pricing_information"
+      - "amenities_features"
+      - "location_benefits"
+      - "lease_terms"
+      - "application_process"
+    context_window: 10 # number of previous messages to consider
+  
+  # Conversation Flow Configuration
+  conversation:
+    max_turns: {{max_turns}}
+    session_timeout: 1800 # 30 minutes in seconds
+    greeting:
+      first_time: "{{greeting_first_time}}"
+      returning: "{{greeting_returning}}"
+    
+    # Intent Recognition
+    intents:
+      - name: "property_inquiry"
+        confidence_threshold: 0.8
+        examples:
+          - "Estoy buscando departamento"
+          - "Me interesa rentar"
+          - "¿Qué propiedades tienen disponibles?"
+      
+      - name: "pricing_inquiry"
+        confidence_threshold: 0.8
+        examples:
+          - "¿Cuánto cuesta?"
+          - "¿Cuál es el precio?"
+          - "Información de precios"
+      
+      - name: "tour_request"
+        confidence_threshold: 0.8
+        examples:
+          - "Quiero ver el departamento"
+          - "¿Puedo agendar una visita?"
+          - "¿Cuándo puedo conocer?"
+      
+      - name: "availability_inquiry"
+        confidence_threshold: 0.8
+        examples:
+          - "¿Cuándo está disponible?"
+          - "¿Para cuándo?"
+          - "Fechas disponibles"
+    
+    # Response Templates
+    responses:
+      property_inquiry: "{{property_inquiry_response}}"
+      pricing_inquiry: "{{pricing_inquiry_response}}"
+      tour_request: "{{tour_request_response}}"
+      availability_inquiry: "{{availability_inquiry_response}}"
+      unknown_intent: "{{unknown_intent_response}}"
+      error_fallback: "{{error_fallback_response}}"
+  
+  # Escalation Configuration
+  escalation:
+    triggers:
+      - "legal_questions"
+      - "complex_financing"
+      - "complaints"
+      - "technical_issues"
+      - "{{custom_escalation_triggers}}"
+    
+    conditions:
+      - type: "confidence_threshold"
+        value: 0.3
+        action: "escalate"
+      
+      - type: "conversation_length"
+        value: {{max_turns}}
+        action: "escalate"
+      
+      - type: "repeated_unknown_intent"
+        value: 3
+        action: "escalate"
+      
+      - type: "negative_sentiment"
+        value: -0.5
+        action: "escalate"
+    
+    message:
+      escalation_intro: "{{escalation_intro}}"
+      human_transfer: "{{human_transfer_message}}"
+      followup_promise: "{{followup_promise}}"
+  
+  # Integration Configuration
+  integrations:
+    hubspot:
+      enabled: true
+      sync_contacts: true
+      create_deals: true
+      log_activities: true
+      custom_properties:
+        - "ai_conversation_status"
+        - "ai_agent_last_contact"
+        - "urbanhub_property_interest"
+        - "bird_conversation_id"
+      deal_stage_mapping:
+        lead: "{{hubspot_lead_stage}}"
+        qualified: "{{hubspot_qualified_stage}}"
+        tour_scheduled: "{{hubspot_tour_stage}}"
+        tour_completed: "{{hubspot_tour_completed_stage}}"
+        application: "{{hubspot_application_stage}}"
+    
+    calendar:
+      enabled: {{calendar_enabled}}
+      platforms:
+        - "calendly"
+        - "google_calendar"
+        - "outlook"
+      booking_window:
+        start_time: "09:00"
+        end_time: "18:00"
+        timezone: "America/Mexico_City"
+        advance_booking_days: 14
+      availability_check: true
+      confirmation_required: true
+    
+    whatsapp:
+      enabled: true
+      business_phone: "{{whatsapp_business_phone}}"
+      templates:
+        welcome: "{{whatsapp_welcome_template}}"
+        tour_confirmation: "{{whatsapp_tour_confirmation}}"
+        followup: "{{whatsapp_followup_template}}"
+      media_support:
+        images: true
+        documents: false
+        voice_messages: false
+  
+  # Performance and Monitoring
+  monitoring:
+    conversation_analytics: true
+    response_time_tracking: true
+    customer_satisfaction: true
+    conversion_tracking: true
+    
+    metrics:
+      target_response_time: 3 # seconds
+      target_resolution_rate: 0.8
+      target_customer_satisfaction: 4.5
+      target_escalation_rate: 0.15
+    
+    alerts:
+      high_escalation_rate: true
+      low_satisfaction_score: true
+      system_downtime: true
+      integration_failures: true
+  
+  # Business Hours and Availability
+  availability:
+    business_hours:
+      monday: "09:00-18:00"
+      tuesday: "09:00-18:00"
+      wednesday: "09:00-18:00"
+      thursday: "09:00-18:00"
+      friday: "09:00-18:00"
+      saturday: "10:00-16:00"
+      sunday: "closed"
+    
+    after_hours:
+      enabled: true
+      message: "{{after_hours_message}}"
+      emergency_escalation: true
+    
+    holidays:
+      enabled: true
+      message: "{{holiday_message}}"
+      emergency_contact: true
+  
+  # Security and Compliance
+  security:
+    data_retention_days: 90
+    pii_handling: "encrypt"
+    conversation_logging: true
+    audit_trail: true
+    
+    compliance:
+      mexican_data_protection: true
+      whatsapp_business_terms: true
+      real_estate_regulations: true
+      gdpr_compatible: true
+  
+  # Customization Variables
+  variables:
+    property_focus: "{{property_focus}}" # josefa, matilde, all
+    target_audience: "{{target_audience}}" # young_professionals, expats, families
+    conversation_style: "{{conversation_style}}" # formal, informal, mixed
+    sales_approach: "{{sales_approach}}" # consultative, direct, educational
+    
+    # Property-specific information
+    properties:
+      josefa:
+        name: "Josefa Roma Norte"
+        location: "Roma Norte, CDMX"
+        types: ["studio", "1br", "2br"]
+        price_range: "$19,500 - $35,000 MXN"
+        amenities: ["rooftop", "gym", "coworking", "pet_friendly"]
+        target_audience: "young_professionals"
+      
+      matilde:
+        name: "Matilde Condesa"
+        location: "Condesa, CDMX"
+        types: ["1br", "2br", "penthouse"]
+        price_range: "$25,000 - $45,000 MXN"
+        amenities: ["pool", "concierge", "garden", "parking"]
+        target_audience: "professionals_families"
+
+# Template Usage Instructions:
+# 1. Replace all {{variable}} placeholders with actual values
+# 2. Customize conversation flows for specific agent type
+# 3. Configure integrations based on requirements
+# 4. Test thoroughly before deployment
+# 5. Monitor performance and adjust as needed
+
+# Agent Type Specific Configurations:
+# - qualifier: Focus on lead qualification and initial screening
+# - warmer: Emphasis on re-engagement and nurturing
+# - scheduler: Calendar integration and booking optimization
+# - followup: Post-interaction engagement and conversion
+# - escalation: Human handoff and complex issue resolution

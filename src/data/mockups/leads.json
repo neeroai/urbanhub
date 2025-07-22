@@ -1,0 +1,159 @@
+{
+  "leads": [
+    {
+      "id": "lead_001",
+      "name": "María González",
+      "phone": "+521555123456",
+      "email": "maria.gonzalez@email.com",
+      "status": "new",
+      "source": "facebook_ads",
+      "location_preference": "mexico_city_centro",
+      "budget_range": "15000-20000",
+      "move_in_timeline": "1-2_months",
+      "property_interest": ["josefa"],
+      "demographics": {
+        "age": 28,
+        "occupation": "Marketing Manager",
+        "income_level": "middle-high",
+        "lifestyle": "young_professional"
+      },
+      "conversation_context": {
+        "language": "es-MX",
+        "tone_preference": "formal",
+        "communication_style": "direct"
+      },
+      "qualification_status": "unqualified",
+      "last_contact": "2024-01-15T10:30:00Z"
+    },
+    {
+      "id": "lead_002", 
+      "name": "Carlos Hernández",
+      "phone": "+521555234567",
+      "email": "carlos.hernandez@tech.mx",
+      "status": "qualified",
+      "source": "instagram",
+      "location_preference": "mexico_city_polanco",
+      "budget_range": "25000-35000",
+      "move_in_timeline": "immediate",
+      "property_interest": ["matilde", "josefa"],
+      "demographics": {
+        "age": 32,
+        "occupation": "Software Engineer",
+        "income_level": "high",
+        "lifestyle": "tech_professional"
+      },
+      "conversation_context": {
+        "language": "es-MX",
+        "tone_preference": "informal", 
+        "communication_style": "detailed"
+      },
+      "qualification_status": "qualified",
+      "last_contact": "2024-01-14T16:45:00Z"
+    },
+    {
+      "id": "lead_003",
+      "name": "Ana Patricia Ruiz",
+      "phone": "+521555345678", 
+      "email": "ana.ruiz@consulting.com",
+      "status": "tour_scheduled",
+      "source": "google_ads",
+      "location_preference": "mexico_city_roma",
+      "budget_range": "20000-30000", 
+      "move_in_timeline": "2-3_months",
+      "property_interest": ["josefa"],
+      "demographics": {
+        "age": 35,
+        "occupation": "Business Consultant",
+        "income_level": "high",
+        "lifestyle": "executive"
+      },
+      "conversation_context": {
+        "language": "es-MX",
+        "tone_preference": "professional",
+        "communication_style": "consultative"
+      },
+      "qualification_status": "highly_qualified",
+      "last_contact": "2024-01-13T09:15:00Z",
+      "tour_scheduled": {
+        "date": "2024-01-18T14:00:00Z",
+        "property": "josefa",
+        "agent": "agent_maria"
+      }
+    },
+    {
+      "id": "lead_004",
+      "name": "Diego Martinez",
+      "phone": "+521555456789",
+      "email": "diego.martinez@startup.mx",
+      "status": "nurturing",
+      "source": "referral",
+      "location_preference": "mexico_city_condesa",
+      "budget_range": "12000-18000",
+      "move_in_timeline": "flexible",
+      "property_interest": ["josefa"],
+      "demographics": {
+        "age": 26,
+        "occupation": "Startup Founder",
+        "income_level": "variable",
+        "lifestyle": "entrepreneur"
+      },
+      "conversation_context": {
+        "language": "es-MX",
+        "tone_preference": "casual",
+        "communication_style": "creative"
+      },
+      "qualification_status": "partially_qualified",
+      "last_contact": "2024-01-12T11:20:00Z"
+    },
+    {
+      "id": "lead_005",
+      "name": "Isabella Fernández",
+      "phone": "+521555567890",
+      "email": "isabella.fernandez@international.com",
+      "status": "follow_up_needed",
+      "source": "website_chat",
+      "location_preference": "mexico_city_santa_fe", 
+      "budget_range": "30000-40000",
+      "move_in_timeline": "immediate",
+      "property_interest": ["matilde"],
+      "demographics": {
+        "age": 29,
+        "occupation": "International Sales Director",
+        "income_level": "very_high", 
+        "lifestyle": "executive_international"
+      },
+      "conversation_context": {
+        "language": "es-MX",
+        "tone_preference": "formal_international",
+        "communication_style": "efficient"
+      },
+      "qualification_status": "premium_qualified",
+      "last_contact": "2024-01-11T13:30:00Z"
+    },
+    {
+      "id": "lead_006",
+      "name": "Roberto Jiménez",
+      "phone": "+521555678901",
+      "email": "roberto.jimenez@creative.mx",
+      "status": "cold",
+      "source": "linkedin",
+      "location_preference": "mexico_city_doctores",
+      "budget_range": "10000-15000",
+      "move_in_timeline": "6_months",
+      "property_interest": ["josefa"],
+      "demographics": {
+        "age": 31,
+        "occupation": "Creative Director",
+        "income_level": "middle",
+        "lifestyle": "creative_professional"
+      },
+      "conversation_context": {
+        "language": "es-MX", 
+        "tone_preference": "friendly",
+        "communication_style": "visual"
+      },
+      "qualification_status": "low_priority",
+      "last_contact": "2024-01-10T08:45:00Z"
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "properties": [
+    {
+      "id": "josefa",
+      "name": "Edificio Josefa",
+      "full_name": "Josefa Premium Residences",
+      "location": {
+        "address": "Calle Josefa Ortiz de Domínguez 123",
+        "neighborhood": "Roma Norte",
+        "city": "Ciudad de México",
+        "postal_code": "06700",
+        "coordinates": {
+          "lat": 19.4167,
+          "lng": -99.1833
+        }
+      },
+      "property_type": "residential",
+      "total_units": 85,
+      "available_units": 12,
+      "price_range": {
+        "min": 15000,
+        "max": 28000,
+        "currency": "MXN"
+      },
+      "amenities": [
+        "Gimnasio equipado 24/7",
+        "Rooftop con vista panorámica",
+        "Co-working space",
+        "Lavandería automatizada",
+        "Estacionamiento subterráneo",
+        "Seguridad 24 horas",
+        "Elevadores de alta velocidad",
+        "Jardín vertical",
+        "Salón de eventos",
+        "Pet-friendly areas"
+      ],
+      "unit_types": [
+        {
+          "type": "studio",
+          "size_sqm": 35,
+          "price": 15000,
+          "available": 3,
+          "features": ["Cocina integral", "Baño completo", "Closet amplio"]
+        },
+        {
+          "type": "1_bedroom",
+          "size_sqm": 55,
+          "price": 20000,
+          "available": 6,
+          "features": ["Recámara principal", "Sala-comedor", "Cocina integral", "Baño completo", "Balcón"]
+        },
+        {
+          "type": "2_bedroom",
+          "size_sqm": 75,
+          "price": 28000,
+          "available": 3,
+          "features": ["Dos recámaras", "Sala-comedor amplia", "Cocina integral", "Dos baños", "Balcón grande", "Walk-in closet"]
+        }
+      ],
+      "building_features": {
+        "floors": 12,
+        "elevators": 2,
+        "year_built": 2023,
+        "architect": "Grupo Arquitectura Moderna",
+        "sustainability": ["LEED Silver", "Paneles solares", "Sistemas de agua reciclada"]
+      },
+      "neighborhood_highlights": [
+        "A 5 minutos del metro Insurgentes",
+        "Zona gastronómica de Roma Norte",
+        "Parque México a 10 minutos caminando",
+        "Área cultural y artística",
+        "Cafeterías y restaurantes de especialidad"
+      ],
+      "contact_info": {
+        "leasing_agent": "María Rodríguez",
+        "phone": "+521555111222",
+        "email": "maria.rodriguez@urbanhub.mx",
+        "schedule": "Lunes a Sábado 9:00-18:00"
+      }
+    },
+    {
+      "id": "matilde",
+      "name": "Torre Matilde",
+      "full_name": "Matilde Executive Towers",
+      "location": {
+        "address": "Av. Presidente Masaryk 456",
+        "neighborhood": "Polanco",
+        "city": "Ciudad de México", 
+        "postal_code": "11560",
+        "coordinates": {
+          "lat": 19.4284,
+          "lng": -99.1918
+        }
+      },
+      "property_type": "residential_executive",
+      "total_units": 120,
+      "available_units": 8,
+      "price_range": {
+        "min": 30000,
+        "max": 55000,
+        "currency": "MXN"
+      },
+      "amenities": [
+        "Spa y wellness center",
+        "Piscina infinity en azotea",
+        "Business center ejecutivo",
+        "Concierge 24/7",
+        "Valet parking",
+        "Wine cellar privado",
+        "Salón de juntas ejecutivo", 
+        "Jardín zen japonés",
+        "Gimnasio con entrenador personal",
+        "Servicio de housekeeping"
+      ],
+      "unit_types": [
+        {
+          "type": "1_bedroom_executive",
+          "size_sqm": 80,
+          "price": 30000,
+          "available": 2,
+          "features": ["Recámara master", "Oficina en casa", "Cocina gourmet", "Baño de lujo", "Terraza privada"]
+        },
+        {
+          "type": "2_bedroom_penthouse",
+          "size_sqm": 120,
+          "price": 45000,
+          "available": 4,
+          "features": ["Dos recámaras master", "Sala de estar", "Comedor formal", "Cocina gourmet", "Dos baños de lujo", "Terraza de 30 sqm"]
+        },
+        {
+          "type": "3_bedroom_luxury",
+          "size_sqm": 160,
+          "price": 55000,
+          "available": 2,
+          "features": ["Tres recámaras", "Sala-comedor amplia", "Estudio", "Cocina gourmet", "Tres baños", "Terraza panorámica", "Cuarto de servicio"]
+        }
+      ],
+      "building_features": {
+        "floors": 18,
+        "elevators": 3,
+        "year_built": 2024,
+        "architect": "Foster + Partners México",
+        "sustainability": ["LEED Gold", "Fachada inteligente", "Sistema de climatización ecológico"]
+      },
+      "neighborhood_highlights": [
+        "Corazón financiero de Polanco",
+        "A 3 minutos del metro Polanco",
+        "Zona comercial de lujo (Antara, Artz)",
+        "Restaurantes de alta cocina",
+        "Embajadas y oficinas corporativas"
+      ],
+      "contact_info": {
+        "leasing_agent": "Ricardo Mendoza",
+        "phone": "+521555333444",
+        "email": "ricardo.mendoza@urbanhub.mx", 
+        "schedule": "Lunes a Domingo 8:00-20:00"
+      }
+    }
+  ]
+}

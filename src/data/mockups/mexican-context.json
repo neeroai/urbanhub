@@ -1,0 +1,166 @@
+{
+  "cultural_context": {
+    "communication_preferences": {
+      "primary_channel": "whatsapp",
+      "business_hours": "09:00-20:00",
+      "weekend_availability": true,
+      "response_expectation": "within_5_minutes",
+      "tone_preference": "friendly_professional"
+    },
+    "language_patterns": {
+      "greetings": ["¡Hola!", "Buenos días", "¿Qué tal?", "¿Cómo está?"],
+      "politeness_markers": ["por favor", "con mucho gusto", "me da mucho gusto"],
+      "mexican_expressions": [
+        "¡Qué padre!",
+        "Está padrísimo",
+        "¡Qué buena onda!",
+        "¡Órale!",
+        "¿Neta?",
+        "Está increíble"
+      ],
+      "business_courtesy": [
+        "Le/Te agradezco mucho",
+        "Quedo a sus/tus órdenes",
+        "Con todo el placer",
+        "Para servirle/servirte"
+      ]
+    },
+    "real_estate_terminology": {
+      "property_types": {
+        "studio": "estudio",
+        "apartment": "departamento", 
+        "penthouse": "penthouse",
+        "loft": "loft"
+      },
+      "rooms": {
+        "bedroom": "recámara",
+        "bathroom": "baño",
+        "kitchen": "cocina",
+        "living_room": "sala",
+        "dining_room": "comedor",
+        "balcony": "balcón",
+        "terrace": "terraza"
+      },
+      "features": {
+        "furnished": "amueblado",
+        "unfurnished": "sin amueblar",
+        "utilities_included": "servicios incluidos",
+        "parking": "estacionamiento",
+        "security": "seguridad",
+        "elevator": "elevador",
+        "gym": "gimnasio",
+        "pool": "alberca/piscina"
+      },
+      "financial_terms": {
+        "monthly_rent": "renta mensual",
+        "deposit": "depósito",
+        "first_month": "primer mes",
+        "last_month": "último mes",
+        "utilities": "servicios",
+        "maintenance": "mantenimiento"
+      }
+    },
+    "mexican_real_estate_practices": {
+      "payment_methods": [
+        "transferencia_spei",
+        "deposito_bancario", 
+        "cheque_certificado",
+        "efectivo_para_deposito"
+      ],
+      "required_documents": [
+        "identificación_oficial",
+        "comprobante_ingresos",
+        "referencias_personales",
+        "aval_con_propiedades"
+      ],
+      "common_lease_terms": {
+        "standard_duration": "12_months",
+        "deposit_amount": "2_months_rent",
+        "advance_payment": "1_month",
+        "utilities_typically": "not_included"
+      },
+      "neighborhood_factors": [
+        "proximidad_metro",
+        "zona_segura",
+        "vida_nocturna",
+        "opciones_comida",
+        "facilidades_transporte"
+      ]
+    },
+    "sales_psychology": {
+      "trust_builders": [
+        "referencias_de_otros_inquilinos",
+        "transparencia_en_costos",
+        "disponibilidad_inmediata",
+        "flexibilidad_horarios_visita"
+      ],
+      "decision_factors": [
+        "ubicación_conveniente",
+        "precio_justo",
+        "seguridad_edificio", 
+        "amenidades_incluidas",
+        "facilidad_transporte"
+      ],
+      "objection_responses": {
+        "precio_alto": "valor_por_amenidades_y_ubicacion",
+        "sin_tiempo_visita": "tour_virtual_o_horarios_flexibles",
+        "necesito_pensarlo": "promociones_limitadas_tiempo",
+        "comparando_opciones": "destacar_diferenciadores_unicos"
+      }
+    },
+    "urgency_creators": {
+      "limited_availability": "pocas_unidades_disponibles",
+      "seasonal_demand": "temporada_alta_enero_marzo",
+      "promotional_offers": "descuentos_primer_mes",
+      "corporate_competition": "empresas_buscando_mismo_perfil"
+    }
+  },
+  "whatsapp_templates": {
+    "welcome_message": {
+      "template": "¡Hola {{name}}! 👋 Gracias por tu interés en {{property_name}}. Soy tu asistente de UrbanHub y estoy aquí para ayudarte a encontrar el hogar perfecto. ¿En qué te puedo ayudar hoy?",
+      "variables": ["name", "property_name"]
+    },
+    "tour_confirmation": {
+      "template": "¡Listo {{name}}! 🎉 Tu visita está confirmada:\n\n📅 {{date}}\n🕐 {{time}}\n🏢 {{property_name}}\n📍 {{address}}\n👤 Te atenderá {{agent_name}}\n\nTe enviaré un recordatorio 1 día antes. ¡Nos vemos pronto! 🏠",
+      "variables": ["name", "date", "time", "property_name", "address", "agent_name"]
+    },
+    "follow_up_nurture": {
+      "template": "¡Hola {{name}}! 😊 ¿Cómo vas con tus planes de mudanza? Recuerda que en {{property_name}} tenemos:\n\n✅ {{feature_1}}\n✅ {{feature_2}} \n✅ {{feature_3}}\n\n¿Te gustaría agendar una visita esta semana?",
+      "variables": ["name", "property_name", "feature_1", "feature_2", "feature_3"]
+    },
+    "escalation_handoff": {
+      "template": "{{name}}, entiendo que necesitas atención especializada. Te voy a conectar con {{specialist_name}}, nuestro {{specialist_role}}, quien te podrá ayudar mejor con {{specific_need}}.\n\n📞 {{phone}}\n📧 {{email}}\n\n¿Prefieres que te contacte hoy o hay algún horario específico que te acomode?",
+      "variables": ["name", "specialist_name", "specialist_role", "specific_need", "phone", "email"]
+    }
+  },
+  "demo_personas": [
+    {
+      "name": "María González",
+      "profile": "young_professional",
+      "key_motivators": ["ubicacion_conveniente", "precio_accesible", "amenidades_modernas"],
+      "communication_style": "direct_friendly",
+      "likely_objections": ["precio", "tamaño_espacio"]
+    },
+    {
+      "name": "Carlos Hernández", 
+      "profile": "tech_professional",
+      "key_motivators": ["tecnologia_integrada", "espacios_trabajo", "comunidad_profesional"],
+      "communication_style": "detailed_analytical", 
+      "likely_objections": ["especificaciones_tecnicas", "internet_velocidad"]
+    },
+    {
+      "name": "Isabella Fernández",
+      "profile": "international_executive",
+      "key_motivators": ["prestigio_ubicacion", "servicios_premium", "facilidades_corporativas"],
+      "communication_style": "formal_efficient",
+      "likely_objections": ["contratos_corporativos", "facturacion_internacional"]
+    },
+    {
+      "name": "Diego Martínez",
+      "profile": "startup_founder", 
+      "key_motivators": ["flexibilidad", "networking", "costo_beneficio"],
+      "communication_style": "casual_creative",
+      "likely_objections": ["compromisos_largo_plazo", "cash_flow_variabilidad"]
+    }
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "agents": [
+    {
+      "id": "agent_maria",
+      "name": "María Rodríguez",
+      "role": "Leasing Agent - Josefa",
+      "properties": ["josefa"],
+      "phone": "+521555111222",
+      "email": "maria.rodriguez@urbanhub.mx",
+      "schedule": {
+        "monday": { "start": "09:00", "end": "18:00", "lunch": "13:00-14:00" },
+        "tuesday": { "start": "09:00", "end": "18:00", "lunch": "13:00-14:00" },
+        "wednesday": { "start": "09:00", "end": "18:00", "lunch": "13:00-14:00" },
+        "thursday": { "start": "09:00", "end": "18:00", "lunch": "13:00-14:00" },
+        "friday": { "start": "09:00", "end": "18:00", "lunch": "13:00-14:00" },
+        "saturday": { "start": "10:00", "end": "16:00", "lunch": "13:00-14:00" },
+        "sunday": "off"
+      }
+    },
+    {
+      "id": "agent_ricardo",
+      "name": "Ricardo Mendoza", 
+      "role": "Senior Leasing Agent - Matilde",
+      "properties": ["matilde"],
+      "phone": "+521555333444",
+      "email": "ricardo.mendoza@urbanhub.mx",
+      "schedule": {
+        "monday": { "start": "08:00", "end": "20:00", "lunch": "14:00-15:00" },
+        "tuesday": { "start": "08:00", "end": "20:00", "lunch": "14:00-15:00" },
+        "wednesday": { "start": "08:00", "end": "20:00", "lunch": "14:00-15:00" },
+        "thursday": { "start": "08:00", "end": "20:00", "lunch": "14:00-15:00" },
+        "friday": { "start": "08:00", "end": "20:00", "lunch": "14:00-15:00" },
+        "saturday": { "start": "09:00", "end": "17:00", "lunch": "13:00-14:00" },
+        "sunday": { "start": "10:00", "end": "16:00", "lunch": "13:00-14:00" }
+      }
+    }
+  ],
+  "tour_availability": {
+    "2024-01-16": [
+      {
+        "agent_id": "agent_maria",
+        "property": "josefa",
+        "slots": [
+          { "time": "10:00", "duration": 60, "available": true },
+          { "time": "11:30", "duration": 60, "available": true },
+          { "time": "15:00", "duration": 60, "available": false, "booked_by": "lead_003" },
+          { "time": "16:30", "duration": 60, "available": true }
+        ]
+      },
+      {
+        "agent_id": "agent_ricardo",
+        "property": "matilde", 
+        "slots": [
+          { "time": "09:00", "duration": 90, "available": true },
+          { "time": "11:00", "duration": 90, "available": true },
+          { "time": "16:00", "duration": 90, "available": true },
+          { "time": "18:00", "duration": 90, "available": true }
+        ]
+      }
+    ],
+    "2024-01-17": [
+      {
+        "agent_id": "agent_maria",
+        "property": "josefa",
+        "slots": [
+          { "time": "09:30", "duration": 60, "available": true },
+          { "time": "11:00", "duration": 60, "available": true },
+          { "time": "14:00", "duration": 60, "available": true },
+          { "time": "15:30", "duration": 60, "available": true },
+          { "time": "17:00", "duration": 60, "available": true }
+        ]
+      },
+      {
+        "agent_id": "agent_ricardo",
+        "property": "matilde",
+        "slots": [
+          { "time": "08:30", "duration": 90, "available": true },
+          { "time": "10:30", "duration": 90, "available": true },
+          { "time": "13:00", "duration": 90, "available": false, "booked_by": "external_lead_001" },
+          { "time": "15:30", "duration": 90, "available": true },
+          { "time": "17:30", "duration": 90, "available": true }
+        ]
+      }
+    ],
+    "2024-01-18": [
+      {
+        "agent_id": "agent_maria",
+        "property": "josefa",
+        "slots": [
+          { "time": "10:00", "duration": 60, "available": true },
+          { "time": "11:30", "duration": 60, "available": true },
+          { "time": "14:00", "duration": 60, "available": false, "booked_by": "lead_003" },
+          { "time": "15:30", "duration": 60, "available": true }
+        ]
+      },
+      {
+        "agent_id": "agent_ricardo",
+        "property": "matilde",
+        "slots": [
+          { "time": "09:00", "duration": 90, "available": true },
+          { "time": "11:00", "duration": 90, "available": true },
+          { "time": "16:00", "duration": 90, "available": true },
+          { "time": "18:00", "duration": 90, "available": true }
+        ]
+      }
+    ],
+    "2024-01-19": [
+      {
+        "agent_id": "agent_maria",
+        "property": "josefa",
+        "slots": [
+          { "time": "09:00", "duration": 60, "available": true },
+          { "time": "10:30", "duration": 60, "available": true },
+          { "time": "14:00", "duration": 60, "available": true },
+          { "time": "15:30", "duration": 60, "available": true },
+          { "time": "17:00", "duration": 60, "available": true }
+        ]
+      },
+      {
+        "agent_id": "agent_ricardo",
+        "property": "matilde",
+        "slots": [
+          { "time": "08:00", "duration": 90, "available": true },
+          { "time": "10:00", "duration": 90, "available": true },
+          { "time": "12:00", "duration": 90, "available": true },
+          { "time": "16:00", "duration": 90, "available": true },
+          { "time": "18:00", "duration": 90, "available": true }
+        ]
+      }
+    ],
+    "2024-01-20": [
+      {
+        "agent_id": "agent_maria",
+        "property": "josefa",
+        "slots": [
+          { "time": "10:00", "duration": 60, "available": true },
+          { "time": "11:30", "duration": 60, "available": true },
+          { "time": "13:00", "duration": 60, "available": true },
+          { "time": "15:00", "duration": 60, "available": true }
+        ]
+      },
+      {
+        "agent_id": "agent_ricardo",
+        "property": "matilde",
+        "slots": [
+          { "time": "09:00", "duration": 90, "available": true },
+          { "time": "11:00", "duration": 90, "available": true },
+          { "time": "13:00", "duration": 90, "available": true },
+          { "time": "15:00", "duration": 90, "available": true }
+        ]
+      }
+    ]
+  },
+  "booking_rules": {
+    "advance_booking_hours": 24,
+    "max_booking_days_ahead": 30,
+    "tour_durations": {
+      "josefa": 60,
+      "matilde": 90
+    },
+    "buffer_time_minutes": 15,
+    "cancellation_hours": 4
+  }
+}
