@@ -1,58 +1,60 @@
 flowchart TD
-    %% Lead Entry Points
-    A[HubSpot Lead<br/>Created] --> B[Lead Qualifier Agent<br/>< 5 minute response]
-    A1[Direct WhatsApp<br/>Contact] --> B
+    %% Customer Entry Point
+    A[Website Form<br/>Submission] --> B[Bird AI Greeting<br/>Building-specific message<br/>Ad reinforcement]
     
-    %% Initial Qualification
-    B --> C{Lead<br/>Qualified?}
+    %% Direct Tour Interest Question
+    B --> C{Interested in<br/>scheduling a tour?}
     C -->|Yes| D[Tour Scheduling Agent<br/>Calendar Integration]
-    C -->|Partial| E[Pre-screening Agent<br/>Information Collection]
-    C -->|No| F[Lead Warming Agent<br/>24-48 hour sequence]
+    C -->|No| E[Lead Warming Agent<br/>Brand selling & profiling]
     
     %% Tour Scheduling Path
-    D --> G{Tour<br/>Booked?}
-    G -->|Yes| H[Calendar Event Created<br/>Leasing Agent Notified]
-    G -->|No| I[Follow-up Sequence<br/>Alternative Options]
+    D --> L{Tour<br/>Booked?}
+    L -->|Yes| M[Pre-screening Questions<br/>Information Collection]
+    L -->|No| N[Follow-up Sequence<br/>Alternative Options]
     
-    %% Pre-screening Path
-    E --> J{Information<br/>Complete?}
-    J -->|Yes| D
-    J -->|No| K[Continued Engagement<br/>Progressive Profiling]
+    %% Pre-screening and Calendar Booking
+    M --> O[Calendar Event Created<br/>Building-specific booking]
+    O --> P[Leasing Agent Notified<br/>Customer info delivered]
     
-    %% Warming Path
-    F --> L{Response<br/>Received?}
-    L -->|Yes| B
-    L -->|No after 14 days| M[Mark Closed Lost<br/>End Sequence]
+    %% Warming Sequence Path
+    E --> F[Customer Profiling<br/>Learn interests & needs]
+    F --> G[Building Recommendations<br/>Based on profile]
+    G --> H{Ready for tour<br/>scheduling now?}
+    H -->|Yes| D
+    H -->|No| I[Extended Nurturing<br/>Follow-up sequence]
+    I --> J{Response after<br/>14 days?}
+    J -->|Yes| E
+    J -->|No| K[Mark Closed Lost<br/>End Sequence]
     
     %% Tour Execution
-    H --> N[Pre-tour Confirmation<br/>24hr & 2hr reminders]
-    N --> O[Tour Conducted<br/>by Leasing Agent]
-    O --> P[Follow-up Agent<br/>24hr post-tour]
+    P --> Q[Pre-tour Confirmation<br/>24hr & 2hr reminders]
+    Q --> R[Tour Conducted<br/>by Leasing Agent]
+    R --> S[Follow-up Agent<br/>24hr post-tour]
     
     %% Post-tour Path
-    P --> Q{Customer<br/>Response?}
-    Q -->|Positive| R[Application Process<br/>Human Agent Handoff]
-    Q -->|Negative| S[Objection Handling<br/>Alternative Options]
-    Q -->|No Response| T[Gentle Nudge<br/>3-day follow-up]
+    S --> T{Customer<br/>Response?}
+    T -->|Positive| U[Application Process<br/>Human Agent Handoff]
+    T -->|Negative| V[Objection Handling<br/>Alternative Options]
+    T -->|No Response| W[Gentle Nudge<br/>3-day follow-up]
     
     %% Escalation Path
-    B --> U{Escalation<br/>Needed?}
-    D --> U
-    E --> U
-    F --> U
-    P --> U
-    U -->|Yes| V[Escalation Agent<br/>Human Handoff with Context]
+    B --> X{Escalation<br/>Needed?}
+    D --> X
+    E --> X
+    M --> X
+    S --> X
+    X -->|Yes| Y[Escalation Agent<br/>Human Handoff with Context]
     
     %% HubSpot Integration
-    B --> W[Real-time HubSpot Sync<br/>Status: Contacted]
-    D --> X[Real-time HubSpot Sync<br/>Status: Tour Scheduled]
-    R --> Y[Real-time HubSpot Sync<br/>Status: Application Started]
-    M --> Z[Real-time HubSpot Sync<br/>Status: Closed Lost]
+    B --> Z1[Real-time HubSpot Sync<br/>Status: Contacted]
+    O --> Z2[Real-time HubSpot Sync<br/>Status: Tour Scheduled]
+    U --> Z3[Real-time HubSpot Sync<br/>Status: Application Started]
+    K --> Z4[Real-time HubSpot Sync<br/>Status: Closed Lost]
     
     %% Feedback Loop
-    I --> K
-    S --> K
-    T --> AA[Extended Nurturing<br/>Quarterly Check-in]
+    N --> I
+    V --> I
+    W --> AA[Extended Nurturing<br/>Quarterly Check-in]
     
     %% Styling
     classDef startEnd fill:#90EE90,stroke:#006400,stroke-width:2px
@@ -62,9 +64,9 @@ flowchart TD
     classDef escalation fill:#FFB6C1,stroke:#DC143C,stroke-width:2px
     classDef human fill:#DDA0DD,stroke:#9370DB,stroke-width:2px
     
-    class A,A1 startEnd
-    class B,D,E,F,P agent
-    class C,G,J,L,Q,U decision
-    class W,X,Y,Z hubspot
-    class V escalation
-    class O,R human
+    class A startEnd
+    class B,D,E,F,G,M,S agent
+    class C,H,J,L,T,X decision
+    class Z1,Z2,Z3,Z4 hubspot
+    class Y escalation
+    class R,U human

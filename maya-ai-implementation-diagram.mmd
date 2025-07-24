@@ -1,0 +1,134 @@
+flowchart TB
+    %% MAYA AI - Solución UrbanHub con Bird.com
+    %% Diagrama Ejecutivo para CEO
+    
+    %% Título Principal
+    subgraph Title["🏢 UrbanHub + Bird.com = Crecimiento Escalable"]
+        T1["Automatización Inteligente de Leads con MAYA AI"]
+    end
+    
+    %% El Problema Actual
+    subgraph Problem["❌ PROBLEMA ACTUAL"]
+        P1["😔 Respuesta manual > 24 horas"]
+        P2["📉 Solo 10% conversión lead-tour"]
+        P3["😫 Agentes sobrecargados"]
+        P4["💸 Leads perdidos = $$ perdidos"]
+    end
+    
+    %% De Dónde Vienen los Leads
+    subgraph Sources["📱 TUS LEADS LLEGAN DE"]
+        S1["🌐 Website<br/>urbanhub.com"]
+        S2["💬 WhatsApp<br/>Directo"]
+        S3["📘 Facebook<br/>Instagram"]
+        S4["🏠 Portales<br/>Inmobiliarios"]
+    end
+    
+    %% La Solución MAYA
+    subgraph Maya["🤖 MAYA - Tu AI Employee en Bird.com"]
+        subgraph Core["✨ Qué Hace MAYA"]
+            M1["⚡ Responde en<br/><2 minutos 24/7"]
+            M2["🎯 Califica leads<br/>automáticamente"]
+            M3["📅 Agenda tours<br/>sin fricción"]
+            M4["🔥 Reactiva leads<br/>fríos"]
+        end
+        
+        subgraph Power["💪 Poder de Bird.com"]
+            B1["💬 WhatsApp Business<br/>Nativo"]
+            B2["🔄 Sincronización<br/>con HubSpot"]
+            B3["🧠 AI Conversacional<br/>en Español"]
+            B4["📊 Analytics<br/>en Tiempo Real"]
+        end
+    end
+    
+    %% Customer Journey Simplificado
+    subgraph Journey["🚀 JOURNEY AUTOMATIZADO"]
+        J1["1️⃣ Lead entra<br/>por cualquier canal"]
+        J2["2️⃣ MAYA responde<br/>inmediatamente"]
+        J3["3️⃣ Califica y entiende<br/>necesidades"]
+        J4["4️⃣ Agenda tour o<br/>inicia warming"]
+        J5["5️⃣ Follow-up<br/>inteligente"]
+        J6["✅ Tour confirmado<br/>Lead caliente"]
+    end
+    
+    %% Casos de Éxito
+    subgraph Success["🌟 CASOS REALES"]
+        C1["👩 María<br/>Lead → Tour en 5 min<br/>Via WhatsApp"]
+        C2["👨 Carlos<br/>Reactivado día 7<br/>Tour agendado"]
+        C3["👩‍💼 Ana<br/>Tour a las 2 AM<br/>Sin intervención humana"]
+    end
+    
+    %% Resultados Esperados
+    subgraph Results["📈 RESULTADOS PARA URBANHUB"]
+        R1["⏱️ Respuesta<br/>24h → 2 min"]
+        R2["📊 Conversión<br/>10% → 25%"]
+        R3["🤖 Automatización<br/>80% de interacciones"]
+        R4["💰 ROI<br/>en 3 meses"]
+    end
+    
+    %% Integración HubSpot
+    subgraph Integration["🔗 HUBSPOT + BIRD.COM"]
+        H1["HubSpot sigue siendo<br/>tu CRM central"]
+        H2["Bird añade<br/>conversación inteligente"]
+        H3["Sincronización<br/>bidireccional"]
+    end
+    
+    %% Escalabilidad
+    subgraph Scale["📊 PREPARADO PARA CRECER"]
+        SC1["Hoy: 1,300<br/>departamentos"]
+        SC2["→"]
+        SC3["Mañana: 15,000+<br/>sin más personal"]
+    end
+    
+    %% Conexiones del Flujo Principal
+    Problem --> Sources
+    Sources --> J1
+    J1 --> J2
+    J2 --> J3
+    J3 --> J4
+    J4 --> J5
+    J5 --> J6
+    J6 --> Results
+    
+    %% Conexiones de MAYA
+    J2 -.-> M1
+    J3 -.-> M2
+    J4 -.-> M3
+    J5 -.-> M4
+    
+    %% Casos de éxito
+    J6 --> C1
+    J6 --> C2
+    J6 --> C3
+    
+    %% HubSpot Integration
+    Maya --> Integration
+    Integration --> Results
+    
+    %% Escalabilidad
+    Results --> Scale
+    
+    %% Styling Ejecutivo
+    classDef problem fill:#FFCDD2,stroke:#D32F2F,stroke-width:3px,color:#000
+    classDef solution fill:#C8E6C9,stroke:#388E3C,stroke-width:3px,color:#000
+    classDef maya fill:#E1F5FE,stroke:#0288D1,stroke-width:4px,color:#000
+    classDef results fill:#FFF9C4,stroke:#F57C00,stroke-width:3px,color:#000
+    classDef journey fill:#E8F5E9,stroke:#4CAF50,stroke-width:2px,color:#000
+    classDef integration fill:#F3E5F5,stroke:#7B1FA2,stroke-width:2px,color:#000
+    
+    class P1,P2,P3,P4 problem
+    class M1,M2,M3,M4,B1,B2,B3,B4 maya
+    class R1,R2,R3,R4 results
+    class J1,J2,J3,J4,J5,J6 journey
+    class H1,H2,H3 integration
+    class C1,C2,C3 solution
+    class SC1,SC2,SC3 results
+    
+    %% Mensaje Final
+    subgraph Message["💡 MENSAJE CLAVE"]
+        MSG["Con MAYA en Bird.com, UrbanHub puede crecer<br/>sin límites, automatizando el 80% del proceso<br/>mientras mejora la experiencia del cliente"]
+    end
+    
+    Scale --> Message
+    
+    classDef message fill:#E8EAF6,stroke:#3F51B5,stroke-width:4px,color:#000,font-weight:bold
+    class MSG message

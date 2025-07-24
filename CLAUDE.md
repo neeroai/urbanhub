@@ -4,11 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**Project Name**: UrbanHub AI Agents for Bird.com
+**Project Name**: MAYA AI - UrbanHub's Intelligent Real Estate Assistant on Bird.com
 
-**Purpose**: Comprehensive AI agent ecosystem built on Bird.com platform to automate UrbanHub's customer acquisition workflow. The project develops specialized conversational AI agents that handle lead qualification, warming, tour scheduling, and follow-up automation for UrbanHub's real estate operations across Mexico.
+**Purpose**: MAYA es un AI Employee especializado en bienes raíces, configurado nativamente en Bird.com para automatizar el 80% del proceso de adquisición de clientes de UrbanHub. Responde en <2 minutos vía WhatsApp, califica leads inteligentemente, agenda tours sin fricción y reactiva leads fríos - todo diseñado específicamente para el mercado inmobiliario premium mexicano.
 
-**Target Audience**: UrbanHub leasing agents, property managers, potential tenants, and operations teams seeking automated lead-to-lease conversion through intelligent WhatsApp/SMS conversations.
+**Target Audience**: CEOs y equipos directivos de UrbanHub, agentes de leasing, clientes potenciales buscando departamentos premium en CDMX, y equipos de marketing necesitando escalar operaciones sin aumentar personal.
 
 ---
 
@@ -72,19 +72,19 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Technology Stack
 
-**Platform**: Bird.com omnichannel messaging platform with AI agents
+**Platform**: Bird.com - Plataforma all-in-one con MAYA AI Employee nativo
 
-**Backend**: Node.js with TypeScript for webhook handlers and business logic
+**AI Configuration**: MAYA configurada 100% en Bird.com (no requiere código)
 
-**Database**: PostgreSQL for conversation tracking, lead management, and analytics
+**Messaging**: WhatsApp Business (principal), SMS fallback, Email support
 
-**AI Engine**: OpenAI GPT models for natural language processing and conversation
+**CRM Integration**: HubSpot via webhooks nativos de Bird.com
 
-**Messaging Channels**: WhatsApp Business API, SMS, and email integration
+**Analytics**: Dashboard nativo de Bird.com con insights en tiempo real
 
-**Integrations**: HubSpot CRM, Leasing Agent calendars, OXXO payments
+**Automation**: Bird.com workflow builder - configuración no-code
 
-**Monitoring**: Bird.com dashboards, custom analytics, and conversation tracking
+**Escalation**: Routing inteligente nativo de Bird.com a agentes humanos
 
 ---
 
@@ -99,6 +99,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 │   ├── brief.md                  # Updated project requirements for AI agents
 │   ├── bird-*.md                 # Bird.com API integration documentation
 │   └── workflow-diagram.mmd      # Customer acquisition flow diagram
+├── maya-ai-implementation-diagram.mmd # 📊 DIAGRAMA EJECUTIVO para CEO - Arquitectura simplificada
 ├── src/
 │   ├── agents/                   # Specialized AI agent implementations
 │   ├── services/                 # Bird.com API integration services
@@ -241,60 +242,51 @@ When evaluating agent conversations, check:
 
 ---
 
-## AI Agent Architecture
+## MAYA AI Architecture - Simplificada en Bird.com
 
-### Bird.com Platform Integration
+### 🤖 MAYA AI Employee - Un Solo Agent, Múltiples Capacidades
 
-- **API Integration**: RESTful API client with rate limiting and error handling
-- **Webhook Processing**: Real-time event handling for messages and conversations
-- **Channel Management**: Multi-channel support (WhatsApp, SMS, Email)
-- **Template System**: Pre-approved WhatsApp Business templates for notifications
+MAYA es configurada como un **AI Employee nativo en Bird.com** que maneja todo el customer journey:
 
-### Specialized AI Agents
+#### ✨ Capacidades Unificadas de MAYA
 
-Based on `workflow-diagram.mmd` customer acquisition flow:
+1. **⚡ Respuesta Instantánea** (<2 min, 24/7)
+   - Saludo personalizado según hora del día
+   - Reconocimiento automático de intención
+   - Respuesta inmediata en español mexicano
 
-#### 1. Lead Qualifier Agent
+2. **🎯 Calificación Inteligente**
+   - Timeline assessment automático
+   - Budget qualification progresiva  
+   - Property matching (Josefa/Matilde)
+   - Lead scoring en tiempo real
 
-- **Purpose**: Initial contact classification and basic qualification
-- **Triggers**: New leads from HubSpot integration
-- **Actions**: Determine lead quality, collect basic information, route to appropriate agent
-- **Integration**: HubSpot API for lead data sync
+3. **📅 Agendamiento Sin Fricción**
+   - Integración nativa con calendarios
+   - Booking confirmation automático
+   - Recordatorios por WhatsApp
+   - Pre-screening inteligente
 
-#### 2. Lead Warming Agent (Bird AI)
+4. **🔥 Lead Warming Automático**
+   - Secuencias de valor personalizadas
+   - Reactivación basada en comportamiento
+   - Timing óptimo para reengagement
+   - A/B testing de mensajes
 
-- **Purpose**: Automated WhatsApp/SMS outreach for unresponsive leads
-- **Triggers**: Leads that haven't scheduled tours within 24-48 hours
-- **Actions**: Personalized warming messages, objection handling, tour promotion
-- **Logic**: Conversational AI with property-specific knowledge
+5. **🚨 Escalación Inteligente**
+   - Detección automática de necesidades complejas
+   - Handoff perfecto con contexto completo
+   - Routing a especialista apropiado
+   - Continuidad de conversación
 
-#### 3. Tour Scheduling Agent
+### 🔧 Configuración Bird.com Nativa
 
-- **Purpose**: Calendar management and tour booking automation
-- **Triggers**: Qualified leads expressing interest in property visits
-- **Actions**: Available slot presentation, booking confirmation, pre-tour preparation
-- **Integration**: Leasing Agent calendars (one building per LA)
-
-#### 4. Pre-screening Agent
-
-- **Purpose**: Intelligent information collection by importance priority
-- **Triggers**: During tour scheduling process
-- **Actions**: Progressive profiling, qualification scoring, preference collection
-- **Logic**: Smart conversational flow adapting to user responses
-
-#### 5. Follow-up Agent
-
-- **Purpose**: Post-tour experience feedback and conversion optimization
-- **Triggers**: 24 hours after completed tours
-- **Actions**: Experience surveys, objection handling, lease application promotion
-- **Analytics**: Feedback analysis and conversion tracking
-
-#### 6. Escalation Agent
-
-- **Purpose**: Intelligent routing to human agents when needed
-- **Triggers**: Complex queries, urgent requests, agent limitations reached
-- **Actions**: Context handoff, priority assignment, human agent notification
-- **Integration**: Internal team management systems
+- **Templates**: WhatsApp Business pre-aprobadas
+- **Workflows**: Builder no-code para flujos complejos
+- **Analytics**: Dashboard nativo con KPIs en tiempo real
+- **Integrations**: HubSpot via webhooks nativos
+- **Channels**: WhatsApp (principal), SMS, Email
+- **Escalation**: Routing automático a agentes humanos
 
 ---
 

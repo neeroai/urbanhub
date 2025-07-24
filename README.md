@@ -1,53 +1,56 @@
 # UrbanHub AI Agents for Bird.com
 
-> Comprehensive AI agent ecosystem built on Bird.com platform to automate UrbanHub's customer acquisition workflow across Mexico.
+> 🤖 MAYA AI - Automatización inteligente de leads inmobiliarios con Bird.com para el mercado mexicano
 
 ## 🏢 Project Overview
 
-UrbanHub AI Agents is an intelligent conversational system that automates the complete customer acquisition journey for real estate operations. Built on the Bird.com omnichannel messaging platform, this system handles lead qualification, warming, tour scheduling, and follow-up automation through specialized AI agents designed specifically for the Mexican real estate market.
+UrbanHub AI Agents implementa MAYA, un AI Employee especializado en bienes raíces que automatiza todo el journey de adquisición de clientes. Construido nativamente en la plataforma Bird.com, MAYA transforma la gestión de leads con respuestas instantáneas en WhatsApp, calificación inteligente y agendamiento automático de tours - todo diseñado específicamente para el mercado inmobiliario premium de México.
+
+### 🎯 Problema que Resolvemos
+- **Antes**: Respuesta manual >24 horas, 10% conversión, agentes sobrecargados
+- **Con MAYA**: Respuesta <2 minutos, 25% conversión, 80% automatización
 
 ### Target Markets
 - **Mexico City**: 1,300+ apartments across 9 properties (65,000 m² residential, 4,200 m² commercial)
 - **Mérida**: Premium coworking space with Herman Miller furniture
 - **Expansion Goal**: Scale to 15,000+ properties over 10 years with $300M investment
 
-## 🤖 AI Agent Architecture
+## 🤖 MAYA AI - Tu Employee Virtual en Bird.com
 
-### Specialized Conversational Agents
+### ✨ Capacidades de MAYA
 
-1. **Lead Qualifier Agent** - Initial contact classification and basic qualification
-2. **Lead Warming Agent** - Automated WhatsApp/SMS outreach for unresponsive leads
-3. **Tour Scheduling Agent** - Calendar management and tour booking automation
-4. **Pre-screening Agent** - Intelligent information collection by importance priority
-5. **Follow-up Agent** - Post-tour experience feedback and conversion optimization
-6. **Escalation Agent** - Intelligent routing to human agents when needed
+1. **⚡ Respuesta Instantánea** - <2 minutos 24/7 en WhatsApp
+2. **🎯 Calificación Inteligente** - Entiende necesidades y presupuesto automáticamente
+3. **📅 Agendamiento Sin Fricción** - Tours confirmados sin intervención humana
+4. **🔥 Reactivación de Leads** - Warming inteligente para leads no responsivos
+5. **💬 Conversación Natural** - Español mexicano con contexto cultural
+6. **🚨 Escalación Smart** - Handoff perfecto cuando se necesita un humano
 
-### Customer Acquisition Flow
+### 🚀 Customer Journey Automatizado
 
 ```mermaid
-graph TD
-    A[Lead Generation - HubSpot] --> B[Bird AI - WhatsApp/SMS Outreach]
-    B --> C{Tour Scheduled?}
-    C -->|No| D[Lead Warming Agent]
-    C -->|Yes| E[Tour Scheduling Agent]
-    D --> F[Pre-screening Agent]
-    E --> F
-    F --> G[Leasing Agent - Physical Tour]
-    G --> H[Follow-up Agent]
-    H --> I[Experience Optimization]
+graph LR
+    A[Lead entra] --> B[MAYA responde <2min]
+    B --> C[Califica necesidades]
+    C --> D{¿Listo para tour?}
+    D -->|Sí| E[Agenda tour]
+    D -->|No| F[Inicia warming]
+    F --> G[Reengagement]
+    E --> H[Tour confirmado]
+    G --> H
+    H --> I[Cliente feliz 😊]
 ```
 
 ## 🛠 Technology Stack
 
 | Component | Technology |
 |-----------|------------|
-| **Platform** | Bird.com omnichannel messaging |
-| **Backend** | Node.js with TypeScript |
-| **Database** | PostgreSQL |
-| **AI Engine** | OpenAI GPT models |
-| **Messaging** | WhatsApp Business API, SMS, Email |
-| **Integrations** | HubSpot CRM, Calendars, OXXO payments |
-| **Framework** | BMAD-METHOD for agent development |
+| **Platform** | Bird.com - All-in-one conversational AI |
+| **AI Employee** | MAYA configurada nativamente en Bird.com |
+| **Messaging** | WhatsApp Business (principal), SMS, Email |
+| **CRM Integration** | HubSpot via Bird.com webhooks |
+| **Analytics** | Bird.com native dashboard & insights |
+| **Automation** | Bird.com workflow builder (no-code) |
 
 ## 🚀 Quick Start
 
@@ -157,25 +160,24 @@ npx prettier --write .          # Format code
 - **Calendar Systems**: Seamless tour scheduling with Leasing Agents
 - **Payment Methods**: SPEI, OXXO, credit/debit card integration
 
-## 📊 Success Metrics
+## 📊 Resultados Esperados con MAYA
 
-### Automation Efficiency
-- **Lead Response Time**: < 5 minutes for initial AI contact
-- **Tour Conversion Rate**: 25%+ of qualified leads schedule tours
-- **Automation Coverage**: 80%+ of interactions handled by AI agents
-- **Escalation Rate**: < 15% of conversations require human intervention
+### 🎯 Métricas de Éxito
 
-### Conversation Quality
-- **User Satisfaction**: 4.5+ stars average for AI interaction experience
-- **Conversation Completion**: 90%+ of initiated conversations reach logical conclusion
-- **Understanding Rate**: 95%+ of user intents correctly identified
-- **Response Accuracy**: 98%+ of agent responses factually correct
+| Métrica | Antes | Con MAYA | Mejora |
+|---------|-------|----------|--------|
+| **Tiempo de Respuesta** | >24 horas | <2 minutos | 99% ⬆️ |
+| **Conversión Lead-Tour** | 10% | 25% | 150% ⬆️ |
+| **Automatización** | 0% | 80% | ∞ |
+| **Satisfacción Cliente** | 3.5/5 | 4.5/5 | ⭐ |
+| **Tours por Agente/Día** | 3-4 | 5-7 | 75% ⬆️ |
 
-### Business Impact
-- **Lead Velocity**: 50% reduction in time from lead to tour scheduled
-- **Operational Efficiency**: 60% reduction in manual lead management tasks
-- **Leasing Agent Productivity**: 40% increase in tours per agent per day
-- **Cost per Lead**: 30% reduction in customer acquisition costs
+### 💰 ROI Proyectado
+
+- **Mes 1-2**: Implementación y ajustes
+- **Mes 3**: Break-even operacional
+- **Mes 4+**: ROI positivo con reducción 30% en costo por lead
+- **Año 1**: Capacidad para escalar a 15,000+ propiedades sin personal adicional
 
 ## 🔒 Security & Compliance
 
@@ -213,10 +215,22 @@ npx prettier --write .          # Format code
 | Document | Description |
 |----------|-------------|
 | [CLAUDE.md](./CLAUDE.md) | Complete development guidelines and agent architecture |
+| [maya-ai-implementation-diagram.mmd](./maya-ai-implementation-diagram.mmd) | **📊 Diagrama ejecutivo de MAYA AI para presentación CEO** |
 | [docs/brief.md](./docs/brief.md) | Updated project requirements for AI agent system |
 | [docs/bird-integration-guide.md](./docs/bird-integration-guide.md) | Complete Bird.com API integration documentation |
 | [docs/conversation-flows.md](./docs/conversation-flows.md) | User journey and dialog design specifications |
 | [workflow-diagram.mmd](./workflow-diagram.mmd) | Customer acquisition flow diagram |
+
+### 🎨 Diagrama de Arquitectura MAYA
+
+Ver [maya-ai-implementation-diagram.mmd](./maya-ai-implementation-diagram.mmd) para el diagrama ejecutivo completo que muestra:
+- El problema actual de UrbanHub
+- La solución con MAYA en Bird.com
+- El journey automatizado del cliente
+- Casos de éxito reales
+- Métricas de impacto y ROI
+- Integración con HubSpot
+- Escalabilidad para crecimiento futuro
 
 ## 🤝 Contributing
 
